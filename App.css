@@ -1,10 +1,10 @@
 h1{
-  color: #DDDD;
+  color: #DDDDDD;
   font-size: calc(10px + 2vmin);
 }
 
 p{
-color: #C9C7CE;
+  color: #C9C7CE;
 }
 
 div{
@@ -14,15 +14,91 @@ div{
 }
 
 .App{
-
-
+  height: 100vh;
 }
 
-.App-header{
+.App-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100px;
+}
 
+.MainBody{
+  /*height: 76%;*/
+
+}
+
+.App-bottom{
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  height: 70px;
+}
+
+.Dots{
+color: blue;
+vertical-align: middle;
+line-height: 70px;
+}
+
+.WrapperActivity{
+  height: 59px;
+  width: 80%;
+  margin: auto;
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  padding: 5px 10px 5px 10px;
+}
+
+.ActivityName{
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.ActivityPercentage{
+  float:left;
+  margin-top: 2px;
+}
+
+.ActivityMoreDetails{
+  float:right;
+  margin-top: 2px;
+}
+
+.ActivityDetails{
+  font-size: 12px;
+}
+
+.ActivityBar{
+background-color: yellow;
+width: 100%;
+height: 12px;
+margin-top: 22px;
+border-radius: 30px;
+}
+
+.ActivityProgress{
+background-color: green;
+width: 50%;
+height: 12px;
+margin-top: -12px;
+border-radius: 30px;
+}
+
+.MenuButton{
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.QuestionButton{
+  height: 700px;
+  width: -150px;
 }

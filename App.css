@@ -1,0 +1,28 @@
+h1{
+  color: #DDDD;
+  font-size: calc(10px + 2vmin);
+}
+
+p{
+color: #C9C7CE;
+}
+
+div{
+  text-align: center;
+  background-color: #2C3535;
+  font-family: "Roboto";
+}
+
+.App{
+
+
+}
+
+.App-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+}

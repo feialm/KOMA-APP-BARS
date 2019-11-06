@@ -35,7 +35,7 @@ div{
 
 .App-bottom{
   position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   bottom: 0;
   height: 70px;
 }
@@ -43,6 +43,7 @@ div{
 .Dots{
 color: blue;
 vertical-align: middle;
+text-align: center;
 line-height: 70px;
 }
 
@@ -99,6 +100,8 @@ border-radius: 30px;
 }
 
 .QuestionButton{
+    position: -webkit-sticky;
+  position: sticky;
   height: 700px;
   width: -150px;
 }

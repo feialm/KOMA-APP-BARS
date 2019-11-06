@@ -4,10 +4,24 @@ import './App.css';
 import {Container, Button, Link, lightColors, darkColors} from 'react-floating-action-button'
 
 
+
+// fake array to test stuff
+const activity = new Array('TNA003', '100', '50');
+
+
+function timeCalc(total, part){
+  var percentage = part/total;
+  return percentage;
+}
+
+
+
 function ActivityInfo(){
 return(
   <div className="WrapperActivity">
-          <p className="ActivityName">activity</p>
+
+{/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
+          <p className="ActivityName">activity[0]</p>
           <div className="ActivityDetails">
             <p className="ActivityPercentage">percent</p>
             <p className="ActivityMoreDetails">More details</p>
@@ -40,7 +54,8 @@ function App() {
      />
 </Container>
       <div className="MainBody">
-        {/*här ska vi köra ActivityInfo*/}
+        {/*här ska vi köra ActivityInfo, för att skriva ut kursinfo*/}
+        <ActivityInfo />
       </div>
 
   <Container className="MenuButton">

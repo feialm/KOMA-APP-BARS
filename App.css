@@ -55,6 +55,7 @@ line-height: 70px;
   border-color: #C9C7CE;
   border-width: 1px;
   padding: 5px 10px 5px 10px;
+  margin-top: 5px;
 }
 
 .ActivityName{
@@ -97,11 +98,54 @@ border-radius: 30px;
 .MenuButton{
   position: -webkit-sticky;
   position: sticky;
+  background-color: red;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  border-width: 2px;
+  position: fixed;
+  bottom: 10%;
+  right: 13%;
+  border-style: solid;
+  border-color: #C9C7CE; 
+  color: #C9C7CE;
+
+}
+
+.MenuIcon{
+  margin-top: 22px;
+  margin-left: 3px;
+  width: 0;
+}
+
+.menu{
+  margin-top: 11px;
+  margin-left: 12px;
+  border-radius: 50px;
+  background-color: #C9C7CE;
+  position: relative;
+  height: 2px;
+  width: 45px;
+  object-position: center;
 }
 
 .QuestionButton{
-    position: -webkit-sticky;
+   position: -webkit-sticky;
   position: sticky;
-  height: 700px;
-  width: -150px;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border-width: 2px;
+  position: fixed;
+  top: 3%;
+  right: 5%;
+  border-style: solid;
+  border-color: #C9C7CE; 
+  color: #C9C7CE;
+}
+
+.question{
+  margin-top: 3px;
+  font-size: 30px;
 }

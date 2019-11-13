@@ -6,7 +6,12 @@ import {Container, Button, Link, lightColors, darkColors} from 'react-floating-a
 
 
 // fake array to test stuff
-const activity = new Array('TNA003', '100', '50');
+/*const activity = new Array('TNA003', '100', '50');
+constructor activityarray(string a, int b int c){
+  string name = a;
+  int total = b;
+  int part = c;
+}*/
 
 
 function timeCalc(total, part){
@@ -41,28 +46,32 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
+
         <h1>APPNAME</h1>
+ <div className="QuestionButton">
+    <p className="question">?</p>
+</div>
       </div>
+
 {/*<Activity name='tnm040' progress=´95%´ />*/}
 {/*new array activities = ['Swe', 'Den', 'Fin'];*/}
 
 {/*activities.*/}
 
- <Container className="QuestionButton">
-    <Button 
-     styles={{backgroundColor: darkColors.lighterRed, color: lightColors.black, height: 40, width: 40}}
-     />
-</Container>
+ 
       <div className="MainBody">
         {/*här ska vi köra ActivityInfo, för att skriva ut kursinfo*/}
         <ActivityInfo />
       </div>
 
-  <Container className="MenuButton">
-    <Button 
-     styles={{backgroundColor: darkColors.lighterRed, color: lightColors.white}}
-     />
-</Container>
+  <div className="MenuButton">
+  <div className="MenuIcon">
+   <div className="menu"></div>
+   <div className="menu"></div>
+   <div className="menu"></div>
+   </div>
+</div>
+
 
       <div className="App-bottom">
       <p className="Dots">Bottom Header</p>

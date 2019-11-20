@@ -26,6 +26,7 @@ div{
   position: sticky;
   top: 0;
   height: 100px;
+  z-index: 10;
 }
 
 .MainBody{
@@ -39,13 +40,14 @@ div{
   bottom: 0;
   height: 70px;
   width: 100%;
+  z-index: 9;
 }
 
 .Dots{
-color: blue;
-vertical-align: middle;
-text-align: center;
-line-height: 70px;
+  color: blue;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 70px;
 }
 
 .WrapperActivity{
@@ -81,22 +83,22 @@ line-height: 70px;
 }
 
 .ActivityBar{
-width: 100%;
-height: 12px;
-margin-top: 25px;
-border-radius: 30px;
+  width: 100%;
+  height: 12px;
+  margin-top: 25px;
+  border-radius: 30px;
 }
 
 .ActivityProgress{
-height: 12px;
-margin-top: -12px;
-border-radius: 30px;
+  height: 12px;
+  margin-top: -12px;
+  border-radius: 30px;
 }
 
 .MenuButton{
   position: -webkit-sticky;
   position: sticky;
-  background-color: red;
+  background-color: #609096;
   width: 70px;
   height: 70px;
   border-radius: 50px;
@@ -107,7 +109,7 @@ border-radius: 30px;
   border-style: solid;
   border-color: #C9C7CE; 
   color: #C9C7CE;
-
+  z-index: 11;
 }
 
 .MenuIcon{
@@ -127,10 +129,58 @@ border-radius: 30px;
   object-position: center;
 }
 
-.QuestionButton{
-   position: -webkit-sticky;
-  position: sticky;
+#menuID{
+  background-color: black;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  opacity: 85%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.buttonWrapper{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 85%;
+  position: absolute;
+  z-index: 111;
+  top: 0;
+  bottom: 0;
+}
+
+.reportButton{
+  background-color: orange;
+  height: 50px;
+  position: absolute;
+  top: 40%;
+  border-radius: 35px;
+}
+
+.addButton{
+  background-color: green;
+  height: 50px;
+  position: absolute;
+  top: 52%;
+  border-radius: 35px;
+}
+
+.deleteButton{
   background-color: red;
+  height: 50px;
+  position: absolute;
+  top: 64%;
+  border-radius: 35px;
+}
+
+.QuestionButton{
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #609096;
   width: 40px;
   height: 40px;
   border-radius: 50px;

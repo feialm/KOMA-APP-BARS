@@ -1,6 +1,6 @@
 h1{
   color: #DDDDDD;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(14px + 2vmin);
 }
 
 p{
@@ -59,23 +59,28 @@ div{
   border-width: 1px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 25px;
+  /*background-color: #1D2A2A; */
+  background-color: #262e2e;
 }
 
 .ActivityName{
   text-align: left;
   margin-top: 0;
   margin-bottom: 2px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .ActivityPercentage{
   float:left;
   margin-top: 2px;
+  font-size: 15px;
 }
 
 .ActivityMoreDetails{
   float:right;
   margin-top: 2px;
+  font-size: 15px;
+  font-style: italic;
 }
 
 .ActivityDetails{
@@ -130,14 +135,22 @@ div{
 }
 
 
-.menuID{
-  background-color: black;
+.menuClass{
   height: 100%;
   position: fixed;
   z-index: 100;
   top: 0;
   bottom: 0;
-  opacity: 92%;
+  background-color: transparent;
+
+}
+
+.menuID{
+  background-color: black;
+  opacity: 90%;
+  height: 100%;
+  position: fixed;
+  z-index: 101;
   margin: auto;
   overflow: hidden;
 }
@@ -153,38 +166,44 @@ div{
 }
 
 .reportButton{
-  background-color: #fd971f;
+  background-color: #e3871b;
   opacity: 100%;
   height: 50px;
   position: absolute;
   top: 40%;
   border-radius: 35px;
   left: 50%;
-  margin-left: -125px;
+  margin-left: -100px;
   z-index: 120;
 }
 
 .addButton{
-  background-color: green;
+  background-color: #84b424;
   opacity: 100%;
   height: 50px;
   position: absolute;
   top: 52%;
   border-radius: 35px;
   left: 50%;
-  margin-left: -125px;
+  margin-left: -100px;
   z-index: 120;
 }
 
 .deleteButton{
-  background-color: red;
+  background-color: #e02266;
   height: 50px;
   position: absolute;
   top: 64%;
   border-radius: 35px;
   left: 50%;
-  margin-left: -125px;
+  margin-left: -100px;
   z-index: 120;
+}
+
+.buttonText{
+  color: black;
+  font-size: 20px;
+  margin-top: 12px;
 }
 
 .QuestionButton{
@@ -201,9 +220,57 @@ div{
   border-style: solid;
   border-color: #C9C7CE; 
   color: #C9C7CE;
+  z-index: 130;
 }
 
 .question{
   margin-top: 3px;
   font-size: 30px;
+}
+
+.closeQuestion{
+  margin-top: -68px;
+  margin-left: 13px;
+  font-size: 30px;
+  position: fixed;
+}
+
+.questionID{
+  height: 100%;
+  top: 0;
+  position: absolute;
+  z-index: 129;
+}
+
+.questionWrapper{
+ 
+}
+
+.questionText{
+  width: 80%;
+  display: block;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  text-align: left;
+  padding: 5px 10px 5px 10px;
+  background-color: #262e2e;
+}
+
+.helpTitle{
+  color: #DDDDDD;
+  font-size: 16px;
+  text-decoration: underline;
+  padding-left: 5%;
+}
+
+.helpText{
+  padding-left: 5%;
+  padding-top: 0;
+  line-height: 160%;
+  font-size: 16px;
+  margin-top: -16px;
 }

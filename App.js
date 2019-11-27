@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 
 // fake array to test stuff
-var a1 = {name:"TNA001", totTime:"100", repTime:"70"};
-var a2 = {name:"TNG032", totTime:"100", repTime:"30"};
+var a1 = {name:"TNA001", totTime:"100", repTime:"70", trash:"du"};
+var a2 = {name:"TNG032", totTime:"100", repTime:"30", trol:"react"};
 var a3 = {name:"TNG033", totTime:"100", repTime:"30"};
 var a4 = {name:"TNA004", totTime:"100", repTime:"70"};
 var a5 = {name:"TNG035", totTime:"100", repTime:"66"};
@@ -78,7 +78,7 @@ function ActivityInfo(props) {
   oneActivity.push(same);
   activityColor.push(oneActivity);
 
-  console.log(activityColor);
+  console.log(a);
 
   return(
     <div className="WrapperActivity" onClick={handleClickActivity}>  
@@ -133,7 +133,7 @@ function App(props) {
       return(
         <div className="questionWrapper">
           <div className="App-header">
-          <h1>HELP<br/></h1>
+          <h1 className="help">HELP<br/></h1>
           </div>
           <div className="questionText">
             <p className="helpTitle">To do List</p>
@@ -197,6 +197,7 @@ function App(props) {
       {/*Header*/}
       <div className="App-header">
         <h1>APPNAME</h1>
+        <p className="description">My Activities</p>
       </div>
 
       {/*Question Button*/}

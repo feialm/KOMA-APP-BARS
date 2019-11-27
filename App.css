@@ -1,6 +1,8 @@
 h1{
   color: #DDDDDD;
   font-size: calc(14px + 2vmin);
+  margin-bottom: 0;
+  margin-top: 25%;
 }
 
 p{
@@ -18,7 +20,7 @@ div{
 }
 
 .App-header {
-  display: flex;
+  display: inline-block;
   align-items: center;
   justify-content: center;
   color: white;
@@ -27,6 +29,11 @@ div{
   top: 0;
   height: 100px;
   z-index: 10;
+  padding: 0;
+}
+
+.description{
+margin: 0;
 }
 
 .MainBody{
@@ -260,9 +267,13 @@ div{
   background-color: #262e2e;
 }
 
+.help{
+  margin-top: 70%;
+}
+
 .helpTitle{
   color: #DDDDDD;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: underline;
   padding-left: 5%;
 }

@@ -102,41 +102,48 @@ function ActivityInfo(props) {
 
 /*renderar sidelementen typ*/
 function App(props) {
-i = 0;
-const [menuWidth, changeMenuWidth] = useState(0);
-const [buttonWidth, changeButtonWidth] = useState(0);
+  i = 0;
+  const [menuWidth, changeMenuWidth] = useState(0);
+  const [buttonWidth, changeButtonWidth] = useState(0);
+  const [hideMenu, triggerHideMenu] = useState(true); 
 
-  function HandleClickMenu(){
-      
-    changeMenuWidth("100%");
-    changeButtonWidth("250px");
-   
+  function HandleClickMenu(){ {/*gör likadant för allt annat, typ?*/}
+    if(hideMenu){
+      triggerHideMenu(false);
+      changeMenuWidth("100%");
+      changeButtonWidth("250px");
+    }
+    else{
+      triggerHideMenu(true);
+      changeMenuWidth("0");
+      changeButtonWidth("0");
+    }
     console.log('GRATTIS DU KAN KLICKA typ');
   }
 
- function reportTime(){
+  function reportTime(){
   if (buttonWidth === "250px"){
     return(
       <p>Report Time</p>
       );
   }
- }
+  }
 
- function addActivity(){
+  function addActivity(){
   if (buttonWidth === "250px"){
     return(
       <p>Add Activity</p>
       );
   }
- }
+  }
 
   function deleteActivity(){
-  if (buttonWidth === "250px"){
-    return(
-      <p>Delete Activity</p>
-      );
+    if (buttonWidth === "250px"){
+      return(
+        <p>Delete Activity</p>
+        );
+    }
   }
- }
   return (
     <div className="App">
  
@@ -161,13 +168,13 @@ const [buttonWidth, changeButtonWidth] = useState(0);
       <p className="Dots">Bottom Header</p>
       </div>
 
-       <div id="menuID" style={{width: menuWidth}}></div>
-
-        <div className="buttonWrapper" style={{width: buttonWidth}}>
+    
+       <div className="menuID" style={{width: menuWidth}}></div>
+       {/*<div className="buttonWrapper" style={{width: buttonWidth}}>*/}
         <div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div>
         <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
         <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
-       </div>
+       {/*</div>*/}
 
       {/*Menu Button*/}
       <div className="MenuButton" onClick={HandleClickMenu}>

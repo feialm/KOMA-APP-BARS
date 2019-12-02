@@ -2,7 +2,6 @@ h1{
   color: #DDDDDD;
   font-size: calc(14px + 2vmin);
   margin-bottom: 0;
-  margin-top: 25%;
 }
 
 p{
@@ -30,6 +29,7 @@ div{
   height: 100px;
   z-index: 10;
   padding: 0;
+  width: 100%;
 }
 
 .description{
@@ -38,7 +38,6 @@ margin: 0;
 
 .MainBody{
   /*height: 76%;*/
-
 }
 
 .App-bottom{
@@ -57,6 +56,7 @@ margin: 0;
   line-height: 70px;
 }
 
+{/*Bars - "child"*/}
 .WrapperActivity{
   height: 65px;
   width: 80%;
@@ -107,6 +107,7 @@ margin: 0;
   border-radius: 30px;
 }
 
+{/*Menu*/}
 .MenuButton{
   position: -webkit-sticky;
   position: sticky;
@@ -213,6 +214,7 @@ margin: 0;
   margin-top: 12px;
 }
 
+{/*Question Button*/}
 .QuestionButton{
   position: -webkit-sticky;
   position: sticky;
@@ -242,15 +244,16 @@ margin: 0;
   position: fixed;
 }
 
+.questionWrapper{
+height: 100%;
+}
+
 .questionID{
-  height: 100%;
+  height: inherit;
   top: 0;
   position: absolute;
   z-index: 129;
-}
-
-.questionWrapper{
- 
+  overflow: scroll;
 }
 
 .questionText{
@@ -267,8 +270,8 @@ margin: 0;
   background-color: #262e2e;
 }
 
-.help{
-  margin-top: 70%;
+.title{
+  margin-top: 30px;
 }
 
 .helpTitle{
@@ -284,4 +287,49 @@ margin: 0;
   line-height: 160%;
   font-size: 16px;
   margin-top: -16px;
+}
+
+#Add{
+  height: 100vh;
+}
+
+.WrapperAddActivity{
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #262e2e;
+}
+
+.WrapperNameDates{
+  background-color: blue;
+}
+
+.WrapperAddTime{
+  background-color: red;
+}
+
+input{
+  width: 200px;
+  height: 30px;
+}
+
+#startDate{
+  width: 90px;
+}
+
+#endDate{
+  width: 90px;
+}
+
+input.TimeBox{
+  width: 50px;
+}
+
+.saveButton{
+  height: 40px;
+  width: 100px;
+  border-radius: 35px;
 }

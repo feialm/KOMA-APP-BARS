@@ -73,7 +73,7 @@ function Parent(){
     </div>
   );
 }
-
+ /**/
 
 //App är form
 function App(props) { // props eller inte props??
@@ -111,16 +111,18 @@ function App(props) { // props eller inte props??
       <div className="MainBody" id="addActivityBody">
         <div className="WrapperAddActivity">
           <div className="WrapperNameDates">
-            <p className="addActivityText">Activity Name</p>
-            <input classname="textBox" id="name" type="text" placeholder="Course name..." onChange={changeInput}/>
+            <p className="addActivityText" id="activityName">Activity Name</p>
+            <input className="textBox" id="name" type="text" placeholder="Course name..." onChange={changeInput}/>
           </div>
-          <div className="WrapperNameDates"> 
-            <p className="addActivityText">Start Date</p> 
-            <input classname="DateBox" id="startDate" type="text" placeholder="Start Date..." onChange={changeInput}/>
-          </div>
-          <div className="WrapperNameDates">
-            <p className="addActivityText">End Date</p>
-            <input classname="DateBox" id="endDate" type="text" placeholder="EndDate..." onChange={changeInput}/>
+          <div className="WrapperDate">
+            <div className="WrapperStartDate"> 
+              <p className="addActivityText" id="startDateText">Start Date</p> 
+              <input className="dateBox" id="startDate" type="text" placeholder="Start Date..." onChange={changeInput}/>
+            </div>
+            <div className="WrapperEndDate">
+              <p className="addActivityText" id="endDateText">End Date</p>
+              <input className="dateBox" id="endDate" type="text" placeholder="EndDate..." onChange={changeInput}/>
+            </div>
           </div>
           <div className="WrapperAddTime">
           <p className="addActivityText">Set Time</p>

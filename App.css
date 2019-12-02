@@ -319,32 +319,58 @@ height: 100%;
 }
 
 input{
-  width: 200px;
   height: 30px;
 }
 
-#startDate{
+.textBox{
+  width: 80%;
+}
+
+.dateBox{
+  float: left;
   width: 90px;
 }
 
-#endDate{
-  width: 90px;
-}
-
-input.TimeBox{
+.TimeBox{
   width: 50px;
+  float: left;
+}
+
+.WrapperDateText{
+  display: inline-block;
+  width: 100%;
+}
+
+.WrapperDate{
+  display: inline-block;
+  width: 80%;
+  margin: auto;
+}
+
+.WrapperStartDate{
+  background-color: blue;
+  width: 40%;
+  float: left;
+  }
+
+.WrapperEndDate{
+  background-color: green;
+  width: 40%;
+  float: right;
 }
 
 .addActivityText{
   margin-bottom: 0;
   float: left;
-  padding-left: 5%;
 }
 
-#name{
+#activityName{
+  padding-left: 10%;
+}
+
+#activityNameInput{
   float: left;
-  padding-left: 5%;
-  display: inline-block;
+  width: 100%;
 }
 
 .saveButton{

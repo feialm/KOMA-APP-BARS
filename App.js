@@ -100,7 +100,7 @@ function ActivityInfo(props) {
 
 /*renderar sidelementen typ*/
 function App(props) {
-  i = 0;
+  i = 0; /* Här så nollställer vi i så kurserna kommer i rätt ordning och färg ????? :)     */
 
   /*meny lista typ*/
   const [menuWidth, changeMenuWidth] = useState(0);     

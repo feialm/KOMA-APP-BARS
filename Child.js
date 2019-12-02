@@ -62,6 +62,8 @@ function renderActivities(props){
 	console.log("YOLO");
 	console.log(b);
  return (
+	 /* ändra från c.name till c.id/c.ID för att det är enda sättet som Sofia och Josefin kan ta in saker på
+	 därmed ändrar johanna koden och det måste vi också, tror jag, mvh Fei */
       b.map(c=> (<ActivityInfo key={c.name} a={c} />))
     );
 }

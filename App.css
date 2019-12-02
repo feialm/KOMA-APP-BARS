@@ -289,8 +289,13 @@ height: 100%;
   margin-top: -16px;
 }
 
+/*Add Activity sidan*/
 #Add{
   height: 100vh;
+}
+
+#addActivityBody{
+
 }
 
 .WrapperAddActivity{
@@ -301,6 +306,8 @@ height: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #262e2e;
+  /*padding-left: 5%;
+  padding-right: 5%;*/
 }
 
 .WrapperNameDates{
@@ -328,8 +335,26 @@ input.TimeBox{
   width: 50px;
 }
 
+.addActivityText{
+  margin-bottom: 0;
+  float: left;
+  padding-left: 5%;
+}
+
+#name{
+  float: left;
+  padding-left: 5%;
+  display: inline-block;
+}
+
 .saveButton{
   height: 40px;
   width: 100px;
   border-radius: 35px;
+  background-color: #84b424;
+  border-color: transparent;
+}
+
+#saveButtonText{
+  margin-top: 7px;
 }

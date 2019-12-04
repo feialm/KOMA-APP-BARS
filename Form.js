@@ -32,7 +32,39 @@ function Parent(){
     saveData(data);
   }
 
+function colour(){
+  var props = loadData();
+  let arrayFromStorage = JSON.parse(localStorage.getItem("data"));
+  var colorCounter = props.length;
+  console.log(colorCounter)
+  console.log('colorCounter');
+  let colour1 = "white";
 
+  var mod = colorCounter % 5;
+
+  if (mod === 0){
+    colour1 = "#f92672"; //rosa
+  }
+   else if (mod === 1){
+    colour1 = "#a6e22e"; //grön #33c474
+  }
+   else if (mod === 2){
+     colour1 = "#66d9ef" //blå #4ac3ff
+  }
+   else if (mod === 3){
+     colour1 = "#ae81ff"; //lila #ca45ff
+  }
+   else if (mod === 4){
+    colour1 = "#fd971f"; //orange
+  }
+  else
+    colour1="yellow";
+
+  colorCounter= colorCounter+1;
+
+  console.log(colorCounter);
+  return colour1;
+}
 
   function fixObject (a, b, c, d, e) {
     console.log(a)

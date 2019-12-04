@@ -40,28 +40,22 @@ function colour(i){
 function timeCalc(total, part){
   var percentage = (part/total)*100;
   percentage = percentage.toFixed(2);
-  console.log(total);
-  console.log(part);
   return percentage;
 }
 
 
 function handleClickActivity(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ');
 }
 
 function handleClickQuestion(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ igen');
 }
 
 
 function renderActivities(props){
-	const b = props.courses;
-	console.log("YOLO");
-	console.log(b);
- return (
+  const b = props.courses;
+  return (
       b.map(c=> (<ActivityInfo key={c.name} a={c} />))
     );
 }
@@ -121,7 +115,6 @@ function ActivityInfo(props) {
         changeQuestionOpacity("100%");
         changeCloseQuestionOpacity("0%");
       }
-      console.log('hej du klickade på frågetecknet');
     }
 
     function questionText(){
@@ -225,9 +218,9 @@ function ActivityInfo(props) {
       {/*Menu List*/}
       <div className="menuClass" style={{width: menuWidth}}>
         <div className="menuID" style={{width: menuWidth}}></div>
-        <div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div>
-        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
-        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
+        <button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button>
+        <button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button>
+        <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
       </div>
       
       {/*Question List*/}

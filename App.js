@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import logo from './logo.svg';
 import './App.css';
-import ReactDOM from "react-dom";
 import Child from "./Child.js";
 
 
@@ -45,21 +43,6 @@ function Parent(){
   function addtoList(courseToAdd){
     localData.push(courseToAdd);
     setData(localData);
-  }
-
-  function routerApp(){
-    return(
-      <Router>
-        <div>
-          <li>
-            <Link to="/Child">Child</Link>
-          </li>
-        </div>
-        <Switch>
-          <Route path="/Child" component={Child} />
-        </Switch>
-      </Router>
-    );
   }
 
   return(
@@ -110,26 +93,28 @@ function App(props) { // props eller inte props??
       </div>
       <div className="MainBody">
         <div className="WrapperAddActivity">
-          <div className="WrapperNameDates">
+          <div className="WrapperAddName">
             <p className="addActivityText" id="activityName">Activity Name</p>
-            <input className="textBox" id="name" type="text" placeholder="Course name..." onChange={changeInput}/>
+            <input className="textBox" type="text" placeholder="Name" onChange={changeInput}/>
           </div>
           <div className="WrapperDate">
             <div className="WrapperStartDate"> 
               <p className="addActivityText">Start Date</p> 
-              <input className="dateBox" id="startDate" type="text" placeholder="Start Date..." onChange={changeInput}/>
+              <input className="dateBox" type="text" placeholder="ddmmyy" onChange={changeInput}/>
             </div>
             <div className="WrapperEndDate">
               <p className="addActivityText">End Date</p>
-              <input className="dateBox" id="endDate" type="text" placeholder="EndDate..." onChange={changeInput}/>
+              <input className="dateBox" type="text" placeholder="ddmmyy" onChange={changeInput}/>
             </div>
           </div>
           <div className="WrapperAddTime">
           <p className="addActivityTime">Set Time:</p>
-            <input className="TimeBox" id="hours" type="text" placeholder="Hours..." onChange={changeInput}/>
-            <p className="timeIndicator">h</p>
-            <input className="TimeBox" id="min" type="text" placeholder="Min..." onChange={changeInput}/>
-            <p className="timeIndicator">m</p>
+            <div className="time">
+              <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
+              <p className="timeIndicator">h</p>
+              <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
+              <p className="timeIndicator">m</p>
+            </div>
           </div>
           <div className="addActivityButton">
             <button className="cancelButton">

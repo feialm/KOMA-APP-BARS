@@ -76,6 +76,10 @@ input::-webkit-input-placeholder{
   background-color: #2C3535;
 }
 
+.title{
+  margin-top: 30px;
+}
+
 .description{
 margin: 0;
 }
@@ -103,7 +107,7 @@ display: inline-block;
   line-height: 70px;
 }
 
-{/*Bars - "child"*/}
+/*Bars - "child"*/
 .WrapperActivity{
   height: 65px;
   width: 80%;
@@ -113,7 +117,6 @@ display: inline-block;
   border-width: 1px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 25px;
-  /*background-color: #1D2A2A; */
   background-color: #262e2e;
 }
 
@@ -154,7 +157,7 @@ display: inline-block;
   border-radius: 30px;
 }
 
-{/*Menu*/}
+/*Menu*/
 .MenuButton{
   position: -webkit-sticky;
   position: sticky;
@@ -262,7 +265,7 @@ display: inline-block;
   text-align: center;
 }
 
-{/*Question Button*/}
+/*Question Button*/
 .QuestionButton{
   position: -webkit-sticky;
   position: sticky;
@@ -292,6 +295,7 @@ display: inline-block;
   position: fixed;
 }
 
+/*Help page*/
 .questionWrapper{
 height: 100%;
 
@@ -326,9 +330,6 @@ height: 100%;
   background-color: #262e2e;
 }
 
-.title{
-  margin-top: 30px;
-}
 
 .helpTitle{
   color: #DDDDDD;
@@ -356,53 +357,28 @@ height: 100%;
   border-width: 1px;
   width: 80%;
   justify-content: center;
-  /*background-color: #262e2e;*/
   margin: auto;
 }
 
-.WrapperNameDates{
+/*Activity name*/
+.WrapperAddName{
   background-color: inherit;
   width: 80%;
   margin: auto;
 }
 
-.WrapperAddTime{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: right;
-  width: 80%;
-  margin: auto;
-  padding-top: 20px;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  margin-top: 5px;
+.addActivityText{
+  margin-bottom: 0;
+  float: left;
+  font-size: 18px;
 }
-
-
 
 .textBox{
   width: 100%;
   text-transform: capitalize;
 }
 
-.dateBox{
-  float: left;
-  width: 100px;
-}
-
-.timeBox{
-  width: 45px;
-  float: right;
-  margin: 0;
-  text-align: justify;
-}
-
-.WrapperDateText{
-  display: inline-block;
-  width: 100%;
-}
-
+/*Start and End dates*/
 .WrapperDate{
   display: inline-block;
   width: 80%;
@@ -421,18 +397,23 @@ height: 100%;
   float: right;
 }
 
-.addActivityText{
-  margin-bottom: 0;
+.dateBox{
   float: left;
-  font-size: 18px;
+  width: 100px;
 }
 
-#activityName{
-}
-
-#activityNameInput{
-  float: left;
-  width: 100%;
+/*Set time*/
+.WrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 .addActivityTime{
@@ -443,6 +424,13 @@ height: 100%;
   font-size: 18px;
 }
 
+.timeBox{
+  width: 45px;
+  float: right;
+  margin: 0;
+  text-align: justify;
+}
+
 .time{
   width: 70%;
   display: flex; 
@@ -451,13 +439,21 @@ height: 100%;
   align-items: center;
 }
 
+#min{
+  text-indent: 5px;
+}
+
+#min:focus{
+  text-indent: 10px;
+}
+
 .timeIndicator{
   width: 25px;
   margin: 0;
   font-size: 18px;
 }
 
-
+/*Buttons in "Add Activity"*/
 .addActivityButton{
   width: 80%;
   height: 40px;
@@ -475,12 +471,5 @@ height: 100%;
   float: left;
 }
 
-#min{
-  text-indent: 5px;
-}
-
-#min:focus{
-  text-indent: 10px;
-}
 
 

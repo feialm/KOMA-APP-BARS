@@ -358,3 +358,195 @@ input.TimeBox{
 #saveButtonText{
   margin-top: 7px;
 }
+
+
+
+/* -------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* KOD för report time sidan*/
+
+
+h1{
+  color: #DDDDDD;
+  font-size: calc(10px + 2vmin);
+}
+
+p{
+  color: #C9C7CE;
+}
+
+div{
+  text-align: center;
+  background-color: #2C3535;
+  font-family: "Roboto";
+}
+
+/* Kod för att få texten över de linjerade rutorna alignade
+och snygga */
+.ReportTimeText{
+text-align: left;
+}
+
+.WrapperMain{
+  margin:20px;
+  padding-top:20px;
+  width: 80%;
+  margin: auto;
+}
+
+#TimeStudied{
+  padding-top: 40px;
+}
+
+
+
+
+.App{
+  height: 100%;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100px;
+  z-index: 10;
+}
+
+
+.WrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+
+/* få hours and min rutorn i center */
+#centerDiv{
+  width: 50%;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+}
+
+.TimeBox{
+  width: 50px;
+  float: left;
+  margin: 0;
+  padding: 1px;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+}
+
+
+
+.border{
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  margin-top:-12px;
+}
+
+#activitySetTime{
+  height: 30px;
+  background-color:#242B2B; 
+}
+
+
+/*Button i ReportTime */
+.buttonText{
+  color: black;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+
+.ReportButtonText{
+  width: 200px;
+  height: 40px;
+  background-color: #fd971f;
+  float: center;
+  border-radius: 35px;
+  border-color: transparent;
+  margin-top: 20%;
+  margin-bottom: 59%;
+}
+
+
+
+/* Textfields i ReportTime */
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
+
+#hh{
+  width: 60px;
+}
+
+#mm{
+    width: 60px;
+}
+
+#hours{
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+#minutes{
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+/* Här slutar kod för report time sidan */

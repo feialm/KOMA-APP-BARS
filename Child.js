@@ -4,10 +4,17 @@
 import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ReportTime from './ReportTime';
 
 let i = 0;
 
+console.log("h")
+
 function incrementID(){
+
+
+console.log("a")
   i++;
 }
 
@@ -46,6 +53,7 @@ function timeCalc(total, part){
 }
 
 
+
 function handleClickActivity(e) {
   e.preventDefault();
   console.log('hej du klickade rätt typ');
@@ -57,28 +65,34 @@ function handleClickQuestion(e) {
 }
 
 
-function renderActivities(props){
+function inData(props){
 	const b = props.courses;
 	console.log("YOLO");
 	console.log(b);
  return (
-	 /* ändra från c.name till c.id/c.ID för att det är enda sättet som Sofia och Josefin kan ta in saker på
-	 därmed ändrar johanna koden och det måste vi också, tror jag, mvh Fei */
       b.map(c=> (<ActivityInfo key={c.name} a={c} />))
     );
 }
 
 
+
+
+
 /*Funktion som ger innehåll genom att skicka in array av objekt*/
 function ActivityInfo(props) {
-  const a = props.a;
+const a = props.a;
+	console.log(props);
+	
 
-  let barProgress = timeCalc(a.totTime, a.repTime)+"%";
-  var same = colour(i);
-
-  return(
+	console.log(a)
+	  let barProgress = timeCalc(a.totTime, a.repTime)+"%";
+	  var same = colour(i);
+console.log(barProgress);
+   return(
     <div className="WrapperActivity" onClick={handleClickActivity}>
 
+{console.log("Ketchup"),
+console.log(a.name)}
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
       <p className="ActivityName">{a.name}</p>
       <div className="ActivityDetails">
@@ -91,127 +105,97 @@ function ActivityInfo(props) {
     
     </div>
   )
+
 }
+
 
 
 //}//den här är tillaggd var sist förut!!!!!!!!!!!!
 /*renderar sidelementen typ*/
 	function APPChild(props) {
-	  i = 0;
-  	
-    /*meny lista typ*/
-    const [menuWidth, changeMenuWidth] = useState(0);     
-    const [buttonWidth, changeButtonWidth] = useState(0);
-    const [hideMenu, triggerHideMenu] = useState(true);
-    const [hideQuestion, triggerHideQuestion] = useState(true); 
-    const [questionWidth, changeQuestionWidth] = useState(0); 
-    const [questionOpacity, changeQuestionOpacity] = useState("100%"); 
-    const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
+	 i = 0;
+	const [menuWidth, changeMenuWidth] = useState(0);
+	const [buttonWidth, changeButtonWidth] = useState(0);
+  const [redirect, setRedirect] = useState(false);
 
-    /* om man klickar på question button */
-    function handleClickQuestion() {
-      if(hideQuestion){
-        triggerHideQuestion(false);
-        changeQuestionWidth("100%");
-        changeQuestionOpacity("0%");
-        changeCloseQuestionOpacity("100%");
-       
-      }
-      else{
-        triggerHideQuestion(true);
-        changeQuestionWidth("0");
-        changeQuestionOpacity("100%");
-        changeCloseQuestionOpacity("0%");
-      }
-      console.log('hej du klickade på frågetecknet');
-    }
-
-    function questionText(){
-      if(hideQuestion === false){
-        return(
-          <div className="questionWrapper">
-            <div className="App-header">
-            <h1 className="title">HELP<br/></h1>
-            </div>
-            <div className="questionText">
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            </div>
-          </div>
-        );
-      }
-    }
-
-
-     /* om man klickar på meny-knappen */
-    function HandleClickMenu(){       /*gör likadant för allt annat, typ?*/
-      if(hideMenu){                   /* öppnar menyn */
-        triggerHideMenu(false);
-        changeMenuWidth("100%");
-        changeButtonWidth("200px");
-      }
-      else{                           /* göm menyn */
-        triggerHideMenu(true);  
-        changeMenuWidth("0");
-        changeButtonWidth("0");
-      }
-    }
-
-  function reportTime(){
-    if (hideMenu === false){
-      return(
-        <p className="buttonText">Report Time</p>
-      );
-    }
+  function HandleClickMenu(){
+      
+    changeMenuWidth("100%");
+    changeButtonWidth("250px");
+   
+    console.log('GRATTIS DU KAN KLICKA typ');
   }
 
-  function addActivity(){
-    if (hideMenu === false){
-      return(
-        <p className="buttonText">Add Activity</p>
+
+ function reportTime(){
+  if (buttonWidth === "250px"){
+    return(
+      <p>Report Time</p>
+     /* <Route>
+      <Route path="/ReportTime" component ={ReportTime} />
+      </Route> */
       );
-    }
   }
+ }
+
+ function handleClickReport() {
+
+  console.log('hej du klickade på Report');
+   setRedirect(true);
+}
+
+ function addActivity(){
+  if (buttonWidth === "250px"){
+    return(
+      <p>Add Activity</p>
+      );
+  }
+ }
+
+
 
   function deleteActivity(){
-    if (hideMenu === false){
-      return(
-        <p className="buttonText">Delete Activity</p>
+  if (buttonWidth === "250px"){
+    return(
+      <p>Delete Activity</p>
       );
-    }
   }
-
+ }
   return (
+
     <div className="App">
  
       {/*Header*/}
       <div className="App-header">
-        <h1 className="title">APPNAME</h1>
-         <p className="description">My Activities</p>
-      </div>
+        <h1>APPNAME</h1>
 
-      {/*Question Button*/}
-      <div className="QuestionButton" onClick={handleClickQuestion}>
-       <p className="question">?</p>
+        {/*Question Button*/}
+        <div className="QuestionButton" onClick={handleClickQuestion}>
+         <p className="question">?</p>
+        </div>
       </div>
-
+     
       {/*Main body*/}
       <div className="MainBody">
-        {renderActivities(props)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
+        {inData(props)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
+    
       </div>
 
       {/*Footer*/}
       <div className="App-bottom">
       <p className="Dots">Bottom Header</p>
       </div>
+
+       <div id="menuID" style={{width: menuWidth}}></div>
+
+        <div className="buttonWrapper" style={{width: buttonWidth}}>
+        <div className="reportButton" style={{width: buttonWidth}} onClick={handleClickReport}>{reportTime()}</div>
+        
+
+
+        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
+        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
+       </div>
 
       {/*Menu Button*/}
       <div className="MenuButton" onClick={HandleClickMenu}>
@@ -222,19 +206,32 @@ function ActivityInfo(props) {
         </div>
       </div>
 
-      {/*Menu List*/}
-      <div className="menuClass" style={{width: menuWidth}}>
-        <div className="menuID" style={{width: menuWidth}}></div>
-        <div className="reportButton" style={{width: buttonWidth}}>{reportTime()}</div>
-        <div className="addButton" style={{width: buttonWidth}}>{addActivity()}</div>
-        <div className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</div>
-      </div>
+        <div>
+   
+//Det är detrta vi ska fixa
+      {redirect === false && 
+      <APPChild />
+      }
+      {redirect === true && 
+      <ReportTime  />
+      }
       
-      {/*Question List*/}
-      <div className="questionID" style={{width: questionWidth}}>
-        {questionText()}
-      </div>
     </div>
+   
+    </div>
+
+
+
+
+  
+    
+
+
+      
+      //{redirect === true && <ReportTime /> }
+    
+    
+
   );
 }
 

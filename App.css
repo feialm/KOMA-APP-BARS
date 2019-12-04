@@ -2,26 +2,38 @@ h1{
   color: #DDDDDD;
   font-size: calc(14px + 2vmin);
   margin-bottom: 0;
+  text-align: center;
+  margin: 0;
 }
 
 p{
   color: #C9C7CE;
 }
 
+html{
+  background-color: #2C3535;
+}
+
 div{
   text-align: center;
-  background-color: #2C3535;
   font-family: "Roboto";
+
 }
 
 .App{
   height: 100%;
+  background-color: #2C3535;
+}
+
+#bars{
+  height: 100%;
 }
 
 .App-header {
-  display: inline-block;
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: white;
   position: -webkit-sticky;
   position: sticky;
@@ -36,13 +48,16 @@ div{
 margin: 0;
 }
 
+#headerBars{
+display: inline-block;
+}
+
 .MainBody{
   /*height: 76%;*/
 }
 
 .App-bottom{
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   height: 70px;
   width: 100%;
@@ -246,6 +261,11 @@ margin: 0;
 
 .questionWrapper{
 height: 100%;
+
+}
+
+#helpHeader{
+    background-color: #2C3535;
 }
 
 .questionID{
@@ -262,6 +282,7 @@ height: 100%;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 25px;
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
@@ -294,32 +315,35 @@ height: 100%;
   height: 100vh;
 }
 
-#addActivityBody{
-
-}
-
 .WrapperAddActivity{
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+ 
   background-color: #262e2e;
-  /*padding-left: 5%;
-  padding-right: 5%;*/
+  margin: auto;
 }
 
 .WrapperNameDates{
-  background-color: blue;
+  background-color: inherit;
 }
 
 .WrapperAddTime{
-  background-color: red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 input{
   height: 30px;
+  border: none;
 }
 
 .textBox{
@@ -334,6 +358,8 @@ input{
 .TimeBox{
   width: 50px;
   float: left;
+  margin: 0;
+  padding: 1px;
 }
 
 .WrapperDateText{
@@ -345,17 +371,17 @@ input{
   display: inline-block;
   width: 80%;
   margin: auto;
+  background-color: inherit;
+  margin-top: 10px;
 }
 
 .WrapperStartDate{
-  background-color: blue;
-  width: 40%;
+  width: 90px;
   float: left;
   }
 
 .WrapperEndDate{
-  background-color: green;
-  width: 40%;
+  width: 90px;
   float: right;
 }
 
@@ -373,14 +399,43 @@ input{
   width: 100%;
 }
 
-.saveButton{
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+}
+
+button{
+  border-color: transparent;
+  margin-bottom: 20px;
   height: 40px;
   width: 100px;
   border-radius: 35px;
-  background-color: #84b424;
-  border-color: transparent;
 }
 
-#saveButtonText{
+.addActivityButton{
+  width: 80%;
+  height: 40px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
+.saveButton{
+  background-color: #84b424;
+  float: right;
+}
+
+.cancelButton{
+  background-color: #f92672;
+  float: left;
+}
+
+.buttonText{
   margin-top: 7px;
 }

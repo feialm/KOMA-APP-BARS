@@ -17,8 +17,39 @@ html{
 div{
   text-align: center;
   font-family: "Roboto";
-
 }
+
+button{
+  border-color: transparent;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 35px;
+  vertical-align: middle;
+}
+
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
 
 .App{
   height: 100%;
@@ -42,6 +73,7 @@ div{
   z-index: 10;
   padding: 0;
   width: 100%;
+  background-color: #2C3535;
 }
 
 .description{
@@ -53,7 +85,6 @@ display: inline-block;
 }
 
 .MainBody{
-  /*height: 76%;*/
 }
 
 .App-bottom{
@@ -62,6 +93,7 @@ display: inline-block;
   height: 70px;
   width: 100%;
   z-index: 9;
+   background-color: #2C3535;
 }
 
 .Dots{
@@ -226,7 +258,8 @@ display: inline-block;
 .buttonText{
   color: black;
   font-size: 20px;
-  margin-top: 12px;
+  margin: auto;
+  text-align: center;
 }
 
 {/*Question Button*/}
@@ -265,15 +298,17 @@ height: 100%;
 }
 
 #helpHeader{
-    background-color: #2C3535;
+  background-color: #2C3535;
 }
 
 .questionID{
   height: inherit;
   top: 0;
-  position: absolute;
+  bottom: 0;
+  position: fixed;
   z-index: 129;
   overflow: scroll;
+  background-color: #2C3535;
 }
 
 .questionText{
@@ -320,19 +355,22 @@ height: 100%;
   border-color: #C9C7CE;
   border-width: 1px;
   width: 80%;
- 
-  background-color: #262e2e;
+  justify-content: center;
+  /*background-color: #262e2e;*/
   margin: auto;
 }
 
 .WrapperNameDates{
   background-color: inherit;
+  width: 80%;
+  margin: auto;
 }
 
 .WrapperAddTime{
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  text-align: right;
   width: 80%;
   margin: auto;
   padding-top: 20px;
@@ -341,25 +379,23 @@ height: 100%;
   margin-top: 5px;
 }
 
-input{
-  height: 30px;
-  border: none;
-}
+
 
 .textBox{
-  width: 80%;
+  width: 100%;
+  text-transform: capitalize;
 }
 
 .dateBox{
   float: left;
-  width: 90px;
+  width: 100px;
 }
 
-.TimeBox{
-  width: 50px;
-  float: left;
+.timeBox{
+  width: 45px;
+  float: right;
   margin: 0;
-  padding: 1px;
+  text-align: justify;
 }
 
 .WrapperDateText{
@@ -376,22 +412,22 @@ input{
 }
 
 .WrapperStartDate{
-  width: 90px;
+  width: 100px;
   float: left;
   }
 
 .WrapperEndDate{
-  width: 90px;
+  width: 100px;
   float: right;
 }
 
 .addActivityText{
   margin-bottom: 0;
   float: left;
+  font-size: 18px;
 }
 
 #activityName{
-  padding-left: 10%;
 }
 
 #activityNameInput{
@@ -404,25 +440,28 @@ input{
   margin: 0;
   width: 80px;
   text-align: left;
+  font-size: 18px;
+}
+
+.time{
+  width: 70%;
+  display: flex; 
+  justify-content: flex-end;
+  vertical-align: middle;
+  align-items: center;
 }
 
 .timeIndicator{
   width: 25px;
   margin: 0;
+  font-size: 18px;
 }
 
-button{
-  border-color: transparent;
-  margin-bottom: 20px;
-  height: 40px;
-  width: 100px;
-  border-radius: 35px;
-}
 
 .addActivityButton{
   width: 80%;
   height: 40px;
-  padding-bottom: 20px;
+  padding: 30px 0;
   margin: auto;
 }
 
@@ -436,6 +475,12 @@ button{
   float: left;
 }
 
-.buttonText{
-  margin-top: 7px;
+#min{
+  text-indent: 5px;
 }
+
+#min:focus{
+  text-indent: 10px;
+}
+
+

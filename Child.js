@@ -128,8 +128,8 @@ function ActivityInfo(props) {
       if(hideQuestion === false){
         return(
           <div className="questionWrapper">
-            <div className="App-header">
-            <h1 className="title">HELP<br/></h1>
+            <div className="App-header" id="helpHeader">
+              <h1>HELP<br/></h1>
             </div>
             <div className="questionText">
               <p className="helpTitle">To do List</p>
@@ -188,12 +188,14 @@ function ActivityInfo(props) {
   }
 
   return (
-    <div className="App">
+    <div className="App" id="bars">
  
       {/*Header*/}
-      <div className="App-header">
-        <h1 className="title">APPNAME</h1>
-         <p className="description">My Activities</p>
+      <div className="App-header" id="headerBars">
+        <div className="title">
+          <h1>APPNAME</h1>
+          <p className="description">My Activities</p>
+         </div>
       </div>
 
       {/*Question Button*/}

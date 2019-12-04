@@ -108,7 +108,7 @@ function App(props) { // props eller inte props??
       <div className="App-header">
         <h1 className="title">Add Activity</h1>
       </div>
-      <div className="MainBody" id="addActivityBody">
+      <div className="MainBody">
         <div className="WrapperAddActivity">
           <div className="WrapperNameDates">
             <p className="addActivityText" id="activityName">Activity Name</p>
@@ -116,24 +116,29 @@ function App(props) { // props eller inte props??
           </div>
           <div className="WrapperDate">
             <div className="WrapperStartDate"> 
-              <p className="addActivityText" id="startDateText">Start Date</p> 
+              <p className="addActivityText">Start Date</p> 
               <input className="dateBox" id="startDate" type="text" placeholder="Start Date..." onChange={changeInput}/>
             </div>
             <div className="WrapperEndDate">
-              <p className="addActivityText" id="endDateText">End Date</p>
+              <p className="addActivityText">End Date</p>
               <input className="dateBox" id="endDate" type="text" placeholder="EndDate..." onChange={changeInput}/>
             </div>
           </div>
           <div className="WrapperAddTime">
-          <p className="addActivityText">Set Time</p>
+          <p className="addActivityTime">Set Time:</p>
             <input className="TimeBox" id="hours" type="text" placeholder="Hours..." onChange={changeInput}/>
-            <p>h</p>
+            <p className="timeIndicator">h</p>
             <input className="TimeBox" id="min" type="text" placeholder="Min..." onChange={changeInput}/>
-            <p>m</p>
+            <p className="timeIndicator">m</p>
           </div>
-          <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="saveButton">
-            <p className="buttonText" id="saveButtonText">Save</p>
-          </button>
+          <div className="addActivityButton">
+            <button className="cancelButton">
+              <p className="buttonText">Cancel</p>
+            </button>
+            <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="saveButton">
+              <p className="buttonText" id="saveButtonText">Save</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -142,7 +142,7 @@ function App(props) { // props eller inte props??
 
           </div>
 
-          <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="ReportButtonText">
+          <button onClick={() => {props.fixObjectEtikett(name,startDate,endDate,hours,min); props.history.goBack()}} className="ReportButtonText">
               <p className = "buttonText">Report Time</p>
           </button>
 

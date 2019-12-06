@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import "./App.css";
 import * as d3 from "d3";
 import AnimatedPieHooks from './doughnut.js';
@@ -200,36 +202,38 @@ function DonutSite(props){
       changeMenuWidth("0");
       changeButtonWidth("0");
     }
-
-    
   }
 
- function reportTime(){
-  if (hideMenu === false){
-    console.log("aahahahaah tönt");
-    return(
-      <p className="buttonText">Report Time</p>
+  function reportTime(){
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Report Time</p>
       );
     }
- }
-
- function addActivity(){
-  if (hideMenu === false){
-    return(
-      <p className="buttonText">Add Activity</p>
+  }
+  /*
+    function handleClickReport() {
+    console.log(' du klickade på Report');
+     setRedirect(true);
+  }
+  */
+  function addActivity(){
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Add Activity</p>
       );
     }
- }
+  }
 
-function deleteActivity(){
-  if (hideMenu === false){
-    return(
-      <p className="buttonText">Delete Activity</p>
+  function deleteActivity(){
+    if (hideMenu === false){
+      return(
+        <p className="buttonText">Delete Activity</p>
       );
     }
- }
- //End of button functions
+  }
 
+    
 
     return (
       <div className="Centralize">
@@ -237,20 +241,44 @@ function deleteActivity(){
           <button onClick={changeData}>Transform</button>
         </div>*/}
         <div className="appHeader head">
-          <h1>APPNAME</h1>
+          <Link to="/">
+            <div className="fitText">
+              <h1>APPNAME</h1>
+            </div> 
+          </Link>
           <p class="h3">To achive your goal, study these hours</p>
         </div>
-        {/*Question Button*/}
+
+
+      {/*Menu Button*/}
+      <div className="MenuButton" onClick={HandleClickMenu}>
+        <div className="MenuIcon">
+          <div className="menu"></div>
+          <div className="menu"></div>
+          <div className="menu"></div>
+        </div>
+      </div>
+
+      {/*Menu List*/}
+      <div className="menuClass" style={{width: menuWidth}}>
+        <div className="menuID" style={{width: menuWidth}}></div>
+        <Link to="/ReportTime.js"><button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
+        <button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button>
+        <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
+      </div>
+      
+
+      {/*Question Button*/}
         <div className="QuestionButton" onClick={handleClickQuestion}>
            <p className="question removeMargin">?</p>
-
         </div>
-        {/*Question List*/}
-      <div className="questionID" style={{width: questionWidth}}>
-        {questionText()}
-      </div>
-       
 
+      {/*Question List*/}
+        <div className="questionID" style={{width: questionWidth}}>
+          {questionText()}
+        </div>
+       
+      {/**/}
         <div className="donut heightMax">
           <div className="recTime center">
           <p className="removeMargin">Study</p>

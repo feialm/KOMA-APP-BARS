@@ -146,10 +146,17 @@ function App(props) { // props eller inte props??
 
   return (
 
-    <div className="center" id="Add">
-      <div className="appHeader">
-        <h1 className="title">Add Activity</h1>
+ 
+    <div className="Centralize">
+      <div className="appHeader head">
+          <Link to="/">
+            <div className="fitText">
+              <h1>APPNAME</h1>
+            </div> 
+          </Link>
+        <p class="h3">To achive your goal, study these hours</p>
       </div>
+
       <div className="mainBody">
         <div className="wrapperAddActivity">
           <div className="wrapperAddName">

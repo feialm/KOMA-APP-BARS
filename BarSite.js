@@ -5,6 +5,7 @@ import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
 import ReportTime from "./ReportTime.js";
+import CourseInfo from './CourseInfo.js';
 
 
 
@@ -50,10 +51,18 @@ function timeCalc(total, part){
   return percentage;
 }
 
+function gotoCourseInfo(props){
+  console.log(props);
+  
+  console.log("hahahej")
+    return(
+    <CourseInfo test={props}/>
+ );
+}
 
-function handleClickActivity(e) {
-  e.preventDefault();
-  console.log(' du klickade rätt typ');
+function handleClickActivity(props) {
+  console.log("grattis du klicka på aktivteten")
+  gotoCourseInfo(props);
 }
 
 function handleClickQuestion(e) {
@@ -104,7 +113,8 @@ console.log(a);
   var same = colour(i);
   
   return(
-    <div className="WrapperActivity" onClick={handleClickActivity}>
+    <Link to="/CourseInfo.js">
+    <div className="WrapperActivity"  onClick={() => handleClickActivity(a)}>
 
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
       <p className="ActivityName">{a.id}</p>
@@ -117,6 +127,7 @@ console.log(a);
       <div className="ActivityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}></div>
     
     </div>
+    </Link>
   )
 }
 
@@ -124,6 +135,10 @@ console.log(a);
 //}//den här är tillaggd var sist förut!!!!!!!!!!!!
 /*renderar sidelementen typ*/
   function BarSite(HHH) {
+    // test
+    const [ToCourseInfo, setToCourseInfo] = useState(0);
+    
+
     i = 0;
     var HHH = loadData();
 

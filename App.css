@@ -608,7 +608,7 @@ input::-webkit-input-placeholder{
 .reportButton_CourseInfo{
   background-color: #e3871b;
   height: 50px;
-  width: 30%;
+  width: 40%;
   margin-top: 30px;
   display: block;
 }
@@ -616,7 +616,7 @@ input::-webkit-input-placeholder{
 .editButton{
   background-color:  #84b424;
   height: 50px;
-  width: 30%;
+  width: 40%;
   margin-top: 30px;
 }
 

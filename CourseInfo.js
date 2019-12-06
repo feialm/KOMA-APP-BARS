@@ -5,6 +5,7 @@ import AnimatedPieHooksdays from './doughnut_course_time.js';
 import AnimatedPieHooksworked from './doughnut_course_worktime.js';
 
 
+
 function loadData(){
     try {
       const storage = JSON.parse(window.localStorage.getItem("data"));
@@ -127,7 +128,7 @@ if(((myData[0].value)-(myData[0].totTime))<0){
 }
 else
 {
-  var recomend_left=(myData[0].value)-(myData[0].totAddedTime)
+  var recomend_left=(myData[0].totTime)-(myData[0].totAddedTime)
 }
 
   var fakeArray = [
@@ -220,9 +221,13 @@ function goal_text(myData) {
 }
 
 
-function CourseInfo() {
+function CourseInfo(test) {
+   let myData = loadData();
+   console.log(test);
   return (
     <div className="App">
+
+
         {/*<div>
           <button onClick={changeData}>Transform</button>
         </div>*/}

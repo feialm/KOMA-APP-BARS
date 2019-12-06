@@ -9,6 +9,10 @@ html{
   background-color: #2C3535;
 }
 
+a{
+  text-decoration-line: none;
+}
+
 p, h1, td{
   color: #C9C7CE;
 }
@@ -16,6 +20,10 @@ p, h1, td{
 .h3{
   margin: 0;
   font-size: 20px;
+}
+
+.fitText {
+  display: inline-block;
 }
 
 /*div{
@@ -53,14 +61,43 @@ p, h1, td{
 	/*font-family: "myFirstFont";*/
 }
 
+#headerBars{
+display: inline-block;
+}
+
+
+.App-bottom{
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 9;
+   background-color: #2C3535;
+}
+
+.Dots{
+  color: blue;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 70px;
+}
+
 .head h1{
-  margin: 24px 0 12px 0;
+  margin: 30px 0 12px 0;
 }
 
 #root{
   height: 100%;
 }
+
+.removeMargin{
+  margin: 0;
+}
 /*******************************************************************************************/
+
+
+
+
 
 /*DonuT*/
 
@@ -85,9 +122,6 @@ p, h1, td{
 
 }
 
-.removeMargin{
-	margin: 0;
-}
 
 #myData{
 	margin: 20px auto 20px auto;
@@ -160,33 +194,7 @@ input::-webkit-input-placeholder{
   height: 100%;
 }
 
-.title{
-  margin-top: 30px;
-}
 
-
-#headerBars{
-display: inline-block;
-}
-
-.MainBody{
-}
-
-.App-bottom{
-  position: fixed;
-  bottom: 0;
-  height: 70px;
-  width: 100%;
-  z-index: 9;
-   background-color: #2C3535;
-}
-
-.Dots{
-  color: blue;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 70px;
-}
 
 /*Bars - "child"*/
 .WrapperActivity{
@@ -238,113 +246,7 @@ display: inline-block;
   border-radius: 30px;
 }
 
-/*Menu*/
-.MenuButton{
-  position: -webkit-sticky;
-  position: sticky;
-  background-color: #609096;
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border-width: 2px;
-  position: fixed;
-  bottom: 7%;
-  right: 13%;
-  border-style: solid;
-  border-color: #C9C7CE; 
-  color: #C9C7CE;
-  z-index: 120;
-}
 
-.MenuIcon{
-  margin-top: 22px;
-  margin-left: 3px;
-  width: 0;
-}
-
-.menu{
-  margin-top: 10.5px;
-  margin-left: 10px;
-  border-radius: 50px;
-  background-color: #C9C7CE;
-  position: relative;
-  height: 2px;
-  width: 45px;
-  object-position: center;
-}
-
-
-.menuClass{
-  height: 100%;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  bottom: 0;
-  background-color: transparent;
-
-}
-
-.menuID{
-  background-color: black;
-  opacity: 90%;
-  height: 100%;
-  position: fixed;
-  z-index: 101;
-  margin: auto;
-  overflow: hidden;
-}
-
-.buttonWrapper{
-  margin: auto;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  position: absolute;
-  z-index: 111;
-  top: 0;
-}
-
-.reportButton{
-  background-color: #e3871b;
-  opacity: 100%;
-  height: 50px;
-  position: absolute;
-  top: 40%;
-  border-radius: 35px;
-  left: 50%;
-  margin-left: -100px;
-  z-index: 120;
-}
-
-.addButton{
-  background-color: #84b424;
-  opacity: 100%;
-  height: 50px;
-  position: absolute;
-  top: 52%;
-  border-radius: 35px;
-  left: 50%;
-  margin-left: -100px;
-  z-index: 120;
-}
-
-.deleteButton{
-  background-color: #e02266;
-  height: 50px;
-  position: absolute;
-  top: 64%;
-  border-radius: 35px;
-  left: 50%;
-  margin-left: -100px;
-  z-index: 120;
-}
-
-.buttonText{
-  color: black;
-  font-size: 20px;
-  margin: auto;
-  text-align: center;
-}
 
 /*******************************************************************************************/
 
@@ -632,8 +534,207 @@ input::-webkit-input-placeholder{
 
 
 /*SofiaTime*/
+.deadlines{
+  width: 80%;
+  margin: auto;
+
+}
+.deadlines_in{
+  border:1px solid lightgray;
+    background-color: #242b2b;
+}
+
+#dead_title{
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+#wrapper {
+    padding-top: 30px;
+    width: 100%;
+  
+    overflow: hidden; /* add this to contain floated children */
+}
+#first {
+    width: 50%;
+    float:left; /* add this */
+    position: relative;
+}
+#second {
+     width: 49%;
+    float: left; /* add this */
+    position: relative;
+}
+.goal{
+  background-color: #242b2b;
+}
+
+#rhsText{
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  top: 29%;
+  color: #DDDDDD;
+}
+#rhsText p{
+  margin: 0px;
+}
+
+#lhsText{
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  top: 32%;
+  color: #DDDDDD;
+}
+#lhsText p{
+  margin: 0px;
+}
+
+.goal{
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+
+}
+
+.stack{
+  display: block;
+}
+
+.reportButton_CourseInfo{
+  background-color: #e3871b;
+  height: 50px;
+  width: 30%;
+  margin-top: 30px;
+  display: block;
+}
+
+.editButton{
+  background-color:  #84b424;
+  height: 50px;
+  width: 30%;
+  margin-top: 30px;
+}
 
 /*******************************************************************************************/
+
+
+
+
+
+/*Default questionmark and menu*/
+/*Menu*/
+.MenuButton{
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #609096;
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  border-width: 2px;
+  position: fixed;
+  bottom: 7%;
+  right: 13%;
+  border-style: solid;
+  border-color: #C9C7CE; 
+  color: #C9C7CE;
+  z-index: 120;
+}
+
+.MenuIcon{
+  margin-top: 22px;
+  margin-left: 3px;
+  width: 0;
+}
+
+.menu{
+  margin-top: 10.5px;
+  margin-left: 10px;
+  border-radius: 50px;
+  background-color: #C9C7CE;
+  position: relative;
+  height: 2px;
+  width: 45px;
+  object-position: center;
+}
+
+
+.menuClass{
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+
+}
+
+.menuID{
+  background-color: black;
+  opacity: 90%;
+  height: 100%;
+  position: fixed;
+  z-index: 101;
+  margin: auto;
+  overflow: hidden;
+}
+
+/*.buttonWrapper{
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  z-index: 111;
+  top: 0;
+}*/
+
+.reportButton{
+  background-color: #e3871b;
+  opacity: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-left: -100px;
+  z-index: 120;
+}
+
+
+.addButton{
+  background-color: #84b424;
+  opacity: 100%;
+  height: 50px;
+  position: absolute;
+  top: 52%;
+  border-radius: 35px;
+  left: 50%;
+  margin-left: -100px;
+  z-index: 120;
+}
+
+.deleteButton{
+  background-color: #e02266;
+  height: 50px;
+  position: absolute;
+  top: 64%;
+  border-radius: 35px;
+  left: 50%;
+  margin-left: -100px;
+  z-index: 120;
+}
+
+.buttonText{
+  color: black;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+}
+/********************************************************************************************/
+
 
 
 

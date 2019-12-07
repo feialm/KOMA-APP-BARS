@@ -13,8 +13,15 @@ a{
   text-decoration-line: none;
 }
 
-p, h1, td{
+h1, td, input{
   color: #C9C7CE;
+  font-family: "Roboto";
+}
+
+p{
+  font-size:calc(14px + .8vw);
+  color: #C9C7CE;
+ 
 }
 
 .h3{
@@ -68,7 +75,7 @@ display: inline-block;
 .App-bottom{
   position: fixed;
   bottom: 0;
-  height: 70px;
+  height: 100px;
   width: 100%;
   z-index: 9;
    background-color: #2C3535;
@@ -82,7 +89,7 @@ display: inline-block;
 }
 
 .head h1{
-  margin: 30px 0 12px 0;
+  margin: 30px 0 0px 0;
 }
 
 #root{
@@ -106,6 +113,10 @@ display: inline-block;
 .orangeButton{
   background-color: #e3871b;
 }
+
+.mainBody{
+  margin-bottom: 100px;
+}
 /*******************************************************************************************/
 
 
@@ -120,9 +131,12 @@ display: inline-block;
 	width: 100%;
 }
 
+.recTimeText{
+    font-size: calc(24px + .8vw);
+}
+
 .recTime{
 	position: absolute;
-	font-size: 24px;
 	width: 100%;
 	top: 38%;
 }
@@ -167,6 +181,18 @@ display: inline-block;
 /*******************************************************************************************/
 
 
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
 
 
 /*Bar*/
@@ -184,24 +210,9 @@ input{
   border: none;
   text-indent: 10px;
   font-size: 20px;
-  font-family: "Roboto";
   background-color: #4C5454;
   color: #C9C7CE;
 }
-
-input:focus {
-  background-color: #C9C7CE;
-  color: black;
-}
-
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-
-input::-webkit-input-placeholder{
-  color: #262e2e;
-} 
-
 
 #bars{
   height: 100%;
@@ -212,7 +223,7 @@ input::-webkit-input-placeholder{
 /*Bars - "child"*/
 .wrapperActivity{
   height: 65px;
-  width: 80%;
+  width: 70%;
   margin: auto;
   border-style: solid;
   border-color: #C9C7CE;
@@ -221,6 +232,7 @@ input::-webkit-input-placeholder{
   margin-bottom: 25px;
   background-color: #262e2e;
 }
+
 
 .activityName{
   text-align: left;
@@ -276,13 +288,11 @@ input::-webkit-input-placeholder{
   height: 100vh;
 }
 
-.wrapperAddActivity{
+.wrapperOutline{
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
   width: 80%;
-  justify-content: center;
-  margin: auto;
 }
 
 /*Activity name*/
@@ -381,13 +391,12 @@ input::-webkit-input-placeholder{
 /*Buttons in "Add Activity"*/
 .addActivityButton{
   width: 80%;
-  height: 40px;
   padding: 30px 0;
   margin: auto;
 }
 
 #formSaveButton{
-  width: 200px; 
+  width: 215px; 
 }
 
 #resetButton{
@@ -495,28 +504,7 @@ text-align: left;
   margin-bottom: 59%;
 }
 /* Textfields i ReportTime */
-input{
-  height: 40px;
-  border: none;
-  text-indent: 10px;
-  font-size: 20px;
-  font-family: "Roboto";
-  background-color: #4C5454;
-  color: #C9C7CE;
-}
 
-input:focus {
-  background-color: #C9C7CE;
-  color: black;
-}
-
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-
-input::-webkit-input-placeholder{
-  color: #262e2e;
-} 
 
 #hh{
   width: 60px;
@@ -582,25 +570,25 @@ input::-webkit-input-placeholder{
 #rhsText{
   position: absolute;
   text-align: center;
-  font-size: 20px;
   width: 100%;
   top: 29%;
   color: #DDDDDD;
 }
 #rhsText p{
   margin: 0px;
+  font-size: calc(22px);
 }
 
 #lhsText{
   position: absolute;
   text-align: center;
-  font-size: 20px;
   width: 100%;
   top: 32%;
   color: #DDDDDD;
 }
 #lhsText p{
-  margin: 0px;
+  margin: 0px; 
+  font-size: calc(22px);
 }
 
 .goal{
@@ -812,8 +800,6 @@ height: 100%;
   width: 80%;
   display: block;
   margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 25px;
   border-style: solid;
   border-color: #C9C7CE;
@@ -839,3 +825,40 @@ height: 100%;
   margin-top: -16px;
 }
 /*******************************************************************************************/
+
+.nextPage_left{
+  position: fixed;
+  top: 50%;
+  left:-32px;
+  background-color: hotpink;
+  height: 60px;
+  width: 60px;
+  z-index: 130;
+  border-radius: 20px;
+  text-align: right;
+  font-size: 30px;
+
+
+}
+
+.nextPage_right{
+  position: fixed;
+  top: 50%;
+  right:-32px;
+  background-color: green;
+  height: 60px;
+  width: 60px;
+  z-index: 130;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.nextPage_right p{
+  font-size: 30px;
+  margin: 8px 0 0 5px;
+}
+
+.nextPage_left p{
+  font-size: 30px;
+  margin: 8px 5px 0 0;
+}

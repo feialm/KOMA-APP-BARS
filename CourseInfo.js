@@ -222,7 +222,7 @@ function goal_text(myData) {
 
 function courseinfo() {
   return (
-    <div className="App">
+    <div className="center">
         {/*<div>
           <button onClick={changeData}>Transform</button>
         </div>*/}

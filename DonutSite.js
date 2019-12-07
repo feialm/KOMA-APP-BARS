@@ -172,7 +172,7 @@ function DonutSite(props){
     if(hideQuestion === false){
       return(
         <div className="questionWrapper">
-          <div className="App-header">
+          <div className="appHeader">
           <h1 className="title">HELP<br/></h1>
           </div>
           <div className="questionText">
@@ -236,7 +236,7 @@ function DonutSite(props){
     
 
     return (
-      <div className="Centralize">
+      <div className="center">
         {/*<div>
           <button onClick={changeData}>Transform</button>
         </div>*/}
@@ -246,13 +246,13 @@ function DonutSite(props){
               <h1>APPNAME</h1>
             </div> 
           </Link>
-          <p class="h3">To achive your goal, study these hours</p>
+          <p className="h3">To achive your goal, study these hours</p>
         </div>
 
 
       {/*Menu Button*/}
-      <div className="MenuButton" onClick={HandleClickMenu}>
-        <div className="MenuIcon">
+      <div className="menuButton" onClick={HandleClickMenu}>
+        <div className="menuIcon">
           <div className="menu"></div>
           <div className="menu"></div>
           <div className="menu"></div>
@@ -269,7 +269,7 @@ function DonutSite(props){
       
 
       {/*Question Button*/}
-        <div className="QuestionButton" onClick={handleClickQuestion}>
+        <div className="questionButton" onClick={handleClickQuestion}>
            <p className="question removeMargin">?</p>
         </div>
 

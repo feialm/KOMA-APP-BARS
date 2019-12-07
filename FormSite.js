@@ -67,15 +67,15 @@ function colour(){
 
   function fixObject (a, b, c, d, e) {
     console.log(a)
-    if (a == ""){
+    if (a === ""){
       a = "NoName"
       console.log("NoName achived")
     }
-    if(b == ""){
+    if(b === ""){
       b = "12/11/2019"
 
     }
-    if(c == ""){
+    if(c === ""){
       c = "12/24/2020"
     }
 
@@ -154,7 +154,7 @@ function App(props) { // props eller inte props??
               <h1>APPNAME</h1>
             </div> 
           </Link>
-        <p class="h3">Create your activity!</p>
+        <p className="h3">Create your activity!</p>
       </div>
 
       <div className="mainBody">
@@ -164,7 +164,7 @@ function App(props) { // props eller inte props??
             <input className="textBox" id="name" type="text" placeholder="Name" onChange={changeInput}/>
           </div>
           <div className="wrapperDate">
-            <div className="rapperStartDate"> 
+            <div className="wrapperStartDate"> 
               <p className="addActivityText">Start Date</p> 
               <input className="dateBox" id="startDate" type="text" placeholder="ddmmyy" onChange={changeInput}/>
             </div>
@@ -183,14 +183,16 @@ function App(props) { // props eller inte props??
             </div>
           </div>
           <div className="addActivityButton fitText">
-          <button className="cancelButton">
+          <div className="addActivityCancelReset">
+          <button className="redButton">
             <p className="buttonText pBlack">Cancel</p>
           </button>
-          <button onClick={() => clearList()} className="clearButton" id="clearButton">
-            <p className="buttonText pBlack" id="clearButtonText">Clear</p>
+          <button onClick={() => clearList()} className="orangeButton" id="resetButton">
+            <p className="buttonText pBlack">Reset</p>
           </button>
-          <Link to="/DonutSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="saveButton">
-            <p className="buttonText pBlack" id="saveButtonText">Save</p>
+          </div>
+          <Link to="/BarSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+            <p className="buttonText pBlack">Save</p>
           </button></Link>
           
           </div>

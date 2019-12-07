@@ -74,7 +74,7 @@ display: inline-block;
    background-color: #2C3535;
 }
 
-.Dots{
+.dots{
   color: blue;
   vertical-align: middle;
   text-align: center;
@@ -91,6 +91,20 @@ display: inline-block;
 
 .removeMargin{
   margin: 0;
+}
+
+/*Colours*/
+
+.greenButton{
+  background-color: #84b424;
+}
+
+.redButton{
+  background-color: #f92672;
+}
+
+.orangeButton{
+  background-color: #e3871b;
 }
 /*******************************************************************************************/
 
@@ -372,21 +386,12 @@ input::-webkit-input-placeholder{
   margin: auto;
 }
 
-.saveButton{
-  background-color: #84b424;
+#formSaveButton{
+  width: 200px; 
 }
 
-.cancelButton{
-  background-color: #f92672;
-}
-
-.clearButton{
-  background-color: #e3871b;
-}
-
-#clearButton{
+#resetButton{
   margin-left: 4%; 
-  margin-right: 4%; 
 }
 /*******************************************************************************************/
 
@@ -399,24 +404,24 @@ input::-webkit-input-placeholder{
 
 /* Kod för att få texten över de linjerade rutorna alignade
 och snygga */
-.ReportTimeText{
+.reportTimeText{
 text-align: left;
 }
 
-.WrapperMain{
+.wrapperMain{
   margin:20px;
   padding-top:20px;
   width: 80%;
   margin: auto;
 }
 
-#TimeStudied{
+#timeStudied{
   padding-top: 40px;
 }
 
 
 
-.WrapperAddTime{
+.wrapperAddTime{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -443,7 +448,7 @@ text-align: left;
   text-align: left;
 }
 
-.TimeBox{
+.timeBox{
   width: 50px;
   float: left;
   margin: 0;
@@ -479,7 +484,7 @@ text-align: left;
 }
 
 
-.ReportButtonText{
+.reportButtonText{
   width: 200px;
   height: 40px;
   background-color: #fd971f;
@@ -639,7 +644,7 @@ input::-webkit-input-placeholder{
 
 /*Default questionmark and menu*/
 /*Menu*/
-.MenuButton{
+.menuButton{
   position: -webkit-sticky;
   position: sticky;
   background-color: #609096;
@@ -656,7 +661,7 @@ input::-webkit-input-placeholder{
   z-index: 120;
 }
 
-.MenuIcon{
+.menuIcon{
   margin-top: 22px;
   margin-left: 3px;
   width: 0;
@@ -751,7 +756,7 @@ input::-webkit-input-placeholder{
 
 
 /*Questionmark*/
-.QuestionButton{
+.questionButton{
   background-color: #609096;
   width: 40px;
   height: 40px;

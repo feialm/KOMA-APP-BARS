@@ -290,9 +290,12 @@ function courseinfo() {
             <button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="editButton center">
                <p className="buttonText" id="editButtonText">Edit activity</p>
            </button>
-         </div>
-
-    
+        </div>
+   {/*Footer*/}
+      <div className="App-bottom">
+      <p className="dots">Bottom Header</p>
+      </div>
+      
     </div>
   );
 }

@@ -62,8 +62,8 @@ function createTable() {
               <div className="box" style={{backgroundColor:props[i].color}}>
                
               </div></td>) 
-            children.push(<td className='idLabel' key={i + 'b'}>{props[i].id}</td>)
-            children.push(<td className='timeLabel' key={i + 'c'}>{stringTime(props[i].repTime)+" of "+ recTime_today(props,i) }</td>)  //myData[i].value+'h'
+            children.push(<td className='idLabel' key={i + 'b'}><p>{props[i].id}</p></td>)
+            children.push(<td className='timeLabel' key={i + 'c'}><p>{stringTime(props[i].repTime)+" of "+ recTime_today(props,i) }</p></td>)  //myData[i].value+'h'
           
           //Create a parent and add it's children
           table.push(<tr key={i + 'd'}>{children}</tr>)
@@ -175,7 +175,7 @@ function DonutSite(props){
           <div className="appHeader">
           <h1 className="title">HELP<br/></h1>
           </div>
-          <div className="questionText">
+          <div className="questionText center">
             <p className="helpTitle">To do List</p>
             <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
             <p className="helpTitle">To do List</p>
@@ -236,7 +236,7 @@ function DonutSite(props){
     
 
     return (
-      <div className="center">
+      <div className="center mainBody">
         {/*<div>
           <button onClick={changeData}>Transform</button>
         </div>*/}
@@ -248,24 +248,6 @@ function DonutSite(props){
           </Link>
           <p className="h3">To achive your goal, study these hours</p>
         </div>
-
-
-      {/*Menu Button*/}
-      <div className="menuButton" onClick={HandleClickMenu}>
-        <div className="menuIcon">
-          <div className="menu"></div>
-          <div className="menu"></div>
-          <div className="menu"></div>
-        </div>
-      </div>
-
-      {/*Menu List*/}
-      <div className="menuClass" style={{width: menuWidth}}>
-        <div className="menuID" style={{width: menuWidth}}></div>
-        <Link to="/ReportTime.js"><button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
-        <button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button>
-        <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
-      </div>
       
 
       {/*Question Button*/}
@@ -278,11 +260,11 @@ function DonutSite(props){
           {questionText()}
         </div>
        
-      {/**/}
+      {/*Donutgeneration*/}
         <div className="donut heightMax">
           <div className="recTime center">
-          <p className="removeMargin">Study</p>
-            <p className="removeMargin"> {recTime(props.data)} </p>
+          <p className="removeMargin recTimeText">Study</p>
+            <p className="removeMargin recTimeText"> {recTime(props.data)} </p>
           </div>
           <AnimatedPieHooks
             data={props}
@@ -293,10 +275,19 @@ function DonutSite(props){
           />
         </div>
         <div id='myData'>
-          <table className="tableDonut center">
+          <table className="wrapperOutline tableDonut center">
             {createTable(props.data)}
           </table>
         </div>
+
+      <Link to="/BarSite.js">
+        <div className="nextPage_left"><p>&#60;</p></div>
+      </Link>
+
+        {/*Footer*/}
+      <div className="App-bottom">
+      <p className="dots">Bottom Header</p>
+      </div>
       </div>
     );
   

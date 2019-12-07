@@ -35,8 +35,8 @@ function colour(){
   var props = loadData();
   let arrayFromStorage = JSON.parse(localStorage.getItem("data"));
   var colorCounter = props.length;
-  //console.log(colorCounter)
-  //console.log('colorCounter');
+  console.log(colorCounter)
+  console.log('colorCounter');
   let colour1 = "white";
 
   var mod = colorCounter % 5;
@@ -61,35 +61,31 @@ function colour(){
 
   colorCounter= colorCounter+1;
 
-  //console.log(colorCounter);
+  console.log(colorCounter);
   return colour1;
 }
 
   function fixObject (a, b, c, d, e) {
-    console.log("SKriver denna  ut något")
     console.log(a)
     if (a === ""){
       a = "NoName"
-     // console.log("NoName achived")
+      console.log("NoName achived")
     }
-    if(b === ""){
+    if(b == ""){
       b = "12/11/2019"
 
     }
-    if(c === ""){
+    if(c == ""){
       c = "12/24/2020"
     }
-    console.log(d);
-    console.log(e);
+
     let TotTime = (Number(d)*60) + Number(e);
     let g = String(0); //reptime
     let f = String(TotTime);
 
-    const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour(), colorCounter: "0" };
-    console.log("courses");
-     console.log(Course);
+    const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour()};
+     
     addtoList(Course);
-
 
   }
 
@@ -115,16 +111,16 @@ function clearList(){
 
 //App är form
 function App(props) { // props eller inte props??
- // console.log("vad får vi in??");
-  //console.log(props);
-  //console.log("Fick vi");
+  console.log("vad får vi in??");
+  console.log(props);
+  console.log("Fick vi");
 
   const [name, setCoursName] = useState('');
   const [startDate, setStartDate] = useState(0);
   const [endDate, setEndDate] = useState(0);
-  const [hours, setHours] = useState(0);
+  const [hours, setHours] = useState(2);
   const [min, setMin] = useState(0);
- //console.log(props);
+
 
   function changeInput(event){
     if(event.target.id === "name"){
@@ -162,47 +158,57 @@ function App(props) { // props eller inte props??
       </div>
 
       <div className="mainBody">
-        <div className="wrapperAddActivity fitText">
+        <div className="wrapperOutline fitText">
+
           <div className="wrapperAddName">
             <p className="addActivityText" id="activityName">Activity Name</p>
             <input className="textBox" id="name" type="text" placeholder="Name" onChange={changeInput}/>
           </div>
+
           <div className="wrapperDate">
             <div className="wrapperStartDate"> 
               <p className="addActivityText">Start Date</p> 
-              <input className="dateBox" id="startDate" type="text" placeholder="ddmmyy" onChange={changeInput}/>
+              <input className="dateBox" id="startDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
             </div>
             <div className="wrapperEndDate">
               <p className="addActivityText">End Date</p>
-              <input className="dateBox" id="endDate" type="text" placeholder="ddmmyy" onChange={changeInput}/>
+              <input className="dateBox" id="endDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
             </div>
           </div>
+
           <div className="wrapperAddTime">
           <p className="addActivityTime">Set time:</p>
             <div className="time">
-
-          {/*Obs ändra plats på id=hours och id=hh om det ej funkar!!! samma för min!!*/}
-          <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
-               <p className="timeIndicator" id="hh">h</p>
-               <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
-               <p className="timeIndicator" id="mm" >m</p>
+              <input className="timeBox"  type="text" placeholder="hh" onChange={changeInput}/>
+              <p className="timeIndicator">h</p>
+              <input className="timeBox"  type="text" placeholder="mm" onChange={changeInput}/>
+              <p className="timeIndicator">m</p>
             </div>
-          </div>
-          <div className="addActivityButton fitText">
-          <div className="addActivityCancelReset">
-          <button className="redButton">
-            <p className="buttonText pBlack">Cancel</p>
-          </button>
-          <button onClick={() => clearList()} className="orangeButton" id="resetButton">
-            <p className="buttonText pBlack">Reset</p>
-          </button>
-          </div>
-          <Link to="/ReportTime.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+          </div> 
+        </div>
+
+        <div className="addActivityButton fitText">
+          <Link to="/DonutSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
             <p className="buttonText pBlack">Save</p>
           </button></Link>
-          
-          </div>
+
+          <div className="addActivityCancelReset">
+            <Link to="/BarSite.js"><button className="redButton">
+              <p className="buttonText pBlack">Cancel</p>
+            </button></Link>
+            <button onClick={() => clearList()} className="orangeButton" id="resetButton">
+              <p className="buttonText pBlack">Reset</p>
+            </button>
+          </div>         
         </div>
+
+
+
+         {/*Footer*/}
+      <div className="App-bottom">
+      <p className="dots">Bottom Header</p>
+      </div>
+
       </div>
     </div>
     

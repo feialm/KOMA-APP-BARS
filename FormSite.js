@@ -72,21 +72,24 @@ function colour(){
       a = "NoName"
      // console.log("NoName achived")
     }
-    if(b == ""){
+    if(b === ""){
       b = "12/11/2019"
 
     }
-    if(c == ""){
+    if(c === ""){
       c = "12/24/2020"
     }
-
+    console.log(d);
+    console.log(e);
     let TotTime = (Number(d)*60) + Number(e);
     let g = String(0); //reptime
     let f = String(TotTime);
 
     const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour(), colorCounter: "0" };
+    console.log("courses");
      console.log(Course);
     addtoList(Course);
+
 
   }
 
@@ -119,7 +122,7 @@ function App(props) { // props eller inte props??
   const [name, setCoursName] = useState('');
   const [startDate, setStartDate] = useState(0);
   const [endDate, setEndDate] = useState(0);
-  const [hours, setHours] = useState(2);
+  const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
  //console.log(props);
 
@@ -177,10 +180,12 @@ function App(props) { // props eller inte props??
           <div className="wrapperAddTime">
           <p className="addActivityTime">Set time:</p>
             <div className="time">
-              <input className="timeBox"  type="text" placeholder="hh" onChange={changeInput}/>
-              <p className="timeIndicator">h</p>
-              <input className="timeBox"  type="text" placeholder="mm" onChange={changeInput}/>
-              <p className="timeIndicator">m</p>
+
+          {/*Obs ändra plats på id=hours och id=hh om det ej funkar!!! samma för min!!*/}
+          <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
+               <p className="timeIndicator" id="hh">h</p>
+               <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
+               <p className="timeIndicator" id="mm" >m</p>
             </div>
           </div>
           <div className="addActivityButton fitText">

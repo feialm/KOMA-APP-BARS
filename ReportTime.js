@@ -46,9 +46,10 @@ function ReportTime(){
    console.log(A);
    console.log("Pizza");
   
-   A[0].repTime = g;
+   A[0].repTime = Number(A[0].repTime) + g;
    
    console.log(A);
+   saveData(A);
 
   }
 
@@ -124,7 +125,7 @@ function App(props) { // props eller inte props??
       setHours(event.target.value);
     }*/
 
-      if(event.target.id == "hours"){
+      if(event.target.id === "hours"){
         setHours(event.target.value);
         console.log("Hours in event");
       }

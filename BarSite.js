@@ -131,7 +131,7 @@ console.log(a);
 
 //}//den här är tillaggd var sist förut!!!!!!!!!!!!
 /*renderar sidelementen typ*/
-function BarSite(HHH) {
+  function BarSite(HHH) {
     // test
     const [ToCourseInfo, setToCourseInfo] = useState(0);
     
@@ -269,7 +269,10 @@ function BarSite(HHH) {
         {renderActivities(HHH)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
       </div>
 
-      
+      {/*Footer*/}
+      <div className="App-bottom">
+      <p className="dots">Bottom Header</p>
+      </div>
 
       {/*Menu Button*/}
       <div className="menuButton" onClick={HandleClickMenu}>
@@ -285,7 +288,7 @@ function BarSite(HHH) {
       <div className="menuClass" style={{width: menuWidth}}>
         <div className="menuID" style={{width: menuWidth}}></div>
         <Link to="/ReportTime.js"><button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
-        <Link to="/"><button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button></Link>
+        <button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button>
         <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
       </div>
       
@@ -294,14 +297,9 @@ function BarSite(HHH) {
         {questionText()}
       </div>
 
-      <Link to="/DonutSite.js"><div className="nextPage_right"><p>&#62;</p>
-      </div></Link>
 
     <div>
-     {/*Footer*/}
-      <div className="App-bottom">
-      <p className="dots">Bottom Header</p>
-      </div>
+     
     </div>
   );
 

@@ -26,16 +26,34 @@ function ReportTime(){
     saveData(data);
   }
 
-  function fixObject (a, b, c, d, e) {
+  function fixObject (d, e) {
+    console.log(d);
+    console.log(e);
 
-    let TotTime = (Number(d)*60) + Number(e);
-    let g = String(0); //reptime
-    let f = String(TotTime);
 
-    const Course = {name: a, startDate: b, endDate: c, totTime: f, repTime: g };
+    let g = (Number(d)*60) + Number(e);
+    console.log(g);
+    //let g = String(0); //reptime
+    //let f = String(TotTime);
+
+    //const Course = {repTime: g };
      
-    addtoList(Course);
+    //addtoList(Course);
+   // console.log(Course);
+
+   var A = loadData();
+   console.log("Snart mat");
+   console.log(A);
+   console.log("Pizza");
+  
+   A[0].repTime = Number(A[0].repTime) + g;
+   
+   console.log(A);
+   saveData(A);
+
   }
+
+
 
   function addtoList(courseToAdd){
     localData.push(courseToAdd);
@@ -62,13 +80,13 @@ function ReportTime(){
 
 
 // main component of app is always one page (depending on url path) + Menu below
-
+//redirect === false && 
 
   return(
     <div>
       
 
-      {redirect === false && 
+      {
       <App fixObjectEtikett={fixObject} />
       }
      
@@ -81,27 +99,38 @@ function ReportTime(){
 //App är form
 function App(props) { // props eller inte props??
 
-  const [name, setCoursName] = useState('');
-  const [startDate, setStartDate] = useState(0);
-  const [endDate, setEndDate] = useState(0);
-  const [hours, setHours] = useState(2);
+  const [name, setCoursName] = useState({name: ''});
+  const [startDate, setStartDate] = useState({startDate: 0});
+  const [endDate, setEndDate] = useState({endDate: 0});
+  const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
 
 
   function changeInput(event){
-    if(event.target.id === "name"){
+    /*
+    if(event.target.id == "name"){
         setCoursName(event.target.value);
+        console.log("name in event");
       }
     else if(event.target.id == "startDate"){
       setStartDate(event.target.value);
+      console.log("startDate in event");
     }
     else if(event.target.id == "endDate"){
+      console.log("endDate in event");
     setEndDate(event.target.value);
     }
     else if(event.target.id == "hours"){
+      console.log("Hours in event");
       setHours(event.target.value);
-    }
+    }*/
+
+      if(event.target.id === "hours"){
+        setHours(event.target.value);
+        console.log("Hours in event");
+      }
     else{
+      console.log("min in event");
         setMin(event.target.value);
     }
   } 
@@ -131,10 +160,10 @@ function App(props) { // props eller inte props??
             <div className="wrapperAddTime" id="centerDiv">
 
               {/*textfält */}
-               <input className="timeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
-               <p className="timeIndicator" id="hours">h</p>
-               <input className="timeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
-               <p className="timeIndicator" id="minutes" >m</p>
+               <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
+               <p className="timeIndicator" id="hh">h</p>
+               <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
+               <p className="timeIndicator" id="mm" >m</p>
             </div>
 
 
@@ -142,8 +171,8 @@ function App(props) { // props eller inte props??
 
           </div>
 
-          <button onClick={() => {props.fixObjectEtikett(name,startDate,endDate,hours,min); props.history.goBack()}} className="reportButtonText">
-              <p className = "buttonText">Report</p>
+          <button onClick={() => {props.fixObjectEtikett(hours,min)}} className="reportButtonText">
+              <p className = "buttonText">Report Time</p>
           </button>
 
       </div>

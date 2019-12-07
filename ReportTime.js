@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
@@ -27,34 +28,22 @@ function ReportTime(){
   }
 
   function fixObject (d, e) {
-    console.log(d);
-    console.log(e);
-
 
     let g = (Number(d)*60) + Number(e);
-    console.log(g);
-    //let g = String(0); //reptime
-    //let f = String(TotTime);
 
-    //const Course = {repTime: g };
-     
-    //addtoList(Course);
-   // console.log(Course);
+    var A = loadData();
 
-   var A = loadData();
-   console.log("Snart mat");
-   console.log(A);
-   console.log("Pizza");
-  
-   A[0].repTime = Number(A[0].repTime) + g;
-   
-   console.log(A);
-   saveData(A);
+    // Här behöver vi veta vilken slot i arrayen som kursen som ska raporteras är
+    /*
+    A[0].repTime = Number(A[0].repTime) + g;
+
+    saveData(A);
+    */
 
   }
 
 
-
+// addtolist kan vara en hellt onödig här 
   function addtoList(courseToAdd){
     localData.push(courseToAdd);
     setData(localData);
@@ -80,7 +69,7 @@ function ReportTime(){
 
 
 // main component of app is always one page (depending on url path) + Menu below
-//redirect === false && 
+
 
   return(
     <div>
@@ -99,41 +88,88 @@ function ReportTime(){
 //App är form
 function App(props) { // props eller inte props??
 
-  const [name, setCoursName] = useState({name: ''});
-  const [startDate, setStartDate] = useState({startDate: 0});
-  const [endDate, setEndDate] = useState({endDate: 0});
+  const [localData, setLocalData] = useState(loadData());
+  const [name, setCoursName] = useState('');
+  const [startDate, setStartDate] = useState(0);
+  const [endDate, setEndDate] = useState(0);
   const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
+  const [dropTrigg, setDropTrigg] = useState(false);
+
+   function loadData(){
+    try {
+      const storage = JSON.parse(window.localStorage.getItem("data"));
+      return storage || [];
+    } 
+    catch (e) {
+      return [];
+    }
+  }
+
+
+  let arr = localData;
 
 
   function changeInput(event){
+
     /*
-    if(event.target.id == "name"){
+    if(event.target.id === "name"){
         setCoursName(event.target.value);
-        console.log("name in event");
       }
     else if(event.target.id == "startDate"){
       setStartDate(event.target.value);
-      console.log("startDate in event");
     }
     else if(event.target.id == "endDate"){
-      console.log("endDate in event");
     setEndDate(event.target.value);
     }
-    else if(event.target.id == "hours"){
-      console.log("Hours in event");
-      setHours(event.target.value);
-    }*/
 
-      if(event.target.id === "hours"){
-        setHours(event.target.value);
-        console.log("Hours in event");
-      }
+    */
+
+
+
+    if(event.target.id == "hours"){
+      setHours(event.target.value);
+    }
     else{
-      console.log("min in event");
         setMin(event.target.value);
     }
   } 
+
+
+
+   function dropMenu(){
+    console.log("funkar`?");
+    console.log(localData);
+    //callDropMenu();
+if(dropTrigg){
+    setDropTrigg(false);
+}
+  else{
+    setDropTrigg(true);
+  }
+    console.log(dropTrigg);
+    RenderMenu(localData);
+  }
+
+  function RenderMenu(arr){
+  console.log("orkar inte");
+  return(
+    arr.map(c=> (<MenuContent key={c.id} arrData={c} />))
+    );
+  }
+
+function MenuContent(arrData){
+   let menuList = arrData.arrData;
+   console.log("fjksadkf");
+   return(
+    <div style={{backgroundColor: menuList.color, width: "100%", height: "100px"}}>
+      <p>{menuList.id}</p>
+    </div>
+
+    );
+}
+
+
 
   return (
 
@@ -148,8 +184,11 @@ function App(props) { // props eller inte props??
 
           <div>
           <p className ="reportTimeText"> Activity </p>
-              <div className ="border" id ="activitySetTime">
-              </div>
+          <div className ="border" id ="activitySetTime" onClick={dropMenu}>
+          {
+            dropTrigg ? (RenderMenu(arr)) : (null)
+          }
+          </div>
           </div>
 
           <p className ="reportTimeText" id="TimeStudied">Time studied</p>
@@ -160,20 +199,21 @@ function App(props) { // props eller inte props??
             <div className="wrapperAddTime" id="centerDiv">
 
               {/*textfält */}
-               <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
-               <p className="timeIndicator" id="hh">h</p>
-               <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
-               <p className="timeIndicator" id="mm" >m</p>
+               <input className="timeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
+               <p className="timeIndicator" id="hours">h</p>
+               <input className="timeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
+               <p className="timeIndicator" id="minutes" >m</p>
             </div>
 
 
           </div>
 
           </div>
-
-          <button onClick={() => {props.fixObjectEtikett(hours,min)}} className="reportButtonText">
-              <p className = "buttonText">Report Time</p>
+           <Link to="/BarSite.js">
+          <button onClick={() => {props.fixObjectEtikett(hours,min); props.history.goBack()}} className="reportButtonText">
+              <p className = "buttonText">Report</p>
           </button>
+         </Link>
 
       </div>
     

@@ -115,25 +115,25 @@ function App(props) { // props eller inte props??
          
 
         {/*wrapper */}
-        <div className ="WrapperMain">
+        <div className ="wrapperMain">
 
           <div>
-          <p className ="ReportTimeText"> Activity </p>
+          <p className ="reportTimeText"> Activity </p>
               <div className ="border" id ="activitySetTime">
               </div>
           </div>
 
-          <p className ="ReportTimeText" id="TimeStudied">Time studied</p>
+          <p className ="reportTimeText" id="TimeStudied">Time studied</p>
           
 
           <div className ="border">
 
-            <div className="WrapperAddTime" id="centerDiv">
+            <div className="wrapperAddTime" id="centerDiv">
 
               {/*textfält */}
-               <input className="TimeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
+               <input className="timeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
                <p className="timeIndicator" id="hours">h</p>
-               <input className="TimeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
+               <input className="timeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
                <p className="timeIndicator" id="minutes" >m</p>
             </div>
 
@@ -142,7 +142,7 @@ function App(props) { // props eller inte props??
 
           </div>
 
-          <button onClick={() => {props.fixObjectEtikett(name,startDate,endDate,hours,min); props.history.goBack()}} className="ReportButtonText">
+          <button onClick={() => {props.fixObjectEtikett(name,startDate,endDate,hours,min); props.history.goBack()}} className="reportButtonText">
               <p className = "buttonText">Report Time</p>
           </button>
 

@@ -111,17 +111,17 @@ console.log(a);
   
   return(
     <Link to="/CourseInfo.js">
-    <div className="WrapperActivity"  onClick={() => handleClickActivity(a)}>
+    <div className="wrapperActivity"  onClick={() => handleClickActivity(a)}>
 
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
-      <p className="ActivityName">{a.id}</p>
-      <div className="ActivityDetails">
-          <p className="ActivityPercentage">{timeCalc(a.totTime, a.repTime)}% done</p>
-          <p className="ActivityMoreDetails">More details</p>
+      <p className="activityName">{a.id}</p>
+      <div className="activityDetails">
+          <p className="activityPercentage">{timeCalc(a.totTime, a.repTime)}% done</p>
+          <p className="activityMoreDetails">More details</p>
       </div>
       
-      <div className="ActivityBar" style={{backgroundColor: same, opacity: 0.3}}></div>
-      <div className="ActivityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}></div>
+      <div className="activityBar" style={{backgroundColor: same, opacity: 0.3}}></div>
+      <div className="activityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}></div>
     
     </div>
     </Link>
@@ -186,7 +186,7 @@ console.log(a);
       if(hideQuestion === false){
         return(
           <div className="questionWrapper">
-            <div className="App-header">
+            <div className="appHeader">
             <h1 className="title">HELP<br/></h1>
             </div>
             <div className="questionText">
@@ -251,7 +251,7 @@ console.log(a);
   }
 
   return (
-    <div className="App">
+    <div className="center">
  
       {/*Header*/}
       <div className="appHeader head">
@@ -260,23 +260,23 @@ console.log(a);
       </div>
 
       {/*Question Button*/}
-      <div className="QuestionButton" onClick={handleClickQuestion}>
+      <div className="questionButton" onClick={handleClickQuestion}>
        <p className="question removeMargin">?</p>
       </div>
 
       {/*Main body*/}
-      <div className="MainBody">
+      <div className="mainBody">
         {renderActivities(HHH)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
       </div>
 
       {/*Footer*/}
       <div className="App-bottom">
-      <p className="Dots">Bottom Header</p>
+      <p className="dots">Bottom Header</p>
       </div>
 
       {/*Menu Button*/}
-      <div className="MenuButton" onClick={HandleClickMenu}>
-        <div className="MenuIcon">
+      <div className="menuButton" onClick={HandleClickMenu}>
+        <div className="menuIcon">
           <div className="menu"></div>
           <div className="menu"></div>
           <div className="menu"></div>

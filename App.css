@@ -1,63 +1,216 @@
-h1{
-  color: #DDDDDD;
-  font-size: calc(14px + 2vmin);
-  margin-bottom: 0;
-}
-
-p{
-  color: #C9C7CE;
-}
-
-div{
+body {
   text-align: center;
-  background-color: #2C3535;
-  font-family: "Roboto";
-}
-
-.App{
+  background-color: #2c3535;
   height: 100%;
 }
 
-.App-header {
+html{
+  height: 100%;
+  background-color: #2C3535;
+}
+
+a{
+  text-decoration-line: none;
+}
+
+p, h1, td{
+  color: #C9C7CE;
+}
+
+.h3{
+  margin: 0;
+  font-size: 20px;
+}
+
+.fitText {
   display: inline-block;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  height: 100px;
-  z-index: 10;
-  padding: 0;
-  width: 100%;
 }
 
-.description{
-margin: 0;
+/*div{
+  font-family: "Roboto";
+}*/
+
+.heightMax{
+  height: 100%;
 }
 
-.MainBody{
-  /*height: 76%;*/
+.center{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
+
+/*@font-face{
+	font-family: myFirstFont;
+	src: url(sansation_light.woff);
+}*/
+.appHeader{
+	color: #DDDDDD;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	padding: 0;
+   width: 100%;
+  background-color: #2C3535;
+	margin-bottom: 25px;
+	/*font-family: "myFirstFont";*/
+}
+
+#headerBars{
+display: inline-block;
+}
+
 
 .App-bottom{
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   height: 70px;
   width: 100%;
   z-index: 9;
+   background-color: #2C3535;
 }
 
-.Dots{
+.dots{
   color: blue;
   vertical-align: middle;
   text-align: center;
   line-height: 70px;
 }
 
-{/*Bars - "child"*/}
-.WrapperActivity{
+.head h1{
+  margin: 30px 0 12px 0;
+}
+
+#root{
+  height: 100%;
+}
+
+.removeMargin{
+  margin: 0;
+}
+
+/*Colours*/
+
+.greenButton{
+  background-color: #84b424;
+}
+
+.redButton{
+  background-color: #f92672;
+}
+
+.orangeButton{
+  background-color: #e3871b;
+}
+/*******************************************************************************************/
+
+
+
+
+
+/*DonuT*/
+
+.donut{
+	position: relative;
+	/*margin: 30px auto 10px auto;*/
+	width: 100%;
+}
+
+.recTime{
+	position: absolute;
+	font-size: 24px;
+	width: 100%;
+	top: 38%;
+}
+
+.tableDonut{
+	width: 60%;
+	/*border: 1px solid white;*/
+	background-color: #262E2E;
+	padding: 15px 0 15px 0;
+
+}
+
+
+#myData{
+	margin: 20px auto 20px auto;
+}
+
+/*A box outside the little box?*/
+.color{
+	width: 15px;
+	padding-left: 25px;
+  padding-right: 25px;
+}
+
+/*The little colourful box?*/
+.box{
+	width: 16px;
+	height: 15px;
+}
+
+/*How the table's names are aligned*/
+.idLabel{
+	text-align: left;
+  height: 40px;
+}
+
+/*How time look inside of tableDonut*/
+.timeLabel{
+	width: 200px;
+	text-align: center;
+}
+/*******************************************************************************************/
+
+
+
+
+/*Bar*/
+button{
+  border-color: transparent;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 100px;
+  border-radius: 35px;
+  vertical-align: middle;
+}
+
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
+
+
+#bars{
+  height: 100%;
+}
+
+
+
+/*Bars - "child"*/
+.wrapperActivity{
   height: 65px;
   width: 80%;
   margin: auto;
@@ -66,49 +219,432 @@ margin: 0;
   border-width: 1px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 25px;
-  /*background-color: #1D2A2A; */
   background-color: #262e2e;
 }
 
-.ActivityName{
+.activityName{
   text-align: left;
   margin-top: 0;
   margin-bottom: 2px;
   font-size: 18px;
 }
 
-.ActivityPercentage{
+.activityPercentage{
   float:left;
   margin-top: 2px;
   font-size: 15px;
 }
 
-.ActivityMoreDetails{
+.activityMoreDetails{
   float:right;
   margin-top: 2px;
   font-size: 15px;
   font-style: italic;
 }
 
-.ActivityDetails{
+.activityDetails{
   font-size: 12px;
 }
 
-.ActivityBar{
+.activityBar{
   width: 100%;
   height: 12px;
   margin-top: 25px;
   border-radius: 30px;
 }
 
-.ActivityProgress{
+.activityProgress{
   height: 12px;
   margin-top: -12px;
   border-radius: 30px;
 }
 
-{/*Menu*/}
-.MenuButton{
+
+
+/*******************************************************************************************/
+
+
+
+
+/*Form*/
+.pBlack{
+  color: black;
+}
+
+/*Add Activity sidan*/
+#Add{
+  height: 100vh;
+}
+
+.wrapperAddActivity{
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  width: 80%;
+  justify-content: center;
+  margin: auto;
+}
+
+/*Activity name*/
+.wrapperAddName{
+  background-color: inherit;
+  width: 80%;
+  margin: auto;
+}
+
+.addActivityText{
+  margin-bottom: 0;
+  float: left;
+  font-size: 18px;
+}
+
+.textBox{
+  width: 100%;
+  text-transform: capitalize;
+}
+
+/*Start and End dates*/
+.wrapperDate{
+  display: inline-block;
+  width: 80%;
+  margin: auto;
+  background-color: inherit;
+  margin-top: 10px;
+}
+
+.wrapperStartDate{
+  width: 100px;
+  float: left;
+  }
+
+.wrapperEndDate{
+  width: 100px;
+  float: right;
+}
+
+.dateBox{
+  float: left;
+  width: 100px;
+}
+
+/*Set time*/
+.wrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+  font-size: 18px;
+}
+
+.timeBox{
+  width: 45px;
+  float: right;
+  margin: 0;
+  text-align: justify;
+}
+
+.time{
+  width: 70%;
+  display: flex; 
+  justify-content: flex-end;
+  vertical-align: middle;
+  align-items: center;
+}
+
+#min{
+  text-indent: 5px;
+}
+
+#min:focus{
+  text-indent: 10px;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+  font-size: 18px;
+}
+
+/*Buttons in "Add Activity"*/
+.addActivityButton{
+  width: 80%;
+  height: 40px;
+  padding: 30px 0;
+  margin: auto;
+}
+
+#formSaveButton{
+  width: 200px; 
+}
+
+#resetButton{
+  margin-left: 4%; 
+}
+/*******************************************************************************************/
+
+
+
+
+/*ReportTime*/
+
+
+
+/* Kod för att få texten över de linjerade rutorna alignade
+och snygga */
+.reportTimeText{
+text-align: left;
+}
+
+.wrapperMain{
+  margin:20px;
+  padding-top:20px;
+  width: 80%;
+  margin: auto;
+}
+
+#timeStudied{
+  padding-top: 40px;
+}
+
+
+
+.wrapperAddTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+
+/* få hours and min rutorn i center */
+#centerDiv{
+  width: 50%;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.addActivityTime{
+  float: left;
+  margin: 0;
+  width: 80px;
+  text-align: left;
+}
+
+.timeBox{
+  width: 50px;
+  float: left;
+  margin: 0;
+  padding: 1px;
+}
+
+.timeIndicator{
+  width: 25px;
+  margin: 0;
+}
+
+
+
+.border{
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  margin-top:-12px;
+}
+
+#activitySetTime{
+  height: 30px;
+  background-color:#242B2B; 
+}
+
+
+/*Button i ReportTime */
+.buttonText{
+  color: black;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+
+.reportButtonText{
+  width: 200px;
+  height: 40px;
+  background-color: #fd971f;
+  float: center;
+  border-radius: 35px;
+  border-color: transparent;
+  margin-top: 20%;
+  margin-bottom: 59%;
+}
+/* Textfields i ReportTime */
+input{
+  height: 40px;
+  border: none;
+  text-indent: 10px;
+  font-size: 20px;
+  font-family: "Roboto";
+  background-color: #4C5454;
+  color: #C9C7CE;
+}
+
+input:focus {
+  background-color: #C9C7CE;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-input-placeholder{
+  color: #262e2e;
+} 
+
+#hh{
+  width: 60px;
+}
+
+#mm{
+    width: 60px;
+}
+
+#hours{
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+#minutes{
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+/*******************************************************************************************/
+
+
+
+
+
+/*SofiaTime*/
+.deadlines{
+  width: 80%;
+  margin: auto;
+
+}
+.deadlines_in{
+  border:1px solid lightgray;
+    background-color: #242b2b;
+}
+
+#dead_title{
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+#wrapper {
+    padding-top: 30px;
+    width: 100%;
+  
+    overflow: hidden; /* add this to contain floated children */
+}
+#first {
+    width: 50%;
+    float:left; /* add this */
+    position: relative;
+}
+#second {
+     width: 49%;
+    float: left; /* add this */
+    position: relative;
+}
+.goal{
+  background-color: #242b2b;
+}
+
+#rhsText{
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  top: 29%;
+  color: #DDDDDD;
+}
+#rhsText p{
+  margin: 0px;
+}
+
+#lhsText{
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  top: 32%;
+  color: #DDDDDD;
+}
+#lhsText p{
+  margin: 0px;
+}
+
+.goal{
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+
+}
+
+.stack{
+  display: block;
+}
+
+
+#space{
+  margin-right:2%;
+  margin-left: 2%;
+}
+
+
+.reportButton_CourseInfo{
+  background-color: #e3871b;
+  width: 40%;
+  margin-top: 30px;
+  margin-right: 2%;
+}
+
+.editButton{
+  background-color:  #84b424;
+  width: 40%;
+  margin-top: 30px;
+  margin-left: 2%;
+}
+
+/*******************************************************************************************/
+
+
+
+
+
+/*Default questionmark and menu*/
+/*Menu*/
+.menuButton{
   position: -webkit-sticky;
   position: sticky;
   background-color: #609096;
@@ -125,7 +661,7 @@ margin: 0;
   z-index: 120;
 }
 
-.MenuIcon{
+.menuIcon{
   margin-top: 22px;
   margin-left: 3px;
   width: 0;
@@ -163,7 +699,7 @@ margin: 0;
   overflow: hidden;
 }
 
-.buttonWrapper{
+/*.buttonWrapper{
   margin: auto;
   height: 100%;
   width: 100%;
@@ -171,19 +707,18 @@ margin: 0;
   position: absolute;
   z-index: 111;
   top: 0;
-}
-
+}*/
+/*CCCCCCCCCCCCCCCCCCOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRSSSSSSSSS*/
 .reportButton{
   background-color: #e3871b;
   opacity: 100%;
-  height: 50px;
   position: absolute;
   top: 40%;
-  border-radius: 35px;
   left: 50%;
   margin-left: -100px;
   z-index: 120;
 }
+
 
 .addButton{
   background-color: #84b424;
@@ -211,13 +746,17 @@ margin: 0;
 .buttonText{
   color: black;
   font-size: 20px;
-  margin-top: 12px;
+  margin: auto;
+  text-align: center;
 }
+/********************************************************************************************/
 
-{/*Question Button*/}
-.QuestionButton{
-  position: -webkit-sticky;
-  position: sticky;
+
+
+
+
+/*Questionmark*/
+.questionButton{
   background-color: #609096;
   width: 40px;
   height: 40px;
@@ -228,13 +767,13 @@ margin: 0;
   right: 5%;
   border-style: solid;
   border-color: #C9C7CE; 
-  color: #C9C7CE;
+  
   z-index: 130;
 }
 
 .question{
-  margin-top: 3px;
   font-size: 30px;
+  height: 100%;
 }
 
 .closeQuestion{
@@ -243,17 +782,30 @@ margin: 0;
   font-size: 30px;
   position: fixed;
 }
+/*******************************************************************************************/
 
+
+
+
+/*Helppage*/
+/*Help page*/
 .questionWrapper{
 height: 100%;
+
+}
+
+#helpHeader{
+  background-color: #2C3535;
 }
 
 .questionID{
   height: inherit;
   top: 0;
-  position: absolute;
+  bottom: 0;
+  position: fixed;
   z-index: 129;
   overflow: scroll;
+  background-color: #2C3535;
 }
 
 .questionText{
@@ -262,6 +814,7 @@ height: 100%;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 25px;
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
@@ -270,9 +823,6 @@ height: 100%;
   background-color: #262e2e;
 }
 
-.title{
-  margin-top: 30px;
-}
 
 .helpTitle{
   color: #DDDDDD;
@@ -288,73 +838,4 @@ height: 100%;
   font-size: 16px;
   margin-top: -16px;
 }
-
-/*Add Activity sidan*/
-#Add{
-  height: 100vh;
-}
-
-#addActivityBody{
-
-}
-
-.WrapperAddActivity{
-  border-style: solid;
-  border-color: #C9C7CE;
-  border-width: 1px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #262e2e;
-  /*padding-left: 5%;
-  padding-right: 5%;*/
-}
-
-.WrapperNameDates{
-  background-color: blue;
-}
-
-.WrapperAddTime{
-  background-color: red;
-}
-
-input{
-  width: 200px;
-  height: 30px;
-}
-
-#startDate{
-  width: 90px;
-}
-
-#endDate{
-  width: 90px;
-}
-
-input.TimeBox{
-  width: 50px;
-}
-
-.addActivityText{
-  margin-bottom: 0;
-  float: left;
-  padding-left: 5%;
-}
-
-#name{
-  float: left;
-  padding-left: 5%;
-  display: inline-block;
-}
-
-.saveButton{
-  height: 40px;
-  width: 100px;
-  border-radius: 35px;
-  background-color: #84b424;
-  border-color: transparent;
-}
-
-#saveButtonText{
-  margin-top: 7px;
-}
+/*******************************************************************************************/

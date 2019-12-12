@@ -25,6 +25,7 @@ import AnimatedPieHooks from './doughnut.js';
   function loadData(){
     try {
       const storage = JSON.parse(window.localStorage.getItem("data"));
+      console.log("storage är vid nerladdning; " + storage);
       return storage || [];
     } catch (e) {
       return [];
@@ -73,15 +74,24 @@ function createTable() {
 
 function recTime_today(props, i){
   console.log('rec')
+  console.log(i);
 console.log(props)
     var endDate = new Date(props[i].endDate)
     //console.log(endDate+'endDate')
     var todaysDate = new Date() 
     //console.log(todaysDate+'todaysDate')
     var difference_In_Time = endDate.getTime() - todaysDate.getTime()
+
+    console.log('hdfjsb')
+    console.log(difference_In_Time);
     difference_In_Time = difference_In_Time/(1000*3600*24)
+  console.log('EFTER AVRUNDNING: ' + difference_In_Time);
+    console.log('EFTER AVRUNDNING och halvering: ' + difference_In_Time/2);
+    console.log(difference_In_Time);
+
+
     //console.log(difference_In_Time+'difference_In_Time')
-    return  stringTime(difference_In_Time)
+    return  stringTime(difference_In_Time) // JOHANNA HAR PILLAT HÄR OCH LAGT TILL EN TVÅÅÅA!!!!!!!!!!!!!!
 }
 
 function recTime(lala){ //Shows the recommended time of h and min for todays studies.
@@ -105,16 +115,41 @@ console.log(props);
    // console.log(difference_In_Time)
     difference_In_Days = difference_In_Time / (1000 * 3600 * 24); 
     //console.log(difference_In_Days)
-    courseTime = ((props[i].totTime)-(props[i].repTime));
+
+    console.log("tottime: ");
+    console.log((props[i].totTime));
+
+
+
+    courseTime = (Number(props[i].totTime)-Number(props[i].repTime));
+    console.log("min kvar att jobba utifrån planerade arbetstimmar")
+        console.log(courseTime);
+        console.log("dagar tils slutdatum");
+
+        console.log(difference_In_Days);
+
+
+
 
     recTime = recTime + (courseTime/difference_In_Days);
-  }
+        console.log("tid per dag");
 
-  return stringTime(recTime);
+            console.log(recTime);
+
+  }
+  console.log("Befoe return");
+console.log(recTime);
+
+
+ return stringTime(recTime);
+ 
 }
 
 function stringTime(totTime){
 //console.log(value+"Invalue")
+
+            console.log("VAD tottime ar " + totTime);
+
  /* Data js. const date = new Date(value*60*1000);
   console.log(date.getHours()+"getHours")
   console.log(value+"Value")
@@ -125,6 +160,8 @@ function stringTime(totTime){
   var text = date.getHours()+"h and";*/
 
   var hours= Math.floor(totTime/60);
+
+  console.log("Tot: " +totTime)
   //console.log(hours+"Hours")
   var minutes = (totTime % 60);
   //console.log(minutes+"min")

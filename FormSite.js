@@ -87,11 +87,18 @@ function colour(){
       c = "12/24/2020"
     }
 
+console.log("Vad d är: " + d +" och minuter " + e);
+          
+
     let TotTime = (Number(d)*60) + Number(e);
+
+console.log("Tot efter number");
+     console.log(TotTime);
     let g = String(); //reptime
     let f = String(TotTime);
+            console.log("TotTime från formsiet");
+            console.log(TotTime);
 
-    
 
     const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour()};
      
@@ -176,25 +183,31 @@ function questionText(){
   const [name, setCoursName] = useState('');
   const [startDate, setStartDate] = useState(0);
   const [endDate, setEndDate] = useState(0);
-  const [hours, setHours] = useState(2);
+  const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
 
 
   function changeInput(event){
+
+console.log("val: " + event.target.value)
+console.log("id: " + event.target.id)
+
     if(event.target.id === "name"){
         setCoursName(event.target.value);
       }
-    else if(event.target.id == "startDate"){
+    else if(event.target.id === "startDate"){
       setStartDate(event.target.value);
     }
-    else if(event.target.id == "endDate"){
+    else if(event.target.id === "endDate"){
     setEndDate(event.target.value);
     }
-    else if(event.target.id == "hours"){
+    else if(event.target.id === "hhh"){
+      console.log("in hours: " + event.target.value)
       setHours(event.target.value);
     }
     else{
         setMin(event.target.value);
+        console.log("in mins: " + event.target.value)
     }
   } 
     
@@ -248,16 +261,16 @@ function questionText(){
           <div className="wrapperAddTime">
           <p className="addActivityTime">Set time:</p>
             <div className="time">
-              <input className="timeBox"  type="text" placeholder="h" onChange={changeInput}/>
+              <input className="timeBox" id="hhh" type="text" placeholder="h" onChange={changeInput}/>
               <p className="timeIndicator">h</p>
-              <input className="timeBox"  type="text" placeholder="m" onChange={changeInput}/>
+              <input className="timeBox"  id="mmm" type="text" placeholder="m" onChange={changeInput}/>
               <p className="timeIndicator">m</p>
             </div>
           </div> 
         </div>
 
         <div className="addActivityButton fitText">
-          <Link to="/DonutSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+          <Link to="/DonutSite.js">  <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
             <p className="buttonText pBlack">Save</p>
           </button></Link>
 

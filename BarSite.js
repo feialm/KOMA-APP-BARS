@@ -155,6 +155,7 @@ function BarSite(HHH) {
     const [menuWidth, changeMenuWidth] = useState(0);     
     const [buttonWidth, changeButtonWidth] = useState(0);
     const [hideMenu, triggerHideMenu] = useState(true);
+    const [hideFeedBack, triggerHideFeedBack] = useState(true);
 
     /*Questionbutton and list*/
     const [hideQuestion, triggerHideQuestion] = useState(true); 
@@ -223,6 +224,24 @@ function BarSite(HHH) {
       }
     }
 
+       function HandleClickFeedBack(){ 
+       console.log(hideFeedBack);      /*gör likadant för allt annat, typ?*/
+      if(hideFeedBack){  
+      feedBack();                 /* öppnar menyn */
+        triggerHideFeedBack(false);
+        changeMenuWidth("100%");
+        changeButtonWidth("200px");
+        console.log("aaa popup where");
+ //render popup
+      }
+      else{                           /* göm menyn */
+        triggerHideFeedBack(true);  
+        changeMenuWidth("0");
+        changeButtonWidth("0");
+        console.log("no popup");
+      }
+    }
+
   function reportTime(){
     if (hideMenu === false){
       return(
@@ -252,6 +271,29 @@ function BarSite(HHH) {
     }
   }
 
+  function clearList(){
+    window.localStorage.clear();
+    window.location.reload(true);
+  }
+
+  function feedBack(){
+    console.log("FeedBACK respons");
+    console.log(hideFeedBack);
+    return(
+      <div className="feedBack" id="resetButton">
+          {console.log("FeedBACK respons its false")}
+          <h1>Warning!</h1>
+          <p>Are you certain that you want to DELETE al your Courses</p>
+          <button style={{width: 210} } onClick={() => clearList()} className="purpleButton" id="resetButton">
+              <p className="buttonText pBlack">Reset</p>
+            </button>
+           <button style={{width: 210}} className="redButton" onClick={() => window.location.reload(true)}>
+              <p className="buttonText pBlack">Cancel</p>
+            </button>
+      </div>
+    );
+  }
+//onClick={clearList()}
   return (
     <div className="center">
  
@@ -271,12 +313,15 @@ function BarSite(HHH) {
         {questionText()}
       </div>
 
+              {
+                hideFeedBack ? (null) : (feedBack())
+              }
+
       {/*Main body*/}
       <div className="mainBody">
         {renderActivities(HHH)}  {/*här ska vi rendera ActivityInfo, för att skriva ut kursinfo*/}
       </div>
 
-      
 
       {/*Menu Button*/}
       <div className="menuButton" onClick={HandleClickMenu}>
@@ -291,11 +336,15 @@ function BarSite(HHH) {
    
       <div className="menuClass" style={{width: menuWidth}}>
         <div className="menuID" style={{width: menuWidth}}></div>
-        <Link to="/ReportTime.js"><button className="reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
+        <Link to="/ReportTime.js"><button className="orangeButton reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
         <Link to="/"><button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button></Link>
         <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
+        <button style={{width: buttonWidth}} onClick={HandleClickFeedBack} className="orangeButton resetButton">
+              <p className="buttonText pBlack">Reset</p>
+              
+            </button>
       </div>
-      
+     
 
       <Link to="/DonutSite.js"><div className="nextPage_right"><p>&#62;</p>
       </div></Link>

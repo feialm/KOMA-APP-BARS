@@ -115,6 +115,10 @@ display: inline-block;
   background-color: #e3871b;
 }
 
+.purpleButton{
+  background-color: #6a549e;
+}
+
 .mainBody{
   margin-bottom: 125px;
 }
@@ -419,9 +423,7 @@ input:focus {
   width: 215px; 
 }
 
-#resetButton{
-  margin-left: 4%; 
-}
+
 /*******************************************************************************************/
 
 
@@ -732,8 +734,32 @@ text-align: left;
   top: 0;
 }*/
 /*CCCCCCCCCCCCCCCCCCOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRSSSSSSSSS*/
+
+.feedBack{
+  height: 500px;
+  padding: 0 20%;
+  position: sticky;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+  z-index: 220;
+  top: -60px;
+  background-color: #3b3a32;
+}
+
+.resetButton{
+  background-color: #6a549e ; /*#8874ad*/
+  opacity: 100%;
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  margin-left: -100px;
+  z-index: 120;
+  box-shadow: 7px 7px 5px black;
+}
+
+
 .reportButton{
-  background-color: #e3871b;
   opacity: 100%;
   position: absolute;
   top: 40%;
@@ -749,7 +775,7 @@ text-align: left;
   opacity: 100%;
   height: 50px;
   position: absolute;
-  top: 52%;
+  top: 28%;
   border-radius: 35px;
   left: 50%;
   margin-left: -100px;
@@ -761,7 +787,7 @@ text-align: left;
   background-color: #e02266;
   height: 50px;
   position: absolute;
-  top: 64%;
+  top: 52%;
   border-radius: 35px;
   left: 50%;
   margin-left: -100px;

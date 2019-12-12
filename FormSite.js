@@ -113,12 +113,6 @@ function colour(){
   );
 }
 
-function clearList(){
-  window.localStorage.clear();
-  window.location.reload(true);
-}
-
-
 //App är form
 function App(props) { // props eller inte props??
   console.log("vad får vi in??");
@@ -257,7 +251,7 @@ function questionText(){
         </div>
 
         <div className="addActivityButton fitText">
-          <Link to="/DonutSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+          <Link to="/BarSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
             <p className="buttonText pBlack">Save</p>
           </button></Link>
 
@@ -265,9 +259,6 @@ function questionText(){
             <Link to="/BarSite.js"><button className="redButton">
               <p className="buttonText pBlack">Cancel</p>
             </button></Link>
-            <button onClick={() => clearList()} className="orangeButton" id="resetButton">
-              <p className="buttonText pBlack">Reset</p>
-            </button>
           </div>         
         </div>
 

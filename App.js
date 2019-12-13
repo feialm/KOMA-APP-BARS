@@ -20,14 +20,14 @@ const App = () => {
     <Router>
       <div>
         <Helmet>
-          <title>ReportTime</title>
+          <title>StudyUp</title>
           <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         </Helmet>
       </div>
       <Switch>
-        <Route exact path="/" component={FormSite} /> {/*Den första visas som default*/}
-        <Route path="/BarSite.js" component={BarSite} />
+        <Route exact path="/" component={BarSite} /> {/*Den första visas som default*/}
+        <Route path="/FormSite.js" component={FormSite} />
         <Route path="/DonutSite.js" component={DonutSite} />
         <Route path="/ReportTime.js" component={ReportTime} />
         <Route path="/CourseInfo.js" component={CourseInfo} />

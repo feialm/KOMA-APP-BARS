@@ -59,8 +59,8 @@ const Donut = props => {
       text
         .attr("text-anchor", "middle")
         .attr("alignment-baseline", "middle")
-        .style("fill", "Black")
-        .style("font-size", 14)
+        .style("fill", "transparent")
+        .style("font-size", 15)
         .transition()
         .attr("transform", d => `translate(${createArc.centroid(d)})`)
         .tween("text", (d, i, nodes) => {

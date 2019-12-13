@@ -33,10 +33,6 @@ function Parent(){
   }
 
 
-
-  
-
-
 function colour(){
   var props = loadData();
   let arrayFromStorage = JSON.parse(localStorage.getItem("data"));
@@ -45,8 +41,6 @@ function colour(){
   console.log('colorCounter');
   let colour1 = "white";
 
-
-  
   var mod = colorCounter % 5;
 
   if (mod === 0){
@@ -69,7 +63,6 @@ function colour(){
 
   colorCounter= colorCounter+1;
 
-  console.log(colorCounter);
   return colour1;
 }
 
@@ -84,14 +77,18 @@ function colour(){
 
     }
     if(c == ""){
-      c = "12/24/2020"
+      c = "12/24/2019"
+    }
+    if(d == 0){
+      d = 10;
+    }
+    if(e == 0){
+      e = 10;
     }
 
     let TotTime = (Number(d)*60) + Number(e);
     let g = String(); //reptime
     let f = String(TotTime);
-
-    
 
     const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour()};
      
@@ -115,9 +112,6 @@ function colour(){
 
 //App är form
 function App(props) { // props eller inte props??
-  console.log("vad får vi in??");
-  console.log(props);
-  console.log("Fick vi");
 
   /*QuestionButtonandList*/
   const [hideQuestion, triggerHideQuestion] = useState(true); 
@@ -170,7 +164,7 @@ function questionText(){
   const [name, setCoursName] = useState('');
   const [startDate, setStartDate] = useState(0);
   const [endDate, setEndDate] = useState(0);
-  const [hours, setHours] = useState(2);
+  const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
 
 
@@ -206,7 +200,7 @@ function questionText(){
               <h1>StudyUp</h1>
             </div> 
           </Link>
-        <p className="h3">Create your activity!</p>
+        <p className="h3">Add course details</p>
       </div>
 
       <div className="mainBody">
@@ -230,11 +224,15 @@ function questionText(){
 
           <div className="wrapperDate">
             <div className="wrapperStartDate"> 
-              <p className="addActivityText">Start Date</p> 
+            <div className="dateText">
+              <p className="addActivityText" id="dateText">Start Date:</p> 
+              </div>
               <input className="dateBox" id="startDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
             </div>
             <div className="wrapperEndDate">
-              <p className="addActivityText">End Date</p>
+            <div className="dateText">
+              <p className="addActivityText" id="dateText">End Date:</p>
+              </div>
               <input className="dateBox" id="endDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
             </div>
           </div>
@@ -242,24 +240,23 @@ function questionText(){
           <div className="wrapperAddTime">
           <p className="addActivityTime">Set time:</p>
             <div className="time">
-              <input className="timeBox"  type="text" placeholder="h" onChange={changeInput}/>
+              <input className="timeBox"  type="text" id="hours" placeholder="h" onChange={changeInput}/>
               <p className="timeIndicator">h</p>
-              <input className="timeBox"  type="text" placeholder="m" onChange={changeInput}/>
+              <input className="timeBox"  type="text" id="min" placeholder="m" onChange={changeInput}/>
               <p className="timeIndicator">m</p>
             </div>
           </div> 
         </div>
 
         <div className="addActivityButton fitText">
-          <Link to="/BarSite.js"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+          <Link to="/"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
             <p className="buttonText pBlack">Save</p>
           </button></Link>
 
-          <div className="addActivityCancelReset">
-            <Link to="/BarSite.js"><button className="redButton">
+            <Link to="/"><button className="redButton" id="formCancelButton">
               <p className="buttonText pBlack">Cancel</p>
             </button></Link>
-          </div>         
+             
         </div>
 
 

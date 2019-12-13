@@ -6,20 +6,6 @@ import "./App.css";
 import * as d3 from "d3";
 import AnimatedPieHooks from './doughnut.js';
 
-  /*createTable() {
-      return this.state.myData.map((value, index) => {
-         const { id, label, value, color } = value //destructuring
-         return (
-            <tr key={id}>
-               <td>{id}</td>
-               <td>{label}</td>
-               <td>{value}</td>
-               <td>{color}</td>
-            </tr>
-         )
-      })
-    }*/
-
 
   //denna eller funktion gör vi i falla att det är null i localstarage
   function loadData(){
@@ -48,11 +34,7 @@ function handleClickQuestion(e) {
 //Donut funktioner utan modifiering 
 function createTable() {
    let props = loadData();
-  console.log(loadData());
         let table = [];
-        console.log('här')
-        console.log(props)
- console.log('här')
         //Outertable to create parent
         for(let i = 0; i < props.length; i++){
           let children = []
@@ -65,79 +47,80 @@ function createTable() {
             children.push(<td className='idLabel' key={i + 'b'}><p>{props[i].id}</p></td>)
             children.push(<td className='timeLabel' key={i + 'c'}><p>{stringTime(props[i].repTime)+" of "+ recTime_today(props,i) }</p></td>)  //myData[i].value+'h'
           
+
           //Create a parent and add it's children
           table.push(<tr key={i + 'd'}>{children}</tr>)
         }
         return table
 }
 
+//days = 13
+
 function recTime_today(props, i){
-  console.log('rec')
-console.log(props)
-    var endDate = new Date(props[i].endDate)
-    //console.log(endDate+'endDate')
-    var todaysDate = new Date() 
-    //console.log(todaysDate+'todaysDate')
-    var difference_In_Time = endDate.getTime() - todaysDate.getTime()
-    difference_In_Time = difference_In_Time/(1000*3600*24)
-    //console.log(difference_In_Time+'difference_In_Time')
-    return  stringTime(difference_In_Time)
+
+ let timePerDay2 = howManyHoursToday(props, i);
+
+  return  stringTime(timePerDay2)
+
 }
 
-function recTime(lala){ //Shows the recommended time of h and min for todays studies.
-    
+var totalHoursPerDay = 0;
+let temp = false;
 
-  let props = loadData();
-console.log(props);
+function howManyHoursToday(props, i){
+  var endDate = new Date(props[i].endDate)
 
-  var recTime = 0;
-  var courseTime = 0;
-  var difference_In_Time = 0;
-  var difference_In_Days = 0; 
+  var todaysDate = new Date() 
 
-  for(var i = 0; i < props.length; i++){
+  var difference_In_Time = (endDate.getTime() - todaysDate.getTime());
 
-    var startDate = new Date(props[i].startDate)
-    var endDate = new Date(props[i].endDate)
-    var todaysDate = new Date()
+  let difference_In_Time1 = difference_In_Time/(60000);
 
-    difference_In_Time = endDate.getTime() - todaysDate.getTime();
-   // console.log(difference_In_Time)
-    difference_In_Days = difference_In_Time / (1000 * 3600 * 24); 
-    //console.log(difference_In_Days)
-    courseTime = ((props[i].totTime)-(props[i].repTime));
+  let daysbetween = difference_In_Time1*0.000694444444;
+  let timePerDay = (Number(props[i].totTime)/daysbetween);
+  totalHoursPerDay = totalHoursPerDay + timePerDay;
+  console.log(totalHoursPerDay);
 
-    recTime = recTime + (courseTime/difference_In_Days);
-  }
-
-  return stringTime(recTime);
+  return timePerDay;
 }
 
-function stringTime(totTime){
-//console.log(value+"Invalue")
- /* Data js. const date = new Date(value*60*1000);
-  console.log(date.getHours()+"getHours")
-  console.log(value+"Value")
 
-  var min = value-(date.getHours()*60);
-  console.log(min+"Min")
+function recTime(){ //Shows the recommended time of h and min for todays studies.
+   let props = loadData();
+   let totHours = 0;
+   for (var i = 0; i < props.length; i++){
+     totHours = totHours + howManyHoursToday(props, i);
+   }
 
-  var text = date.getHours()+"h and";*/
+console.log(totHours);
 
-  var hours= Math.floor(totTime/60);
-  //console.log(hours+"Hours")
-  var minutes = (totTime % 60);
-  //console.log(minutes+"min")
-  
+
+//console.log(Number(totHours));
+console.log("K");
+  return stringTime(totHours);
+  //return stringTime(10);
+}
+
+function callRepTime(){
+  temp = true;
+}
+
+function stringTime(totalTime){
+  console.log(totalTime);
+  var hours = Math.floor(totalTime/60);
+ console.log(hours);
+  var minutes = (totalTime % 60);
+console.log(minutes);
   if(minutes === 0){
-    return hours+'h';
+    return hours + 'h';
   }
   if(hours === 0){
     return Math.floor(minutes)+"min"
   }
 
-  return hours+'h '+ Math.floor(minutes)+'min';
+  return hours + 'h '+ Math.floor(minutes) + 'min';
 }
+
 
 //Vår självaste sida
 function DonutSite(props){
@@ -232,8 +215,7 @@ function DonutSite(props){
       );
     }
   }
-
-    
+  console.log(props.data);
 
     return (
       <div className="center mainBody">
@@ -246,7 +228,7 @@ function DonutSite(props){
               <h1>StudyUp</h1>
             </div> 
           </Link>
-          <p className="h3">Study these hours daily to achive your goal</p>
+          <p className="h3">To achieve your goal, <br/>study these hours daily</p>
         </div>
       
 
@@ -264,7 +246,11 @@ function DonutSite(props){
         <div className="donut heightMax">
           <div className="recTime center">
           <p className="removeMargin recTimeText">Study</p>
-            <p className="removeMargin recTimeText"> {recTime(props.data)} </p>
+            <p className="removeMargin recTimeText"> 
+            {
+              recTime()
+            } 
+            </p>
           </div>
           <AnimatedPieHooks
             data={props}
@@ -280,7 +266,7 @@ function DonutSite(props){
           </table>
         </div>
 
-      <Link to="/BarSite.js">
+      <Link to="/">
         <div className="nextPage_left"><p>&#60;</p></div>
       </Link>
 

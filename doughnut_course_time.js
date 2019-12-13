@@ -50,7 +50,7 @@ const Donut_course_time = props => {
         .attrTween("d", arcTween);
 // format(interpolator(t).value)
       const text = groupWithUpdate
-        .append("text")
+        .append("fff")
         .merge(groupWithData.select("text"));
 
       text

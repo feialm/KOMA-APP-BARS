@@ -31,16 +31,20 @@ function ReportTime(){
   function fixObject (d, e) {
 
     let g = (Number(d)*60) + Number(e);
-
     var A = loadData();
 
-    // Här behöver vi veta vilken slot i arrayen som kursen som ska raporteras är
-    /*
-    A[0].repTime = Number(A[0].repTime) + g;
-
-    saveData(A);
-    */
-
+    if(arrIndex === null){
+      console.log("tyvärr ingen vald kurs");
+    }
+    else{
+      console.log(d);
+      console.log("ahaa");
+      A[arrIndex].repTime = Number(A[arrIndex].repTime) + g;
+      selectBool = true;
+      saveData(A);
+      //disabled = "blue";
+      arrIndex = null;
+    }
   }
 
 
@@ -49,40 +53,22 @@ function ReportTime(){
     localData.push(courseToAdd);
     setData(localData);
   }
-/*
-  function routerApp(){
-    return(
-      
-      <Router>
-        <div>
-          <li>
-            <Link to="/Child">Child</Link>
-          </li>
-        </div>
-        <Switch>
-          <Route path="/Child" component={Child} />
-        </Switch>
-      </Router>
-    );
-  }
-*/
-
-
-
-// main component of app is always one page (depending on url path) + Menu below
-
 
   return(
     <div>
-      
-
       {
-      <App fixObjectEtikett={fixObject} />
+        <App fixObjectEtikett={fixObject} />
       }
-     
-      
     </div>
   );
+}
+
+let arrIndex = null;
+let selectBool = true;
+//let disabled = "grey";
+
+function courseIndex(indexOfArray){
+  arrIndex = indexOfArray;
 }
 
 
@@ -96,8 +82,11 @@ function App(props) { // props eller inte props??
   const [hours, setHours] = useState(0);
   const [min, setMin] = useState(0);
   const [dropTrigg, setDropTrigg] = useState(false);
+  const [selectCourse, setSelectCourse] = useState(false);
+  
+  let arr = localData;
 
-   function loadData(){
+  function loadData(){
     try {
       const storage = JSON.parse(window.localStorage.getItem("data"));
       return storage || [];
@@ -107,27 +96,7 @@ function App(props) { // props eller inte props??
     }
   }
 
-
-  let arr = localData;
-
-
   function changeInput(event){
-
-    /*
-    if(event.target.id === "name"){
-        setCoursName(event.target.value);
-      }
-    else if(event.target.id == "startDate"){
-      setStartDate(event.target.value);
-    }
-    else if(event.target.id == "endDate"){
-    setEndDate(event.target.value);
-    }
-
-    */
-
-
-
     if(event.target.id == "hours"){
       setHours(event.target.value);
     }
@@ -136,98 +105,101 @@ function App(props) { // props eller inte props??
     }
   } 
 
-
-
-   function dropMenu(){
+  function dropMenu(){
     console.log("funkar`?");
     console.log(localData);
+    console.log("Dropdown open");
+    //console.log(localData);
     //callDropMenu();
-if(dropTrigg){
-    setDropTrigg(false);
-}
-  else{
-    setDropTrigg(true);
-  }
-    console.log(dropTrigg);
+    
+    if(dropTrigg){
+      setDropTrigg(false);
+    }
+    else{
+      setDropTrigg(true);
+    }
     RenderMenu(localData);
   }
 
   function RenderMenu(arr){
-  console.log("orkar inte");
-  return(
-    arr.map(c=> (<MenuContent key={c.id} arrData={c} />))
+    return(
+      arr.map((c, i) => (<MenuContent key={c.id} arrData={c} index={i} />))
     );
   }
 
-function MenuContent(arrData){
-   let menuList = arrData.arrData;
-   console.log("fjksadkf");
-   return(
-    <div style={{backgroundColor: menuList.color, width: "100%", height: "100px"}}>
-      <p>{menuList.id}</p>
-    </div>
-
+  function MenuContent(arrData){
+    let menuList = arrData.arrData;
+    let arrayIndex = arrData.index;
+    var menuListContent = [];
+    console.log("fjksadkf");
+    return(
+      <div  onClick={() => selectedCourse(arrayIndex)} className="dropMenu">
+        {menuList.id}
+      </div>
     );
+  }
+
+function selectedCourse(sentIndex){
+  courseIndex(sentIndex);
+  setSelectCourse(true);
+  displaySelectedCourse();
+  setDropTrigg(false);
 }
 
+//FIXA PILEN
+function displaySelectedCourse(){
+  return(
+    <div ><p style={{top: 0, marginTop: 0}}>{arr[arrIndex].id}</p></div>
+  );
+}
 
+return (
+  <div className="center">
+    <div className="appHeader">
+      <h1>Report Time</h1>  
+    </div>
+       
+    {/*Home Button*/}
+    <Link to="/">
+    <div className="smalCirkel home">
+    <i className="fa fa-home fa-2x"></i>
+     {/*<img src="https://img.icons8.com/windows/32/000000/home-page.png" alt="Home pic" width="32" height="32" className="question removeMargin"/>*/}
+    </div>
+    </Link>
 
-  return (
-
-    <div className="center">
-      <div className="appHeader">
-        <h1>Report Time</h1>  
-        </div>
-         
-         {/*Home Button*/}
-      <Link to="/BarSite.js">
-      <div className="smalCirkel home">
-      <i class="fa fa-home fa-2x"></i>
-       {/*<img src="https://img.icons8.com/windows/32/000000/home-page.png" alt="Home pic" width="32" height="32" className="question removeMargin"/>*/}
-      </div>
-      </Link>
-
-        {/*wrapper */}
-        <div className ="wrapperMain">
-
-          <div>
-          <p className ="reportTimeText"> Activity </p>
+    {/*wrapper */}
+    <div className ="wrapperMain">
+      <div>
+        <p className ="reportTimeText"> Activity </p>
           <div className ="border" id ="activitySetTime" onClick={dropMenu}>
-          <p class="arrow">&#9660;</p>
+            {
+              selectCourse ? (displaySelectedCourse()) : (null)
+            } 
+            <p className="arrow">&#9660;</p>
+           
+          </div>
           {
             dropTrigg ? (RenderMenu(arr)) : (null)
           }
-          </div>
-          </div>
-
-          <p className ="reportTimeText" id="TimeStudied">Time studied</p>
-          
-
-          <div className ="border">
-
-            <div className="wrapperAddTime" id="centerDiv">
-
-              {/*textfält */}
-               <input className="timeBox" id="hh" type="text" placeholder="hh" onChange={changeInput}/>
-               <p className="timeIndicator" id="hours">h</p>
-               <input className="timeBox" id="mm" type="text" placeholder="mm" onChange={changeInput}/>
-               <p className="timeIndicator" id="minutes" >m</p>
-            </div>
-
-
-          </div>
-
-          </div>
-           <Link to="/BarSite.js">
-          <button onClick={() => {props.fixObjectEtikett(hours,min);}} className="reportButtonText">
-              <p className = "buttonText">Report</p>
-          </button>
-         </Link>
-
       </div>
-    
+      <p className ="reportTimeText" id="TimeStudied">Time studied</p>
+      <div className ="border">
+        <div className="wrapperAddTime" id="centerDiv">
+          {/*textfält */}
+          <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
+          <p className="timeIndicator" id="hh">h</p>
+          <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
+          <p className="timeIndicator" id="mm" >m</p>
+        </div>
+      </div>
+    </div>
+    <Link to="/">
+      <button onClick={() => {props.fixObjectEtikett(hours,min);}} className="reportButtonText">
+        <p className = "buttonText">Report</p>
+      </button>
+    </Link>
+  </div>
   );
-
 }
 
 export default ReportTime;//ska det vara parent eller app här?

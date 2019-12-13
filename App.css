@@ -27,7 +27,7 @@ p{
 
 .h3{
   margin: 4px 0;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .fitText {
@@ -76,14 +76,14 @@ display: inline-block;
 .App-bottom{
   position: fixed;
   bottom: 0;
-  height: 100px;
+  height: 50px;
   width: 100%;
   z-index: 9;
   background-color: #2C3535;
 }
 
 .dots{
-  color: blue;
+  color: transparent;
   vertical-align: middle;
   text-align: center;
   line-height: 70px;
@@ -119,13 +119,6 @@ display: inline-block;
   background-color: #6a549e;
 }
 
-.mainBody{
-  margin-bottom: 125px;
-}
-
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
 
 input::-webkit-input-placeholder{
   color: #262e2e;
@@ -137,7 +130,7 @@ button{
   border-color: transparent;
   margin-bottom: 20px;
   height: 50px;
-  width: 100px;
+  width: 125px;
   border-radius: 35px;
   vertical-align: middle;
   box-shadow: 7px 7px 5px #21211c;
@@ -316,7 +309,9 @@ input:focus {
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
-  margin-bottom: 120px;
+  margin-bottom: 15px;
+  height: 320px;
+  width: 80%;
 }
 
 /*Activity name*/
@@ -334,31 +329,46 @@ input:focus {
 
 .textBox{
   width: 100%;
-  text-transform: capitalize;
 }
 
 /*Start and End dates*/
 .wrapperDate{
   display: inline-block;
   width: 80%;
-  margin: auto;
+  height: 100px;
   background-color: inherit;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+#dateText{
+  margin: 0;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .wrapperStartDate{
-  width: 100px;
-  float: left;
+  width: 100%;
+  height: 60px;  
+  margin-top: 20px;
+  margin-bottom: 5px;
   }
 
 .wrapperEndDate{
-  width: 100px;
-  float: right;
+  width: 100%;
+  height: 60px;
 }
 
 .dateBox{
+  width: 130px;
+  float: right;
+}
+
+.dateText{
+  width: 90px;
   float: left;
-  width: 120px;
+  height: 42px;
+  padding-top: 9px;
 }
 
 /*Set time*/
@@ -369,11 +379,9 @@ input:focus {
   text-align: right;
   width: 80%;
   margin: auto;
-  padding-top: 20px;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  margin-top: 5px;
+  margin-top: 45px;
 }
+
 
 .addActivityTime{
   float: left;
@@ -410,6 +418,8 @@ input:focus {
   width: 25px;
   margin: 0;
   font-size: 18px;
+  text-align: left;
+  padding-left: 5px;
 }
 
 /*Buttons in "Add Activity"*/
@@ -420,7 +430,11 @@ input:focus {
 }
 
 #formSaveButton{
-  width: 215px; 
+  float:right;
+}
+
+#formCancelButton{
+  float: left;
 }
 
 
@@ -459,17 +473,6 @@ text-align: left;
 
 
 
-.wrapperAddTime{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 80%;
-  margin: auto;
-  padding-top: 20px;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  margin-top: 5px;
-}
 
 
 /* få hours and min rutorn i center */
@@ -513,6 +516,19 @@ text-align: left;
   box-shadow: 5px 5px 5px #21211c;
 }
 
+/*drop down meny*/
+.dropMenu{
+  width: 100%;
+  height: 50px;
+  display: inline-block;
+  /*centrera*/
+  /*gör så att det ligger över om man hinner*/
+  background-color: #242B2B;
+  border-style: solid;
+  border-color: #C9C7CE;
+  border-width: 1px;
+  color: #C9C7CE;
+}
 
 /*Button i ReportTime */
 
@@ -544,6 +560,7 @@ text-align: left;
 
 #hh{
   width: 60px;
+  margin-right: 20px;
 }
 
 #mm{
@@ -552,13 +569,10 @@ text-align: left;
 
 #hours{
     font-size: 18px;
-    margin-right: 20px;
-    margin-left: 5px;
 }
 
-#minutes{
+#min{
     font-size: 18px;
-    margin-left: 5px;
 }
 
 /*******************************************************************************************/
@@ -648,14 +662,14 @@ text-align: left;
 
 .reportButton_CourseInfo{
   background-color: #e3871b;
-  width: 40%;
+  width: 125px;
   margin-top: 30px;
   margin-right: 2%;
 }
 
 .editButton{
   background-color:  #84b424;
-  width: 40%;
+  width: 125px;
   margin-top: 30px;
   margin-left: 2%;
 }

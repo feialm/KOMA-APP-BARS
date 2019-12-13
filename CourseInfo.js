@@ -8,7 +8,24 @@ import AnimatedPieHooksworked from './doughnut_course_worktime.js';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
-function loadData(){
+function setMyData(theObject){ 
+  var myDataTemp=[
+    {
+      "id":  theObject.id, 
+      "label": "Används ej",
+      "value": theObject.totTime, //rec min, totala tiden 
+      "addedTime": theObject.repTodayTime, //gjort min idag 
+      "totAddedTime":theObject.repTime, //gjort totalt  
+      "color": theObject.color,  
+      "startDate":theObject.startDate, //MM/DD/ÅÅÅÅ
+      "endDate":theObject.endDate    }
+  ];
+
+  return myDataTemp;
+}
+
+
+function loadData(myData){
     try {
       const storage = JSON.parse(window.localStorage.getItem("data"));
       return storage || [];
@@ -17,8 +34,8 @@ function loadData(){
     }
   }
 
-function write_name(){
-  let myData = loadData();
+function write_name(myData){
+  {/*let myData = loadData(); */}
   var name = myData[0].id; 
   return <h1>{name}</h1>;
 }
@@ -28,18 +45,23 @@ function hours_to_min(value){
   return hours
 }
 
-function days_tot(){
-  let myData = loadData();
+function days_tot(myData){
+  console.log('myData')
+  console.log(myData)
+    {/*let myData = loadData(); */}
   var endDate = new Date(myData[0].endDate)
+  console.log('myData ENDDATE')
   console.log(endDate)
-  console.log('heyy')
   var todaysDate = new Date()
 
   var difference_In_Time = endDate.getTime() - todaysDate.getTime();
-
+  console.log('Difference TIME')
+  console.log(difference_In_Time)
 
   var difference_In_Days = difference_In_Time / (1000 * 3600 * 24); 
   
+  console.log('Difference INdays')
+  console.log(difference_In_Days)
   if( difference_In_Days % 1 < 0.5){
     difference_In_Days = Math.floor(difference_In_Days)
   }
@@ -53,8 +75,8 @@ function days_tot(){
 
 }
 
-function day_span(){
-    let myData = loadData();
+function day_span(myData){
+      {/*let myData = loadData(); */}
 
  var endDate = new Date(myData[0].endDate)
   var startDate = new Date(myData[0].startDate)
@@ -81,10 +103,10 @@ function day_span(){
   
 }
 
-function hour_donut_text() { //Måste ändra vad myData[0]. är för nått
-    let myData = loadData();
+function hour_donut_text(myData) { //Måste ändra vad myData[0]. är för nått
+      {/*let myData = loadData(); */}
 
-  var hour_worked = (myData[0].totTime)/ 60;
+  var hour_worked = (myData[0].totAddedTime)/ 60;
   
   if( hour_worked % 1 < 0.5){
         hour_worked = Math.floor(hour_worked)
@@ -94,7 +116,7 @@ function hour_donut_text() { //Måste ändra vad myData[0]. är för nått
        hour_worked= Math.ceil(hour_worked)
      }
 
-  var tot_time = (myData[0].totTime)/ 60;
+  var tot_time = (myData[0].value)/ 60;
 
   if( tot_time % 1 < 0.5){
         tot_time = Math.floor(tot_time)
@@ -112,8 +134,8 @@ function hour_donut_text() { //Måste ändra vad myData[0]. är för nått
 
 }
 
-function day_donut_text() {
-    let myData = loadData();
+function day_donut_text(myData) {
+      
 
   return <p>{days_tot(myData)}</p>
 }
@@ -196,18 +218,27 @@ var dayDiff_per = day_span(myData)
 }
 
 function goal_text(myData) {
-    var tot_value_min = myData[0].value
-    var tot_worked_min = myData[0].totAddedTime
 
-    var days_left= days_tot(myData)
-    console.log(days_left)
+  console.log(myData);
+
+    var tot_value_min = Number(myData[0].value);
+    var tot_worked_min = myData[0].totAddedTime;
+  
+
+    var days_left = days_tot(myData);
+
+    
     var work_a_day = (tot_value_min-tot_worked_min)/days_left;
-
+    console.log(work_a_day);
+console.log(tot_value_min);
     var hours= Math.floor(work_a_day/60);
     console.log(hours+"Hours")
     var minutes = (work_a_day % 60);
     console.log(minutes+"min")
   
+
+
+
    if(minutes === 0){
      return hours+'h';
    }
@@ -216,25 +247,32 @@ function goal_text(myData) {
     }
 
    return hours+'h '+ Math.floor(minutes)+'min';
-
-
-
-    return <p>Goal: {hours}h {Math.floor(minutes)}</p>
 }
 
 
-function courseinfo() {
+function courseinfo(props) {
+
+const theObject = props.location.state;
+console.log("THE OBJECT IS HERE");
+console.log(theObject);
+
+var myData=setMyData(theObject);
+console.log("HERE");
+console.log(myData)
+console.log("HERE");
+
+
   return (
     <div className="center">
 
+
     {/*Home Button*/}
-      <Link to="/BarSite.js">
+      <Link to="/">
       <div className="smalCirkel home">
       <i class="fa fa-home fa-2x"></i>
        {/*<img src="https://img.icons8.com/windows/32/000000/home-page.png" alt="Home pic" width="32" height="32" className="question removeMargin"/>*/}
       </div>
       </Link>
-
         {/*<div>
           <button onClick={changeData}>Transform</button>
         </div>*/}
@@ -294,7 +332,7 @@ function courseinfo() {
 
          </div>
 
-        <div className="divButtonCourseInfo">
+                 <div className="divButtonCourseInfo">
             <Link to="/ReportTime.js"><button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="reportButton_CourseInfo center">
                <p className="buttonText" id="reportButtonText">Report time</p>
             </button> </Link>
@@ -307,22 +345,11 @@ function courseinfo() {
       <div className="App-bottom">
       <p className="dots">Bottom Header</p>
       </div>
-      
+
+    
     </div>
   );
 }
 
 export default courseinfo;
 
-var myData = [
-    {
-        "id": "TNA004",
-        "label": "Analys2",
-        "value": 876, //rec min
-        "addedTime": 110, //gjort min idag
-        "totAddedTime":110, //gjort totalt
-        "color": "#f92672",
-        "startDate":"12/02/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"12/05/2019"
-    }
-];

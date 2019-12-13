@@ -46,28 +46,24 @@ function colour(i){
 function timeCalc(total, part){
   var percentage = (part/total)*100;
   percentage = percentage.toFixed(2);
-  console.log(total);
-  console.log(part);
+
   return percentage;
 }
 
 function gotoCourseInfo(props){
-  console.log(props);
-  
-  console.log("hahahej")
     return(
     <CourseInfo test={props}/>
  );
 }
 
 function handleClickActivity(props) {
-  console.log("grattis du klicka på aktivteten")
   gotoCourseInfo(props);
+  console.log(props);
+  return props;
 }
 
 function handleClickQuestion(e) {
   e.preventDefault();
-  console.log(' du klickade rätt typ igen');
 }
 
 
@@ -104,14 +100,12 @@ function renderActivities(HHH){
 /*Funktion som ger innehåll genom att skicka in array av objekt*/
 function ActivityInfo(HHH) {
   const a = HHH.a;
-console.log("eheheh");
-console.log(a);
   let barProgress = timeCalc(a.totTime, a.repTime)+"%";
   var same = colour(i);
   
   return(
-    <Link to="/CourseInfo.js">
-    <div className="wrapperActivity"  onClick={() => handleClickActivity(a)}>
+    <Link to={{pathname: "/CourseInfo.js", state: a}}>
+      <div className="wrapperActivity" onClick={() => handleClickActivity(a)}>
 
       {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
       <p className="activityName">{a.id}</p>
@@ -120,8 +114,10 @@ console.log(a);
           <p className="activityMoreDetails">More details</p>
       </div>
       
-      <div className="activityBar" style={{backgroundColor: same, opacity: 0.3}}></div>
-      <div className="activityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}></div>
+      <div className="activityBar" style={{backgroundColor: same, opacity: 0.3}}>
+      </div>
+      <div className="activityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}>
+      </div>
     
     </div>
     </Link>
@@ -138,18 +134,6 @@ function BarSite(HHH) {
 
     i = 0;
     var HHH = loadData();
-
-   console.log("JOOOJJJ");
-   console.log(loadData());
-  console.log("Elin");
- 
-  console.log("Pankaka");
-  console.log(HHH);
-  console.log("majs");
-
-     console.log("Pappa");
-       console.log(HHH.length);
-       console.log("Mamma");
 
     /*meny lista typ*/
     const [menuWidth, changeMenuWidth] = useState(0);     
@@ -182,7 +166,6 @@ function BarSite(HHH) {
         changeQuestionOpacity("100%");
         changeCloseQuestionOpacity("0%");
       }
-      console.log(' du klickade på frågetecknet');
     }
 
     function questionText(){
@@ -277,18 +260,16 @@ function BarSite(HHH) {
   }
 
   function feedBack(){
-    console.log("FeedBACK respons");
-    console.log(hideFeedBack);
     return(
       <div className="feedBack" id="resetButton">
           {console.log("FeedBACK respons its false")}
-          <h1>Warning!</h1>
-          <p>Are you certain that you want to DELETE al your Courses</p>
+          <h1>WARNING!</h1>
+          <p>Are you sure that you want to DELETE all your courses?</p>
           <button style={{width: 210} } onClick={() => clearList()} className="purpleButton" id="resetButton">
-              <p className="buttonText pBlack">Reset</p>
+              <p className="buttonText pBlack">Yes</p>
             </button>
            <button style={{width: 210}} className="redButton" onClick={() => window.location.reload(true)}>
-              <p className="buttonText pBlack">Cancel</p>
+              <p className="buttonText pBlack">No</p>
             </button>
       </div>
     );
@@ -300,7 +281,7 @@ function BarSite(HHH) {
       {/*Header*/}
       <div className="appHeader head">
         <h1 className="title">StudyUp</h1>
-         <p className="h3">My Activities</p>
+         <p className="h3">My Courses</p>
       </div>
 
       {/*Question Button*/}
@@ -312,7 +293,6 @@ function BarSite(HHH) {
       <div className="questionID" style={{width: questionWidth}}>
         {questionText()}
       </div>
-
               {
                 hideFeedBack ? (null) : (feedBack())
               }
@@ -337,7 +317,7 @@ function BarSite(HHH) {
       <div className="menuClass" style={{width: menuWidth}}>
         <div className="menuID" style={{width: menuWidth}}></div>
         <Link to="/ReportTime.js"><button className="orangeButton reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
-        <Link to="/"><button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button></Link>
+        <Link to="/FormSite.js"><button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button></Link>
         <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
         <button style={{width: buttonWidth}} onClick={HandleClickFeedBack} className="orangeButton resetButton">
               <p className="buttonText pBlack">Reset</p>

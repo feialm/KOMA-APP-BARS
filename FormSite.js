@@ -33,48 +33,42 @@ function Parent(){
   }
 
 
-function colour(){
-  var props = loadData();
-  let arrayFromStorage = JSON.parse(localStorage.getItem("data"));
-  var colorCounter = props.length;
-  console.log(colorCounter)
-  console.log('colorCounter');
-  let colour1 = "white";
+  function colour(){
+    var props = loadData();
+    let arrayFromStorage = JSON.parse(localStorage.getItem("data"));
+    var colorCounter = props.length;
+    var mod = colorCounter % 5;
+    let colour1 = "white";
+    
+    if (mod === 0){
+      colour1 = "#f92672"; //rosa
+    }
+     else if (mod === 1){
+      colour1 = "#a6e22e"; //grön #33c474
+    }
+     else if (mod === 2){
+       colour1 = "#66d9ef" //blå #4ac3ff
+    }
+     else if (mod === 3){
+       colour1 = "#ae81ff"; //lila #ca45ff
+    }
+     else if (mod === 4){
+      colour1 = "#fd971f"; //orange
+    }
+    else
+      colour1="yellow";
 
-  var mod = colorCounter % 5;
+    colorCounter= colorCounter+1;
 
-  if (mod === 0){
-    colour1 = "#f92672"; //rosa
+    return colour1;
   }
-   else if (mod === 1){
-    colour1 = "#a6e22e"; //grön #33c474
-  }
-   else if (mod === 2){
-     colour1 = "#66d9ef" //blå #4ac3ff
-  }
-   else if (mod === 3){
-     colour1 = "#ae81ff"; //lila #ca45ff
-  }
-   else if (mod === 4){
-    colour1 = "#fd971f"; //orange
-  }
-  else
-    colour1="yellow";
-
-  colorCounter= colorCounter+1;
-
-  return colour1;
-}
 
   function fixObject (a, b, c, d, e) {
-    console.log(a)
     if (a === ""){
-      a = "NoName"
-      console.log("NoName achived")
+      a = "Unnamed"
     }
     if(b == ""){
       b = "12/11/2019"
-
     }
     if(c == ""){
       c = "12/24/2019"
@@ -93,11 +87,8 @@ function colour(){
     const Course = {id: a, startDate: b, endDate: c, totTime: f, repTime: g, repTodayTime: "0", color: colour()};
      
     addtoList(Course);
-
   }
 
- 
-  
   function addtoList(courseToAdd){
     localData.push(courseToAdd);
     setData(localData);
@@ -110,6 +101,8 @@ function colour(){
   );
 }
 
+
+
 //App är form
 function App(props) { // props eller inte props??
 
@@ -120,28 +113,26 @@ function App(props) { // props eller inte props??
   const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
 
   function handleClickQuestion() {
-      if(hideQuestion){
-        triggerHideQuestion(false);
-        changeQuestionWidth("100%");
-        changeQuestionOpacity("0%");
-        changeCloseQuestionOpacity("100%");
-       
-      }
-      else{
-        triggerHideQuestion(true);
-        changeQuestionWidth("0");
-        changeQuestionOpacity("100%");
-        changeCloseQuestionOpacity("0%");
-      }
-      console.log('hej du klickade på frågetecknet');
+    if(hideQuestion){
+      triggerHideQuestion(false);
+      changeQuestionWidth("100%");
+      changeQuestionOpacity("0%");
+      changeCloseQuestionOpacity("100%");
+    }
+    else{
+      triggerHideQuestion(true);
+      changeQuestionWidth("0");
+      changeQuestionOpacity("100%");
+      changeCloseQuestionOpacity("0%");
+    }
   }
 
-function questionText(){
+  function questionText(){
     if(hideQuestion === false){
       return(
         <div className="questionWrapper">
-          <div className="appHeader">
-          <h1 className="title">HELP<br/></h1>
+          <div className="appHeader" style={{height: "90px"}}>
+            <h1 className="title">Help<br/></h1>
           </div>
           <div className="questionText center">
             <p className="helpTitle">To do List</p>
@@ -186,89 +177,76 @@ function questionText(){
     }
   } 
     
-  
-
 	/*Main render for FormSite*/	
-
   return (
-
- <div className="center">
-
-     <div className="appHeader head">
-          <Link to="/">
-            <div className="fitText">
-              <h1>StudyUp</h1>
-            </div> 
-          </Link>
+    <div className="center">
+      <div className="appHeader head">
+        <Link to="/">
+          <div className="fitText">
+            <h1 className="titleDescrip">StudyUp</h1>
+          </div> 
+        </Link>
         <p className="h3">Add course details</p>
       </div>
 
+      {/*Question Button*/}
+      <div className="questionButton smalCirkel" onClick={handleClickQuestion}>
+       <p className="question removeMargin">?</p>
+      </div>
       <div className="mainBody">
- 
-        {/*Question Button*/}
-        <div className="questionButton smalCirkel" onClick={handleClickQuestion}>
-         <p className="question removeMargin">?</p>
+
+      {/*Question List*/}
+      <div className="questionID" style={{width: questionWidth}}>
+      {questionText()}
+      </div>
+      <div className="wrapperOutline fitText">
+        <div className="wrapperAddName">
+          <p className="addActivityText" id="activityName">Activity Name</p>
+          <input className="textBox" id="name" type="text" placeholder="Name" onChange={changeInput}/>
         </div>
-
-         {/*Question List*/}
-        <div className="questionID" style={{width: questionWidth}}>
-          {questionText()}
-        </div>
-
-        <div className="wrapperOutline fitText">
-
-          <div className="wrapperAddName">
-            <p className="addActivityText" id="activityName">Activity Name</p>
-            <input className="textBox" id="name" type="text" placeholder="Name" onChange={changeInput}/>
+        <div className="wrapperDate">
+          <div className="wrapperStartDate"> 
+          <div className="dateText">
+            <p className="addActivityText" id="dateText">Start Date:</p> 
           </div>
-
-          <div className="wrapperDate">
-            <div className="wrapperStartDate"> 
-            <div className="dateText">
-              <p className="addActivityText" id="dateText">Start Date:</p> 
-              </div>
-              <input className="dateBox" id="startDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
-            </div>
-            <div className="wrapperEndDate">
+          <input className="dateBox" id="startDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
+          </div>
+          <div className="wrapperEndDate">
             <div className="dateText">
               <p className="addActivityText" id="dateText">End Date:</p>
-              </div>
-              <input className="dateBox" id="endDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
             </div>
+            <input className="dateBox" id="endDate" type="text" placeholder="mm/dd/yyyy" onChange={changeInput}/>
           </div>
-
-          <div className="wrapperAddTime">
+        </div>
+        <div className="wrapperAddTime">
           <p className="addActivityTime">Set time:</p>
-            <div className="time">
-              <input className="timeBox"  type="text" id="hours" placeholder="h" onChange={changeInput}/>
-              <p className="timeIndicator">h</p>
-              <input className="timeBox"  type="text" id="min" placeholder="m" onChange={changeInput}/>
-              <p className="timeIndicator">m</p>
-            </div>
-          </div> 
-        </div>
-
-        <div className="addActivityButton fitText">
-          <Link to="/"><button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
+          <div className="time">
+            <input className="timeBox"  type="text" id="hours" placeholder="h" onChange={changeInput}/>
+            <p className="timeIndicator">h</p>
+            <input className="timeBox"  type="text" id="min" placeholder="m" onChange={changeInput}/>
+            <p className="timeIndicator">m</p>
+          </div>
+        </div> 
+      </div>
+      <div className="addActivityButton fitText">
+        <Link to="/">
+          <button onClick={() => props.fixObjectEtikett(name,startDate,endDate,hours,min)} className="greenButton center" id="formSaveButton">
             <p className="buttonText pBlack">Save</p>
-          </button></Link>
-
-            <Link to="/"><button className="redButton" id="formCancelButton">
-              <p className="buttonText pBlack">Cancel</p>
-            </button></Link>
-             
-        </div>
-
-
-
-         {/*Footer*/}
-      <div className="App-bottom">
-      <p className="dots">Bottom Header</p>
+          </button>
+        </Link>
+        <Link to="/">
+          <button className="redButton" id="formCancelButton">
+            <p className="buttonText pBlack">Cancel</p>
+          </button>
+        </Link>
       </div>
 
+      {/*Footer*/}
+      <div className="App-bottom">
+        <p className="dots">Bottom Header</p>
+      </div>
       </div>
     </div>
-    
   );
 }
 

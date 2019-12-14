@@ -27,16 +27,12 @@ p{
 
 .h3{
   margin: 4px 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .fitText {
   display: inline-block;
 }
-
-/*div{
-  font-family: "Roboto";
-}*/
 
 .heightMax{
   height: 100%;
@@ -48,10 +44,6 @@ p{
   text-align: center;
 }
 
-/*@font-face{
-	font-family: myFirstFont;
-	src: url(sansation_light.woff);
-}*/
 .appHeader{
 	color: #DDDDDD;
 	display: inline-block;
@@ -62,16 +54,15 @@ p{
 	top: 0;
 	z-index: 10;
 	padding: 0;
-   width: 100%;
+  width: 100%;
+  height: 100px;
   background-color: #2C3535;
-	margin-bottom: 25px;
-	/*font-family: "myFirstFont";*/
+	margin-bottom: 10px;
 }
 
 #headerBars{
 display: inline-block;
 }
-
 
 .App-bottom{
   position: fixed;
@@ -90,7 +81,7 @@ display: inline-block;
 }
 
 .head h1{
-  margin: 30px 0 0px 0;
+  margin: 20px 0 0px 0;
 }
 
 #root{
@@ -166,6 +157,9 @@ input{
 
 
 /*DonuT*/
+.bodyDonut{
+  margin-bottom: 60px;
+}
 
 .donut{
 	position: relative;
@@ -174,13 +168,14 @@ input{
 }
 
 .recTimeText{
-    font-size: calc(24px + .8vw);
+    font-size: calc(25px);
+    padding-top: 5px;
 }
 
 .recTime{
 	position: absolute;
 	width: 100%;
-	top: 38%;
+	top: 31%;
 }
 
 .tableDonut{
@@ -188,7 +183,7 @@ input{
 	/*border: 1px solid white;*/
 	background-color: #262E2E;
 	padding: 15px 0 15px 0;
-
+  margin-top: 25px;
 }
 
 
@@ -213,7 +208,7 @@ input{
 /*How the table's names are aligned*/
 .idLabel{
 	text-align: left;
-  height: 40px;
+  height: 20px;
 }
 
 /*How time look inside of tableDonut*/
@@ -229,11 +224,23 @@ input:focus {
   color: black;
 }
 
+.titleDescrip{
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.title{
+  font-size: 30px;
+  margin-top: 35px;
+}
 
 #bars{
   height: 100%;
 }
 
+.mainBody{
+  margin-bottom: 70px;
+}
 
 
 /*Bars - "child"*/
@@ -406,10 +413,6 @@ input:focus {
   align-items: center;
 }
 
-#min{
-  text-indent: 5px;
-}
-
 #min:focus{
   text-indent: 10px;
 }
@@ -445,7 +448,7 @@ input:focus {
 
 /*ReportTime*/
 .home{
-  margin-left: 4%;
+  left: 5%;
 }
 
 .fa-home{
@@ -454,11 +457,36 @@ input:focus {
 
 }
 
+.reportWrapper{
+  margin-top: 40px;
+}
+.wrapperReportTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+  width: 80%;
+  margin: auto;
+}
+
 /* Kod för att få texten över de linjerade rutorna alignade
 och snygga */
 .reportTimeText{
 text-align: left;
 }
+
+.selected{
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.selecting{
+  width: 70%;
+  margin: auto;
+  margin-top: 15px;
+}
+
 
 .wrapperMain{
   margin:20px;
@@ -472,14 +500,17 @@ text-align: left;
 }
 
 
-
-
-
 /* få hours and min rutorn i center */
 #centerDiv{
   width: 50%;
-  padding-bottom: 10px;
-  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.divButtonCourseInfo{
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .addActivityTime{
@@ -511,7 +542,7 @@ text-align: left;
 }
 
 #activitySetTime{
-  height: 30px;
+  height: 40px;
   background-color:#242B2B; 
   box-shadow: 5px 5px 5px #21211c;
 }
@@ -521,12 +552,11 @@ text-align: left;
   width: 100%;
   height: 50px;
   display: inline-block;
-  /*centrera*/
   /*gör så att det ligger över om man hinner*/
   background-color: #242B2B;
   border-style: solid;
   border-color: #C9C7CE;
-  border-width: 1px;
+  border-width: 0.5px;
   color: #C9C7CE;
 }
 
@@ -534,7 +564,8 @@ text-align: left;
 
 .arrow{
   float: right;
-  margin: 5px 16px;
+  margin-top: -19px;
+  margin-right: 13px;
 }
 
 .buttonText{
@@ -595,12 +626,13 @@ text-align: left;
 #dead_title{
   text-align: left;
   margin-bottom: 0px;
+  margin-top: 0;
 }
 
 #wrapper {
-    padding-top: 30px;
+    padding: 30px 0;
     width: 100%;
-  
+    
     overflow: hidden; /* add this to contain floated children */
 }
 #first {
@@ -621,24 +653,24 @@ text-align: left;
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 29%;
+  top: 30%;
   color: #DDDDDD;
 }
 #rhsText p{
   margin: 0px;
-  font-size: calc(22px);
+  font-size: calc(16px);
 }
 
 #lhsText{
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 32%;
+  top: 30%;
   color: #DDDDDD;
 }
 #lhsText p{
   margin: 0px; 
-  font-size: calc(22px);
+  font-size: calc(16px);
 }
 
 .goal{
@@ -664,7 +696,7 @@ text-align: left;
   background-color: #e3871b;
   width: 125px;
   margin-top: 30px;
-  margin-right: 2%;
+  float: left;
 }
 
 .editButton{
@@ -672,6 +704,7 @@ text-align: left;
   width: 125px;
   margin-top: 30px;
   margin-left: 2%;
+  float: right;
 }
 
 /*******************************************************************************************/
@@ -691,8 +724,8 @@ text-align: left;
   border-radius: 50px;
   border-width: 2px;
   position: fixed;
-  bottom: 7%;
-  right: 13%;
+  bottom: 4%;
+  right: 10%;
   border-style: solid;
   border-color: #C9C7CE; 
   color: #C9C7CE;
@@ -730,7 +763,7 @@ text-align: left;
 
 .menuID{
   background-color: black;
-  opacity: 75%;
+  opacity: 90%;
   height: 100%;
   position: fixed;
   z-index: 101;
@@ -867,12 +900,12 @@ height: 100%;
   width: 80%;
   display: block;
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
   border-style: solid;
   border-color: #C9C7CE;
   border-width: 1px;
   text-align: left;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 0;
   background-color: #262e2e;
 }
 
@@ -881,12 +914,11 @@ height: 100%;
   color: #DDDDDD;
   font-size: 18px;
   text-decoration: underline;
-  padding-left: 5%;
+  padding: 0 10%;
 }
 
 .helpText{
-  padding-left: 5%;
-  padding-top: 0;
+  padding: 0 10%;
   line-height: 160%;
   font-size: 16px;
   margin-top: -16px;

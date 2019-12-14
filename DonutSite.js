@@ -1,67 +1,55 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import "./App.css";
 import * as d3 from "d3";
 import AnimatedPieHooks from './doughnut.js';
 
 
-  //denna eller funktion gör vi i falla att det är null i localstarage
-  function loadData(){
-    try {
-      const storage = JSON.parse(window.localStorage.getItem("data"));
-      return storage || [];
-    } catch (e) {
-      return [];
-    }
+//denna eller funktion gör vi i falla att det är null i localstarage
+function loadData(){
+  try {
+    const storage = JSON.parse(window.localStorage.getItem("data"));
+    return storage || [];
+  } catch (e) {
+    return [];
   }
-
-
-
+}
 
 //Fei och Jessie implementering med knappar
 function handleClickActivity(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ');
 }
 
 function handleClickQuestion(e) {
   e.preventDefault();
-  console.log('hej du klickade rätt typ igen');
 }
  
 //Donut funktioner utan modifiering 
 function createTable() {
-   let props = loadData();
-        let table = [];
-        //Outertable to create parent
-        for(let i = 0; i < props.length; i++){
-          let children = []
-          //Inner loop to create children // 
-            children.push(
-              <td className='color' key={i + 'a'}>
-              <div className="box" style={{backgroundColor:props[i].color}}>
-               
-              </div></td>) 
-            children.push(<td className='idLabel' key={i + 'b'}><p>{props[i].id}</p></td>)
-            children.push(<td className='timeLabel' key={i + 'c'}><p>{stringTime(props[i].repTime)+" of "+ recTime_today(props,i) }</p></td>)  //myData[i].value+'h'
-          
+  let props = loadData();
+  let table = [];
 
-          //Create a parent and add it's children
-          table.push(<tr key={i + 'd'}>{children}</tr>)
-        }
-        return table
+  //Outertable to create parent
+  for(let i = 0; i < props.length; i++){
+    let children = []
+    //Inner loop to create children // 
+    children.push(
+      <td className='color' key={i + 'a'}>
+        <div className="box" style={{backgroundColor:props[i].color}}/>
+      </td>
+    ) 
+    children.push(<td className='idLabel' key={i + 'b'}><p>{props[i].id}</p></td>)
+    children.push(<td className='timeLabel' key={i + 'c'}><p>{stringTime(props[i].repTime)+" of "+ recTime_today(props,i) }</p></td>) 
+    //Create a parent and add it's children
+    table.push(<tr key={i + 'd'}>{children}</tr>)
+  }
+  return table
 }
 
-//days = 13
 
 function recTime_today(props, i){
-
- let timePerDay2 = howManyHoursToday(props, i);
-
+  let timePerDay2 = howManyHoursToday(props, i);
   return  stringTime(timePerDay2)
-
 }
 
 var totalHoursPerDay = 0;
@@ -69,36 +57,23 @@ let temp = false;
 
 function howManyHoursToday(props, i){
   var endDate = new Date(props[i].endDate)
-
   var todaysDate = new Date() 
-
   var difference_In_Time = (endDate.getTime() - todaysDate.getTime());
-
-  let difference_In_Time1 = difference_In_Time/(60000);
-
-  let daysbetween = difference_In_Time1*0.000694444444;
-  let timePerDay = (Number(props[i].totTime)/daysbetween);
+  var daysbetween = (difference_In_Time/(60000))*0.000694444444;
+  var timePerDay = (Number(props[i].totTime)/daysbetween);
   totalHoursPerDay = totalHoursPerDay + timePerDay;
-  console.log(totalHoursPerDay);
-
   return timePerDay;
 }
 
-
 function recTime(){ //Shows the recommended time of h and min for todays studies.
-   let props = loadData();
-   let totHours = 0;
-   for (var i = 0; i < props.length; i++){
-     totHours = totHours + howManyHoursToday(props, i);
-   }
+  let props = loadData();
+  let totHours = 0;
 
-console.log(totHours);
+  for (var i = 0; i < props.length; i++){
+    totHours = totHours + howManyHoursToday(props, i);
+  }
 
-
-//console.log(Number(totHours));
-console.log("K");
   return stringTime(totHours);
-  //return stringTime(10);
 }
 
 function callRepTime(){
@@ -106,21 +81,16 @@ function callRepTime(){
 }
 
 function stringTime(totalTime){
-  console.log(totalTime);
   var hours = Math.floor(totalTime/60);
- console.log(hours);
   var minutes = (totalTime % 60);
-console.log(minutes);
   if(minutes === 0){
     return hours + 'h';
   }
   if(hours === 0){
     return Math.floor(minutes)+"min"
   }
-
   return hours + 'h '+ Math.floor(minutes) + 'min';
 }
-
 
 //Vår självaste sida
 function DonutSite(props){
@@ -134,29 +104,27 @@ function DonutSite(props){
   const [questionOpacity, changeQuestionOpacity] = useState("100%"); 
   const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
 
- function handleClickQuestion() {
-      if(hideQuestion){
-        triggerHideQuestion(false);
-        changeQuestionWidth("100%");
-        changeQuestionOpacity("0%");
-        changeCloseQuestionOpacity("100%");
-       
-      }
-      else{
-        triggerHideQuestion(true);
-        changeQuestionWidth("0");
-        changeQuestionOpacity("100%");
-        changeCloseQuestionOpacity("0%");
-      }
-      console.log('hej du klickade på frågetecknet');
+  function handleClickQuestion() {
+    if(hideQuestion){
+      triggerHideQuestion(false);
+      changeQuestionWidth("100%");
+      changeQuestionOpacity("0%");
+      changeCloseQuestionOpacity("100%");
+    }
+    else{
+      triggerHideQuestion(true);
+      changeQuestionWidth("0");
+      changeQuestionOpacity("100%");
+      changeCloseQuestionOpacity("0%");
+    }
   }
 
   function questionText(){
     if(hideQuestion === false){
       return(
         <div className="questionWrapper">
-          <div className="appHeader">
-          <h1 className="title">HELP<br/></h1>
+          <div className="appHeader" style={{height: "90px"}}>
+            <h1 className="title">Help<br/></h1>
           </div>
           <div className="questionText center">
             <p className="helpTitle">To do List</p>
@@ -194,12 +162,7 @@ function DonutSite(props){
       );
     }
   }
-  /*
-    function handleClickReport() {
-    console.log(' du klickade på Report');
-     setRedirect(true);
-  }
-  */
+ 
   function addActivity(){
     if (hideMenu === false){
       return(
@@ -215,131 +178,63 @@ function DonutSite(props){
       );
     }
   }
-  console.log(props.data);
 
-    return (
-      <div className="center mainBody">
-        {/*<div>
-          <button onClick={changeData}>Transform</button>
-        </div>*/}
-        <div className="appHeader head">
-          <Link to="/">
-            <div className="fitText">
-              <h1>StudyUp</h1>
-            </div> 
-          </Link>
-          <p className="h3">To achieve your goal, <br/>study these hours daily</p>
-        </div>
-      
+  return (
+    <div className="center mainBody">
+      <div className="appHeader head" style={{height: "120px"}}>
+        <Link to="/">
+          <div className="fitText">
+            <h1 className="titleDescrip">StudyUp</h1>
+          </div> 
+        </Link>
+        <p className="h3">Study these hours<br/> daily to achieve your goal</p>
+      </div>
+    
+    {/*Question Button*/}
+      <div className="questionButton smalCirkel" onClick={handleClickQuestion}>
+         <p className="question removeMargin">?</p>
+      </div>
 
-      {/*Question Button*/}
-        <div className="questionButton smalCirkel" onClick={handleClickQuestion}>
-           <p className="question removeMargin">?</p>
-        </div>
+    {/*Question List*/}
+      <div className="questionID" style={{width: questionWidth}}>
+        {questionText()}
+      </div>
+     {/*Donutgeneration*/}
 
-      {/*Question List*/}
-        <div className="questionID" style={{width: questionWidth}}>
-          {questionText()}
-        </div>
-       
-      {/*Donutgeneration*/}
+      <div className="bodyDonut">
         <div className="donut heightMax">
           <div className="recTime center">
-          <p className="removeMargin recTimeText">Study</p>
+            <p className="removeMargin recTimeText" style={{fontSize: "18px"}}>Study</p>
             <p className="removeMargin recTimeText"> 
             {
               recTime()
             } 
             </p>
+            <p className="removeMargin recTimeText" style={{fontSize: "18px"}}>today</p>
           </div>
           <AnimatedPieHooks
             data={props}
-            width={300}
-            height={300}
-            innerRadius={80}
-            outerRadius={150}
+            width={250}
+            height={250}
+            innerRadius={70}
+            outerRadius={125}
           />
         </div>
         <div id='myData'>
           <table className="wrapperOutline tableDonut center">
-            {createTable(props.data)}
+          {createTable(props.data)}
           </table>
         </div>
+        <Link to="/">
+          <div className="nextPage_left"><p>&#60;</p></div>
+        </Link>
+      </div>
 
-      <Link to="/">
-        <div className="nextPage_left"><p>&#60;</p></div>
-      </Link>
-
-        {/*Footer*/}
+      {/*Footer*/}
       <div className="App-bottom">
-      <p className="dots">Bottom Header</p>
+        <p className="dots">Bottom Header</p>
       </div>
-      </div>
-    );
-  
+    </div>
+  );
 }
 export default DonutSite;
-
-/*var myData = [
-    {
-        "id": "TNA004",
-        "label": "Analys2",
-        "value": 576, //rec min
-        "addedTime": 10, //gjort min idag
-        "totAddedTime":10, //gjort totalt
-        "color": "#f92672",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ  30dar skillnad
-        "endDate":"12/27/2019"
-    },
-    {
-        "id": "TNA001",
-        "label": "Grunken",
-        "value": 360,
-        "addedTime": 10,
-        "totAddedTime":20, //gjort totalt
-        "color": "#66D9EF",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"12/27/2019"
-    },
-    {
-        "id": "TNG033",
-        "label": "Programmering i c++",
-        "value": 560,
-        "addedTime": 24,
-        "totAddedTime":24, //gjort totalt
-        "color": "#A6E22E",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"12/27/2019"
-    },
-    {
-        "id": "TND002",
-        "label": "Objektorienterad Programmering",
-        "value": 310,
-        "addedTime": 240,
-        "totAddedTime":300, //gjort totalt
-        "color": "#AE81FF",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"11/28/2020"
-    },
-     {
-        "id": "TNM088",
-        "label": "Digitala medier",
-        "value": 436,
-        "addedTime": 120,
-        "totAddedTime":130, //gjort totalt
-        "color": "#FFE792",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"12/27/2019"
-    },
-
-    {
-        "id": "TNA005",
-        "label": "Tilmp mat i teknik",
-        "value": 354,
-        "addedTime": 20,
-        "totAddedTime":20, //gjort totalt
-        "color": "#FD971F",
-        "startDate":"11/27/2019", //MM/DD/ÅÅÅÅ
-        "endDate":"01/27/2020"
-    }
-];*/

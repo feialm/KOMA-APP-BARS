@@ -2,9 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import {Helmet} from 'react-helmet';
-// import our component
-//import ReportTime from "./ReportTime.js";
-//import Child from "./Child.js";
 import FormSite from "./FormSite.js";
 import BarSite from "./BarSite.js";
 import DonutSite from "./DonutSite.js";
@@ -13,10 +10,7 @@ import CourseInfo from "./CourseInfo.js"
 
 // main component of app is always one page (depending on url path) + Menu below
 const App = () => {
-
-
   return (
-
     <Router>
       <div>
         <Helmet>
@@ -33,8 +27,6 @@ const App = () => {
         <Route path="/CourseInfo.js" component={CourseInfo} />
       </Switch>
     </Router>
-
-
   );
 };
 

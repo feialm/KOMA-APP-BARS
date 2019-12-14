@@ -1,14 +1,9 @@
-
-//import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import { useState } from 'react';
 import React, { Component } from 'react';
 import ReportTime from "./ReportTime.js";
 import CourseInfo from './CourseInfo.js';
-
-
-
 
 var menubool = false;
 let i = 0;
@@ -18,9 +13,7 @@ function incrementID(){
 }
 
 function colour(i){
- 
   let colour1 = "white";
-
   var mod = i % 5;
 
   if (mod === 0){
@@ -43,57 +36,40 @@ function colour(i){
   return colour1;
 }
 
+
 function timeCalc(total, part){
   var percentage = (part/total)*100;
   percentage = percentage.toFixed(2);
-
   return percentage;
 }
 
 function gotoCourseInfo(props){
-    return(
+  return(
     <CourseInfo test={props}/>
  );
 }
 
 function handleClickActivity(props) {
   gotoCourseInfo(props);
-  console.log(props);
   return props;
 }
 
-function handleClickQuestion(e) {
-  e.preventDefault();
+
+//denna eller funktion gör vi i falla att det är null i localstarage
+function loadData(){
+  try {
+    const storage = JSON.parse(window.localStorage.getItem("data"));
+    return storage || [];
+  } catch (e) {
+    return [];
+  }
 }
 
 
-
- //denna eller funktion gör vi i falla att det är null i localstarage
-  function loadData(){
-    //const q = loadData();
-
-    try {
-      const storage = JSON.parse(window.localStorage.getItem("data"));
-
-      return storage || [];
-    } catch (e) {
-      return [];
-    }
-  }
-
-
 function renderActivities(HHH){
-  //const b = HHH.courses;
-  const b = HHH;
- //  console.log(b[0].name);
-
- //console.log(HHH.name);
-
-
- return (
+  return (
      HHH.map(c=> (<ActivityInfo key={c.name} a={c} />))
-
-    );
+  );
 }
 
 
@@ -106,124 +82,106 @@ function ActivityInfo(HHH) {
   return(
     <Link to={{pathname: "/CourseInfo.js", state: a}}>
       <div className="wrapperActivity" onClick={() => handleClickActivity(a)}>
-
-      {/*Här ska vi försöka skriva ut arrayen med dess namn och tid */}
-      <p className="activityName">{a.id}</p>
-      <div className="activityDetails">
+        <p className="activityName">{a.id}</p>
+        <div className="activityDetails">
           <p className="activityPercentage">{timeCalc(a.totTime, a.repTime)}% done</p>
           <p className="activityMoreDetails">More details</p>
+        </div>
+        <div className="activityBar" style={{backgroundColor: same, opacity: 0.3}}/>
+        <div className="activityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}/>
       </div>
-      
-      <div className="activityBar" style={{backgroundColor: same, opacity: 0.3}}>
-      </div>
-      <div className="activityProgress" style={{width: barProgress, backgroundColor: same, opacity: 0.8}}>
-      </div>
-    
-    </div>
     </Link>
   )
 }
 
-
 //}//den här är tillaggd var sist förut!!!!!!!!!!!!
 /*renderar sidelementen typ*/
 function BarSite(HHH) {
-    // test
-    const [ToCourseInfo, setToCourseInfo] = useState(0);
-    
+  var HHH = loadData();
+  i = 0;
 
-    i = 0;
-    var HHH = loadData();
+  /*meny lista typ*/
+  const [menuWidth, changeMenuWidth] = useState(0);     
+  const [buttonWidth, changeButtonWidth] = useState(0);
+  const [hideMenu, triggerHideMenu] = useState(true);
+  const [hideFeedBack, triggerHideFeedBack] = useState(true);
 
-    /*meny lista typ*/
-    const [menuWidth, changeMenuWidth] = useState(0);     
-    const [buttonWidth, changeButtonWidth] = useState(0);
-    const [hideMenu, triggerHideMenu] = useState(true);
-    const [hideFeedBack, triggerHideFeedBack] = useState(true);
+  /*Questionbutton and list*/
+  const [hideQuestion, triggerHideQuestion] = useState(true); 
+  const [questionWidth, changeQuestionWidth] = useState(0); 
+  const [questionOpacity, changeQuestionOpacity] = useState("100%"); 
+  const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
 
-    /*Questionbutton and list*/
-    const [hideQuestion, triggerHideQuestion] = useState(true); 
-    const [questionWidth, changeQuestionWidth] = useState(0); 
-    const [questionOpacity, changeQuestionOpacity] = useState("100%"); 
-    const [closeQuestionOpacity, changeCloseQuestionOpacity] = useState("0%");
-   // const [redirect, setRedirect] = useState(false);
-
-
-
-
-    /* om man klickar på question button */
-    function handleClickQuestion() {
-      if(hideQuestion){
-        triggerHideQuestion(false);
-        changeQuestionWidth("100%");
-        changeQuestionOpacity("0%");
-        changeCloseQuestionOpacity("100%");
-       
-      }
-      else{
-        triggerHideQuestion(true);
-        changeQuestionWidth("0");
-        changeQuestionOpacity("100%");
-        changeCloseQuestionOpacity("0%");
-      }
+  /* om man klickar på question button */
+  function handleClickQuestion() {
+    if(hideQuestion){
+      triggerHideQuestion(false);
+      changeQuestionWidth("100%");
+      changeQuestionOpacity("0%");
+      changeCloseQuestionOpacity("100%");
     }
+    else{
+      triggerHideQuestion(true);
+      changeQuestionWidth("0");
+      changeQuestionOpacity("100%");
+      changeCloseQuestionOpacity("0%");
+    }
+  }
 
-    function questionText(){
-      if(hideQuestion === false){
-        return(
-          <div className="questionWrapper">
-            <div className="appHeader">
-            <h1 className="title">HELP<br/></h1>
-            </div>
-            <div className="questionText center">
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-              <p className="helpTitle">To do List</p>
-              <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            </div>
+  function questionText(){
+    if(hideQuestion === false){
+      return(
+        <div className="questionWrapper">
+          <div className="appHeader" style={{height: "90px"}}>
+          <h1 className="title">Help<br/></h1>
           </div>
-        );
-      }
+          <div className="questionText center">
+            <p className="helpTitle">To do List</p>
+            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+            <p className="helpTitle">To do List</p>
+            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+            <p className="helpTitle">To do List</p>
+            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+            <p className="helpTitle">To do List</p>
+            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+            <p className="helpTitle">To do List</p>
+            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
+          </div>
+        </div>
+      );
     }
+  }
 
 
-     /* om man klickar på meny-knappen */
-    function HandleClickMenu(){       /*gör likadant för allt annat, typ?*/
-      if(hideMenu){                   /* öppnar menyn */
-        triggerHideMenu(false);
-        changeMenuWidth("100%");
-        changeButtonWidth("200px");
-      }
-      else{                           /* göm menyn */
-        triggerHideMenu(true);  
-        changeMenuWidth("0");
-        changeButtonWidth("0");
-      }
+   /* om man klickar på meny-knappen */
+  function HandleClickMenu(){       /*gör likadant för allt annat, typ?*/
+    if(hideMenu){                   /* öppnar menyn */
+      triggerHideMenu(false);
+      changeMenuWidth("100%");
+      changeButtonWidth("200px");
     }
+    else{                           /* göm menyn */
+      triggerHideMenu(true);  
+      changeMenuWidth("0");
+      changeButtonWidth("0");
+    }
+  }
 
-       function HandleClickFeedBack(){ 
-       console.log(hideFeedBack);      /*gör likadant för allt annat, typ?*/
-      if(hideFeedBack){  
+  function HandleClickFeedBack(){ /*gör likadant för allt annat, typ?*/
+    if(hideFeedBack){  
       feedBack();                 /* öppnar menyn */
-        triggerHideFeedBack(false);
-        changeMenuWidth("100%");
-        changeButtonWidth("200px");
-        console.log("aaa popup where");
- //render popup
-      }
-      else{                           /* göm menyn */
-        triggerHideFeedBack(true);  
-        changeMenuWidth("0");
-        changeButtonWidth("0");
-        console.log("no popup");
-      }
+      triggerHideFeedBack(false);
+      changeMenuWidth("100%");
+      changeButtonWidth("200px");
+      console.log("aaa popup where");
     }
+    else{                           /* göm menyn */
+      triggerHideFeedBack(true);  
+      changeMenuWidth("0");
+      changeButtonWidth("0");
+      console.log("no popup");
+    }
+  }
 
   function reportTime(){
     if (hideMenu === false){
@@ -232,12 +190,8 @@ function BarSite(HHH) {
       );
     }
   }
-/*
-  function handleClickReport() {
-  console.log(' du klickade på Report');
-   setRedirect(true);
-}
-*/
+
+
   function addActivity(){
     if (hideMenu === false){
       return(
@@ -245,6 +199,7 @@ function BarSite(HHH) {
       );
     }
   }
+
 
   function deleteActivity(){
     if (hideMenu === false){
@@ -254,48 +209,49 @@ function BarSite(HHH) {
     }
   }
 
+
   function clearList(){
     window.localStorage.clear();
     window.location.reload(true);
   }
 
+
   function feedBack(){
     return(
       <div className="feedBack" id="resetButton">
-          {console.log("FeedBACK respons its false")}
-          <h1>WARNING!</h1>
-          <p>Are you sure that you want to DELETE all your courses?</p>
-          <button style={{width: 210} } onClick={() => clearList()} className="purpleButton" id="resetButton">
-              <p className="buttonText pBlack">Yes</p>
-            </button>
-           <button style={{width: 210}} className="redButton" onClick={() => window.location.reload(true)}>
-              <p className="buttonText pBlack">No</p>
-            </button>
+        <h1>WARNING!</h1>
+        <p>Are you sure that you want to DELETE all your courses?</p>
+        <button style={{width: 210} } onClick={() => clearList()} className="purpleButton" id="resetButton">
+          <p className="buttonText pBlack">Yes</p>
+        </button>
+        <button style={{width: 210}} className="redButton" onClick={() => window.location.reload(true)}>
+          <p className="buttonText pBlack">No</p>
+        </button>
       </div>
     );
   }
-//onClick={clearList()}
+
   return (
     <div className="center">
  
       {/*Header*/}
       <div className="appHeader head">
-        <h1 className="title">StudyUp</h1>
+        <h1 className="titleDescrip">StudyUp</h1>
          <p className="h3">My Courses</p>
       </div>
 
       {/*Question Button*/}
       <div className="questionButton smalCirkel" onClick={handleClickQuestion}>
-       <p className="question removeMargin">?</p>
+        <p className="question removeMargin">?</p>
       </div>
 
        {/*Question List*/}
       <div className="questionID" style={{width: questionWidth}}>
         {questionText()}
       </div>
-              {
-                hideFeedBack ? (null) : (feedBack())
-              }
+      {
+        hideFeedBack ? (null) : (feedBack())
+      }
 
       {/*Main body*/}
       <div className="mainBody">
@@ -306,37 +262,45 @@ function BarSite(HHH) {
       {/*Menu Button*/}
       <div className="menuButton" onClick={HandleClickMenu}>
         <div className="menuIcon">
-          <div className="menu"></div>
-          <div className="menu"></div>
-          <div className="menu"></div>
+          <div className="menu"/>
+          <div className="menu"/>
+          <div className="menu"/>
         </div>
       </div>
 
       {/*Menu List*/}
-   
       <div className="menuClass" style={{width: menuWidth}}>
-        <div className="menuID" style={{width: menuWidth}}></div>
-        <Link to="/ReportTime.js"><button className="orangeButton reportButton" style={{width: buttonWidth}}>{reportTime()}</button></Link>
-        <Link to="/FormSite.js"><button className="addButton" style={{width: buttonWidth}}>{addActivity()}</button></Link>
-        <button className="deleteButton" style={{width: buttonWidth}}>{deleteActivity()}</button>
-        <button style={{width: buttonWidth}} onClick={HandleClickFeedBack} className="orangeButton resetButton">
-              <p className="buttonText pBlack">Reset</p>
-              
+        <div className="menuID" style={{width: menuWidth}}/>
+          <Link to="/ReportTime.js">
+            <button className="orangeButton reportButton" style={{width: buttonWidth}}>
+              {reportTime()}
             </button>
-      </div>
-     
-
-      <Link to="/DonutSite.js"><div className="nextPage_right"><p>&#62;</p>
-      </div></Link>
-
-      <div>
-       {/*Footer*/}
-        <div className="App-bottom">
-        <p className="dots">Bottom Header</p>
+          </Link>
+          <Link to="/FormSite.js">
+            <button className="addButton" style={{width: buttonWidth}}>
+              {addActivity()}
+            </button>
+          </Link>
+          <button className="deleteButton" style={{width: buttonWidth}}>
+            {deleteActivity()}
+          </button>
+          <button style={{width: buttonWidth}} onClick={HandleClickFeedBack} className="orangeButton resetButton">
+            <p className="buttonText pBlack">Reset</p>
+          </button>
         </div>
+        <Link to="/DonutSite.js">
+          <div className="nextPage_right">
+            <p>&#62;</p>
+          </div>
+        </Link>
+      <div>
+       
+      {/*Footer*/}
+      <div className="App-bottom">
+        <p className="dots">Bottom Header</p>
       </div>
-    
     </div>
+  </div>
   );
 }
 

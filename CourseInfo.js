@@ -20,24 +20,23 @@ function setMyData(theObject){
       "startDate":theObject.startDate, //MM/DD/ÅÅÅÅ
       "endDate":theObject.endDate    }
   ];
-
   return myDataTemp;
 }
 
 
 function loadData(myData){
-    try {
-      const storage = JSON.parse(window.localStorage.getItem("data"));
-      return storage || [];
-    } catch (e) {
-      return [];
-    }
+  try {
+    const storage = JSON.parse(window.localStorage.getItem("data"));
+    return storage || [];
+  } catch (e) {
+    return [];
   }
+}
 
 function write_name(myData){
   {/*let myData = loadData(); */}
   var name = myData[0].id; 
-  return <h1>{name}</h1>;
+  return <h1 className="title" style={{marginTop: "25px"}}>{name}</h1>;
 }
 
 function hours_to_min(value){
@@ -46,22 +45,11 @@ function hours_to_min(value){
 }
 
 function days_tot(myData){
-  console.log('myData')
-  console.log(myData)
-    {/*let myData = loadData(); */}
   var endDate = new Date(myData[0].endDate)
-  console.log('myData ENDDATE')
-  console.log(endDate)
   var todaysDate = new Date()
-
   var difference_In_Time = endDate.getTime() - todaysDate.getTime();
-  console.log('Difference TIME')
-  console.log(difference_In_Time)
-
   var difference_In_Days = difference_In_Time / (1000 * 3600 * 24); 
-  
-  console.log('Difference INdays')
-  console.log(difference_In_Days)
+ 
   if( difference_In_Days % 1 < 0.5){
     difference_In_Days = Math.floor(difference_In_Days)
   }
@@ -70,26 +58,21 @@ function days_tot(myData){
     difference_In_Days= Math.ceil(difference_In_Days)
   }
 
-  
   return difference_In_Days
-
 }
 
+
 function day_span(myData){
-      {/*let myData = loadData(); */}
-
- var endDate = new Date(myData[0].endDate)
+  var endDate = new Date(myData[0].endDate)
   var startDate = new Date(myData[0].startDate)
-
-
   var difference_In_Time = endDate.getTime() - startDate.getTime();
+
   if(difference_In_Time < 0){
     return 0
   }
   else{
-
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24); 
-   
+  
     if( difference_In_Days % 1 < 0.5){
         difference_In_Days = Math.floor(difference_In_Days)
      }
@@ -97,16 +80,13 @@ function day_span(myData){
       {
        difference_In_Days= Math.ceil(difference_In_Days)
       }
-      
     return difference_In_Days
   }
-  
 }
 
 function hour_donut_text(myData) { //Måste ändra vad myData[0]. är för nått
-      {/*let myData = loadData(); */}
-
   var hour_worked = (myData[0].totAddedTime)/ 60;
+  var tot_time = (myData[0].value)/ 60;
   
   if( hour_worked % 1 < 0.5){
         hour_worked = Math.floor(hour_worked)
@@ -116,7 +96,6 @@ function hour_donut_text(myData) { //Måste ändra vad myData[0]. är för nått
        hour_worked= Math.ceil(hour_worked)
      }
 
-  var tot_time = (myData[0].value)/ 60;
 
   if( tot_time % 1 < 0.5){
         tot_time = Math.floor(tot_time)
@@ -125,35 +104,25 @@ function hour_donut_text(myData) { //Måste ändra vad myData[0]. är för nått
      {
        tot_time= Math.ceil(tot_time)
      }
-    console.log('hour_worked')
-     console.log(hour_worked)
-     console.log('tot_time')
-     console.log(tot_time)
-
-     return <p>{hour_worked} / {tot_time}</p>
-
+  return <p style={{fontSize: "30px"}}>{hour_worked}/{tot_time}</p>
 }
 
-function day_donut_text(myData) {
-      
 
-  return <p>{days_tot(myData)}</p>
+function day_donut_text(myData) {
+  return <p style={{fontSize: "30px"}}>{days_tot(myData)}</p>
 }
 
 
 function create_fake_array_two(myData){
-var dayDiff_nbr = days_tot(myData)
+  var dayDiff_nbr = days_tot(myData)
+  var dayDiff_per = day_span(myData)
 
-var dayDiff_per = day_span(myData)
-
-if(((myData[0].value)-(myData[0].totAddedTime))<0){
-  var recomend_left = 0
-
-}
-else
-{
-  var recomend_left=(myData[0].value)-(myData[0].totAddedTime)
-}
+  if(((myData[0].value)-(myData[0].totAddedTime))<0){
+    var recomend_left = 0
+  }
+  else {
+    var recomend_left=(myData[0].value)-(myData[0].totAddedTime)
+  }
 
   var fakeArray = [
     {
@@ -179,15 +148,13 @@ else
         "recom": recomend_left
     }
   ];
-
   return fakeArray
 }
 
+
 function create_fake_array(myData){
-var dayDiff_nbr = days_tot(myData)
-
-var dayDiff_per = day_span(myData)
-
+  var dayDiff_nbr = days_tot(myData)
+  var dayDiff_per = day_span(myData)
 
   var fakeArray = [
     {
@@ -213,143 +180,101 @@ var dayDiff_per = day_span(myData)
         "dayDiff": dayDiff_per
     }
   ];
-
   return fakeArray
 }
 
+
 function goal_text(myData) {
+  var tot_value_min = Number(myData[0].value);
+  var tot_worked_min = myData[0].totAddedTime;
+  var days_left = days_tot(myData);
+  var work_a_day = (tot_value_min-tot_worked_min)/days_left;
+  var hours= Math.floor(work_a_day/60);
+  var minutes = (work_a_day % 60);
 
-  console.log(myData);
-
-    var tot_value_min = Number(myData[0].value);
-    var tot_worked_min = myData[0].totAddedTime;
-  
-
-    var days_left = days_tot(myData);
-
-    
-    var work_a_day = (tot_value_min-tot_worked_min)/days_left;
-    console.log(work_a_day);
-console.log(tot_value_min);
-    var hours= Math.floor(work_a_day/60);
-    console.log(hours+"Hours")
-    var minutes = (work_a_day % 60);
-    console.log(minutes+"min")
-  
-
-
-
-   if(minutes === 0){
-     return hours+'h';
-   }
-   if(hours === 0){
-     return Math.floor(minutes)+"min"
-    }
-
-   return hours+'h '+ Math.floor(minutes)+'min';
+  if(minutes === 0){
+    return hours+'h';
+  }
+  if(hours === 0){
+    return Math.floor(minutes)+"min"
+  }
+  return hours+'h '+ Math.floor(minutes)+'min';
 }
 
 
 function courseinfo(props) {
-
-const theObject = props.location.state;
-console.log("THE OBJECT IS HERE");
-console.log(theObject);
-
-var myData=setMyData(theObject);
-console.log("HERE");
-console.log(myData)
-console.log("HERE");
-
+  const theObject = props.location.state;
+  var myData=setMyData(theObject);
 
   return (
     <div className="center">
 
-
-    {/*Home Button*/}
+      {/*Home Button*/}
       <Link to="/">
-      <div className="smalCirkel home">
-      <i class="fa fa-home fa-2x"></i>
-       {/*<img src="https://img.icons8.com/windows/32/000000/home-page.png" alt="Home pic" width="32" height="32" className="question removeMargin"/>*/}
-      </div>
+        <div className="smalCirkel home">
+          <i class="fa fa-home fa-2x"></i>
+        </div>
       </Link>
-        {/*<div>
-          <button onClick={changeData}>Transform</button>
-        </div>*/}
-        <div className="appHeader head fitText">
-           {write_name(myData)}
-         
+      <div className="appHeader head fitText" style={{height: "90px"}}>
+        {write_name(myData)}
+      </div>
+
+      {/*deadlines*/}
+      <div className="deadlines">
+        <p id="dead_title">Deadlines</p>
+        <div className="deadlines_in">
+          <p>Tenta 03/05-20</p>
         </div>
+      </div>
 
-          {/*deadlines*/}
-        <div className="deadlines">
-          <p id="dead_title">Deadlines</p>
-
-          <div className="deadlines_in">
-            <p>Tenta 03/05-20</p>
+      <div id="wrapper"> 
+        <div id="first">
+          <AnimatedPieHooksworked
+            data={create_fake_array_two(myData)}
+            width={150}
+            height={150}
+            innerRadius={50}
+            outerRadius={75}
+          />
+          <div id="lhsText">
+            {hour_donut_text(myData)}
+            <p>hours</p>
           </div>
-
         </div>
-
-        <div id="wrapper">
-          
-          <div id="first">
-            <AnimatedPieHooksworked
-              data={create_fake_array_two(myData)}
-              width={170}
-              height={170}
-              innerRadius={60}
-              outerRadius={84}
-            />
-              
-            <div id="lhsText">
-              {hour_donut_text(myData)}
-              <p>hours</p>
-            </div>
-         
-          </div>
-
-          <div id="second">
-           <AnimatedPieHooksdays
-            data={create_fake_array(myData)}
-            width={170}
-            height={170}
-            innerRadius={60}
-            outerRadius={84}
-            />
-
-            <div id="rhsText">
-              {day_donut_text(myData)}
-              <p>days left</p>
-            </div>
-            
-          </div>
-
+        <div id="second">
+         <AnimatedPieHooksdays
+          data={create_fake_array(myData)}
+          width={150}
+          height={150}
+          innerRadius={50}
+          outerRadius={75}
+          />
+          <div id="rhsText">
+            {day_donut_text(myData)}
+            <p>days left</p>
+          </div> 
         </div>
+      </div>
+      <div className="goal">
+        <p>Goal: {goal_text(myData)} per day</p>
+      </div>
+      <div className="divButtonCourseInfo">
+        <Link to="/ReportTime.js"><button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="reportButton_CourseInfo center">
+          <p className="buttonText" id="reportButtonText">Report time</p>
+        </button> </Link>
+        <Link to="/">
+          <button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="editButton center">
+            <p className="buttonText" id="editButtonText">Edit activity</p>
+          </button>
+        </Link>
+      </div>
 
-         <div className="goal">
-           <p>Goal: {goal_text(myData)} per day</p>
-
-         </div>
-
-                 <div className="divButtonCourseInfo">
-            <Link to="/ReportTime.js"><button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="reportButton_CourseInfo center">
-               <p className="buttonText" id="reportButtonText">Report time</p>
-            </button> </Link>
-          
-            <Link to="/"><button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="editButton center">
-               <p className="buttonText" id="editButtonText">Edit activity</p>
-           </button></Link>
-        </div>
-   {/*Footer*/}
+      {/*Footer*/}
       <div className="App-bottom">
       <p className="dots">Bottom Header</p>
       </div>
-
-    
     </div>
   );
 }
 
 export default courseinfo;
-

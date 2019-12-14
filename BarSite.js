@@ -131,23 +131,25 @@ function BarSite(HHH) {
   function questionText(){
     if(hideQuestion === false){
       return(
-        <div className="questionWrapper">
-          <div className="appHeader" style={{height: "90px"}}>
-          <h1 className="title">Help<br/></h1>
-          </div>
-          <div className="questionText center">
-            <p className="helpTitle">To do List</p>
-            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            <p className="helpTitle">To do List</p>
-            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            <p className="helpTitle">To do List</p>
-            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            <p className="helpTitle">To do List</p>
-            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-            <p className="helpTitle">To do List</p>
-            <p className="helpText">-centera meny √ <br/> -skriva text till help <br/> -hitta på namn <br/> -footer swipe</p>
-          </div>
-        </div>
+      	<div className="questionWrapper fitText">
+	      	<div className="appHeader" style={{height: "90px"}}>
+	      		<h1 className="title">Help<br/></h1>
+	      	</div>
+	      	<div className="questionText center">
+		    		<p className="helpText" style={{marginTop: "10px"}}>StudyUp help organise and keep track spent on your course.<br/></p>
+				 		<p className="helpText">View all the courses from the homepage!<br/></p>
+						<p className="helpText">Select a course to find details about it!<br/></p>
+						<p className="helpText">Press the <span style={{color: "#ae81ff"}}>purple button</span> to find out how many hours you need to study each course everyday!</p>
+						<p className="helpTitle" style={{marginTop: "35px"}} >Menu options</p>
+						<p className="helpText" style={{marginTop: "0"}}>Select <span style={{color: "#fd971f"}}>Report Time </span>to report time spent on a course.</p>
+						<p className="helpText">Select <span style={{color: "#a6e22e"}}>Add Course </span>to add a course.</p>
+						<p className="helpText">Select <span style={{color: "#f92672"}}>Delete Course </span>to delete a course.</p>
+						<p className="helpText">Select <span style={{color: "#ae81ff"}}>Reset </span>to make a default reset of the app.</p>
+	      	</div>
+	      	<div className="App-bottom">
+        		<p className="dots">Bottom Header</p>
+      		</div>
+	    </div>
       );
     }
   }
@@ -195,7 +197,7 @@ function BarSite(HHH) {
   function addActivity(){
     if (hideMenu === false){
       return(
-        <p className="buttonText">Add Activity</p>
+        <p className="buttonText">Add Course</p>
       );
     }
   }
@@ -204,7 +206,7 @@ function BarSite(HHH) {
   function deleteActivity(){
     if (hideMenu === false){
       return(
-        <p className="buttonText">Delete Activity</p>
+        <p className="buttonText">Delete Course</p>
       );
     }
   }
@@ -220,7 +222,7 @@ function BarSite(HHH) {
     return(
       <div className="feedBack" id="resetButton">
         <h1>WARNING!</h1>
-        <p>Are you sure that you want to DELETE all your courses?</p>
+        <p>Are you sure that you want to DELETE all the courses?</p>
         <button style={{width: 210} } onClick={() => clearList()} className="purpleButton" id="resetButton">
           <p className="buttonText pBlack">Yes</p>
         </button>

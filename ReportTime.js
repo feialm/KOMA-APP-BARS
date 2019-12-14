@@ -166,9 +166,9 @@ function App(props) { // props eller inte props??
             <div className ="border">
               <div className="wrapperReportTime" id="centerDiv">
                 <input className="timeBox" id="hours" type="text" placeholder="hh" onChange={changeInput}/>
-                <p className="timeIndicator" id="hh">h</p>
+                <p className="timeIndicator2" id="hh">h</p>
                 <input className="timeBox" id="min" type="text" placeholder="mm" onChange={changeInput}/>
-                <p className="timeIndicator" id="mm" >m</p>
+                <p className="timeIndicator2" id="mm" >m</p>
               </div>
             </div>
           </div>

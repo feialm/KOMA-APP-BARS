@@ -203,7 +203,7 @@ function App(props) { // props eller inte props??
       </div>
       <div className="wrapperOutline fitText">
         <div className="wrapperAddName">
-          <p className="addActivityText" id="activityName">Activity Name</p>
+          <p className="addActivityText" id="activityName">Course name</p>
           <input className="textBox" id="name" type="text" placeholder="Name" onChange={changeInput}/>
         </div>
         <div className="wrapperDate">

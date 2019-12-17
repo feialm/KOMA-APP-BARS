@@ -264,7 +264,7 @@ function courseinfo(props) {
         </button> </Link>
         <Link to="/">
           <button onClick={() =>( myData[0].id, myData[0].startDate,myData[0].endDate,myData[0].value)} className="editButton center">
-            <p className="buttonText" id="editButtonText">Edit activity</p>
+            <p className="buttonText" id="editButtonText">Edit course</p>
           </button>
         </Link>
       </div>
